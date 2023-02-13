@@ -54,17 +54,21 @@ rotating shaft.
 
 *Flyback* is a sudden voltage spike that occurs when you suddenly cut the current through an inductor.  This is a direct
 consequence of Ohm's Law for Inductors: $V=j{\omega}LI$.  When we express this in the time (as opposed to phasor)
-domain, we get $V = L\frac{di}{dt}$.  As you can see, if we attempt to suddely stop the current through an inductor,
+domain, we get $V = L\frac{di}{dt}$.  As you can see, if we attempt to suddenly stop the current through an inductor,
 the rate of change ($\frac{di}{dt}$) will be very large and negative.  Consequently, any attempt to instantaneously shut
-off an inductive load will generate a suddent very high negative voltage.  This negative voltage spike is often called
+off an inductive load will generate a sudden very high negative voltage.  This negative voltage spike is often called
 *flyback*, from a similar effect in cathode ray tubes (CRTs).
 
 This voltage spike when switching inductive loads off can damage other components in the circuit.  It is common to use a
 diode (called a *flyback diode* or more rarely a *snubber diode*) to allow the voltage to dissipate by shorting out the
 inductor in the reverse direction.  In this case, the diode will be off during normal operation, but when the current is
-cut, the (negative) reverse voltage will forward bias the diode and allow a brief reverse current to dissipate the 
+cut, the (negative) reverse voltage will forward bias the diode and allow a brief reverse current to dissipate the
+energy.
 
-![Schotkey Diode as a Flyback Diode or Snubber (Source:)](images/flyback.png)
+Because they have a low forward voltage drop and very fast switching time, *Shottky* diodes are frequently employed as
+flyback diodes.
+
+![Schotkey Diode as a Flyback Diode (Source:)](images/flyback.png)
 
 ## Electromagnetic Devices
 
@@ -72,9 +76,9 @@ cut, the (negative) reverse voltage will forward bias the diode and allow a brie
 
 Relays effectively use an electromagnet to actuate a mechanical switch.  Just as in the SCR, this allows us to use one
 circuit to control the behaviour of another circuit without needing a direct electrical connection.  In its simplest
-form, relay is simply an electromagnet that bends a thin piece of metal---or moves a sprung lever---to make an
+form, a relay is simply an electromagnet that bends a thin piece of metal---or moves a sprung lever---to make an
 electrical contact between two metal pieces, thus making a connection.
-
+ 
 [Electromechanical Relay (Source: )](images/relay.png)
 
 
