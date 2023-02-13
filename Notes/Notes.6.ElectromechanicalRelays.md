@@ -1,4 +1,3 @@
-
 # 6 - Electromechanical Relays
 
 ## Electromagnetism
@@ -13,31 +12,89 @@ electric current---generates a circular magnetic field whose plane is perpendicu
 motion.  Similarly, a moving magetic field---as in a rotating magnet---generates a current in any conductor the field
 passes through.
 
+![Electromagnetic Interaction (Source:)](images/eminteract.png)
+
 You will already be aware of the way this is employed in transfomers: the changing electric currents in the coils on one
 side of the transformer generate a magnetic field that is generally confined to the core.  This magnetic field induces a
-current in another coil wound about the other side of the transformer.
-
-
+current in another coil wound about the other side of the transformer. The requirement that the fields be changing in
+order for electric fields to induce magnetic fields and vice-versa is why classic transformers don't work with DC.
 
 ## Electromagnetic Isolation
+
+You will recall that *electromagnetic* is one of the isolation techniques we have discussed, in particular in the
+context of transformers which are very frequently used to reduce the high mains (wall) voltage to something more
+tractable. Although electricity and magnetism are two aspects of the same phenomenon, the natural hysteresis between the
+conversion back and forth prevents sudden transient changes on one side of the system from provoking similarly sudden
+changes on the other. This helps prevent faults from cascading rapidly. Similarly, the fact that energy on one side of
+the system must be converted to or from electricity to magnetism means that there is no direct electrical connection
+between one side and the other.
+
+![Transformer (Source: )](images/transformer.png)
+
+Another way that we can achieve isolation is through *electromechanical* connection. In this case, the magnetic field is
+not immediately converted back to electricity, but instead used to do mechanical work.  In this context, *mechanical*
+simply means physically moving something---so we are converting electromagnetic energy to kinetic energy. This can be
+accomplished through simple deviation of a spring or leaf (relays), linear movement of a shaft (solenoids), or rotary
+movement of a shaft (motors).
+
+One interesting way to achieve electromechanical isolation is with motor-generators. This is simply a motor that is
+connected directly to the shaft of a generator.  Applying electrical power to the motor spins the shaft, which turns the
+generator, which creates electrical power. There is no electrical or magnetic coupling between the two sides, just the
+rotating shaft.
 
 ## Design Considerations
 
 ### Coil Inductance
 
+### Efficiency
+
 ### Inrush Current
 
 ### Flyback
+
+*Flyback* is a sudden voltage spike that occurs when you suddenly cut the current through an inductor.  This is a direct
+consequence of Ohm's Law for Inductors: $V=j{\omega}LI$.  When we express this in the time (as opposed to phasor)
+domain, we get $V = L\frac{di}{dt}$.  As you can see, if we attempt to suddely stop the current through an inductor,
+the rate of change ($\frac{di}{dt}$) will be very large and negative.  Consequently, any attempt to instantaneously shut
+off an inductive load will generate a suddent very high negative voltage.  This negative voltage spike is often called
+*flyback*, from a similar effect in cathode ray tubes (CRTs).
+
+This voltage spike when switching inductive loads off can damage other components in the circuit.  It is common to use a
+diode (called a *flyback diode* or more rarely a *snubber diode*) to allow the voltage to dissipate by shorting out the
+inductor in the reverse direction.  In this case, the diode will be off during normal operation, but when the current is
+cut, the (negative) reverse voltage will forward bias the diode and allow a brief reverse current to dissipate the 
+
+![Schotkey Diode as a Flyback Diode or Snubber (Source:)](images/flyback.png)
 
 ## Electromagnetic Devices
 
 ### Electromagnetic Relays
 
-### Solid-State Relays (SSRs)
+Relays effectively use an electromagnet to actuate a mechanical switch.  Just as in the SCR, this allows us to use one
+circuit to control the behaviour of another circuit without needing a direct electrical connection.  In its simplest
+form, relay is simply an electromagnet that bends a thin piece of metal---or moves a sprung lever---to make an
+electrical contact between two metal pieces, thus making a connection.
+
+[Electromechanical Relay (Source: )](images/relay.png)
+
+
+
+### Solid-State Relays
+
+Solid-state relays (SSRs) have a similar purpose to EM relays, but do not use electromagnetics to physically move a
+switch. They are semiconductor switches, and can be implemented using transitors and other devices (eg. TRIACs) that
+allow control of the current through the device.  We've actually already constructed some solid-state relays in this and
+previous course.  For example, a TRIAC coupled with a simple transistor-based zero-crossing detector is very commonly
+what is used in a commercially packaged SSR.  Commercial SSRs are available that can reliably and quickly switch very
+high loads.
+
 
 ### Solenoids
 
-Solenoids are electromagnetic devices that typically use an induced electromagnetic field to move a 
+Solenoids are electromagnetic *actuator* devices that typically use an induced electromagnetic field to move a shaft
+linearly to push or pull something, rather than to rotate something as in a motor.
+
+[Solenoid (Source: )](images/solenoid.png)
 
 ### Motors
 
