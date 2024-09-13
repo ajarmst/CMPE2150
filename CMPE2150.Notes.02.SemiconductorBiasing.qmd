@@ -1,5 +1,5 @@
 ---
-title: "CMPE2150 Notes 2"
+title: "CMPE2150 Notes 02"
 subtitle: "Semiconductor Biasing"
 author: "Taylor, Moore, and Armstrong"
 date: last-modified
@@ -24,7 +24,7 @@ format:
         \usepackage{lastpage}
         \usepackage{fancyhdr}
         \pagestyle{fancy}
-        \fancyhead[L]{CMPE2150 Notes 2}
+        \fancyhead[L]{CMPE2150 Notes 02}
         \fancyhead[R]{Semiconductor Biasing}
         \fancyfoot[C]{\thepage/\pageref*{LastPage}}
 reference-location: margin
@@ -96,7 +96,7 @@ One of the most predictable transistor biasing circuits that operates in the Act
 
 Here's the circuit, and the controlled current can be accessed either at the Collector or the Emitter.
 
-![NPN Voltage Divider Constant Current Source](images/NPNVDivCurrentSource.jpg){width="111"}
+![NPN Voltage Divider Constant Current Source](images/NPNVDivCurrentSource.jpg){width="150"}
 
 In order for this circuit to behave predictably, $R_2$ should be approximately ten times larger than $R_3$, so that the current through the voltage divider resistors ( $R_1$ and $R_2$) will be so much larger than the Base current that the Base current will have little effect on the calculations.  Also, beta for the transistor should be more than $100$.
 
@@ -138,7 +138,7 @@ The greater the $V_{GS}$, the more current can be controlled by the E-MOSFET, in
 
 Here's a circuit from a previous course that we'll analyze slightly differently than we did before.
 
-![FET Relay Driver](images/FET Relay Driver.jpg){width="400"}
+![FET Relay Driver](images/FET%20Relay%20Driver.jpg){width="400"}
 
 The coil on the relay to be controlled by the E-MOSFET is rated at $43.6 mA$ when powered by $12 V_{DC}$.  Here's a graph from the datasheet of the ZVN2110A:
 
@@ -186,8 +186,7 @@ R2, between the input and ground (choose one):
 
 {{< pagebreak >}}
 
-:::{.border}
-
+::: border
 ## Answers to Self Tests
 
 ### Self Test 2.1
@@ -221,5 +220,4 @@ R2, between the input and ground (choose one):
 -   limits the inrush current that charges or discharges the Gate capacitance.
 
 -   ensures that the input will be held LOW in the event of a missing signal source.
-
 :::

@@ -1,0 +1,77 @@
+---
+title: "CMPE2150 SA 03"
+subtitle: "Semiconductor Biasing"
+author: "Taylor, Moore, and Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+format: 
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid: 
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry: 
+      - top=30mm
+      - bottom=30mm
+      - left=25mm
+      - right=65mm
+      - heightrounded
+    include-in-header: 
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 SA 03}
+        \fancyhead[R]{Semiconductor Biasing}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+---
+
+Consult the manufacturer's datasheet for the yellow LED in the ETC component kit.
+
+What is the typical forward bias voltage for a yellow LED? \_\_\_\_\_\_\_\_\_\_ $V$.
+
+What is the forward current for the test conditions? \_\_\_\_\_\_\_\_\_\_ $mA$.
+
+The intent of a particular design is to drive one of these LEDs using a 9S12XDP512 microcontroller GPIO pin. From the microcontroller's datasheet, what is the maximum instantaneous current that can be supplied by a single GPIO pin? \_\_\_\_\_\_\_\_\_\_ $mA$.
+
+From this, theoretically, it should be possible to run an LED directly from a microcontroller GPIO pin. However, the more current handled by the microcontroller, the more heat is produced. Although there is no exact limit to how much current can be supplied in total by GPIO pins, a power budget could be developed that determines the total current draw of whichever internal peripherals are activated plus the current for the microcontroller pins, and this current could be used to determine the power dissipated by the microcontroller as heat. The data sheet then provides calculations to determine whether the microcontroller will be able to handle the heat, and whether there should be a heat-sink and/or fan.
+
+We'll design using the characteristics above. Assume a $5.0 V$ DC supply. We'll also use a 2N3904 transistor, assuming its worst-case beta and a VBE of $0.7 V$. Let's start by providing $80%$ of the standard test current to the LED, or \_\_\_\_\_\_\_\_\_\_ $mA$. What standard $10%$ value series resistor would allow essentially this amount of current? \_\_\_\_\_\_\_\_\_\_ $Ω$. How much Base current would just put the transistor into saturation? \_\_\_\_\_\_\_\_\_\_ $μA$. Assuming a GPIO output voltage of $5.0 V$, select a standard $10\%$ value Base resistor that will provide slightly more than double the minimum Base current: \_\_\_\_\_\_\_\_\_\_ $kΩ$. Check your value: with your selected Base resistor, the expected Base current would be \_\_\_\_\_\_\_\_\_\_ $μA$. The Active transistor model predicts a Collector current of \_\_\_\_\_\_\_\_\_\_ $mA$, so the transistor would be \_\_\_\_\_\_\_\_\_\_ (Cutoff, Saturated or Active).
+
+::: content-hidden
+{{< pagebreak >}}
+
+::: border
+## Answers
+
+-   2.1
+
+-   20
+
+-   25
+
+-   16
+
+-   180
+
+-   160
+
+-   12
+
+-   358
+
+-   35.8
+
+-   Saturated
+:::
+:::
