@@ -1,0 +1,8 @@
+.quarto-title-block .quarto-title-banner {
+  background-image: url(images/nait.png);
+  background-size: 50px;
+  background-position: 90%;
+  background-repeat: no-repeat;
+  padding-left: 10px;
+  background-origin: content-box;
+}
