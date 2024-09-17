@@ -119,7 +119,26 @@ Remove the signal generator, the oscilloscope, and the DC power supply.  Using a
 
 ## Electromechanical Isolation
 
+Consider the schematic diagram below to answer the questions that follow:
 
+![Electromechanical Isolation](images/electromechanicalisolation.png){width="375"}
+
+- The switch, $S_3$, is a normally-open pushbutton switch from your CNT Year 1 Kit.  Verify with an ohmmeter that is is actually normally open, and closes when pressed.
+- The G2R-2 $12 V$ relay is in your CNT Year 1 kit. Use either the spec-sheet for it or the picture printed on its side to determine the pinout before you attempt to wire it up.
+- The lamp is in your CNT Year 2 kit. Don't bend its leads! You'll break the glass! Instead, place it diagonally across the pins in two adjacent rows of your breadboard -- it fits that way.
+- The lamp is a halogen bulb, and will get very hot! Don't leave in on for long at any given time!
+- The $24 V_{AC}$ power supply is in your CNT Year 2 kit. It's got a barrel connector, but you can use the screw terminal adapter in the kit to convert its outputs to two pieces of wire you can use on your breadboard.
+
+1. Don't forget the 1N400x diode!  It's there to protect the ____________________ (relay, transistor, switch, or lamp)
+2. From the data sheet for the relay, the current drawn by the relay coil is $43.6 mA$  If the 2N3906 has a minimum beta of 100 and a $V_{BE}$ of $-0.7 V$, determine a value for $R_1$ that will just saturate the transistor, then pick a standard $10\%$ resistor value that is about half the calculated value to ensure the transistor saturates: __________ kΩ
+
+### Build and Test
+
+Wire up the circuit, and verify that you can turn the light on by pressing the pushbutton switch.  Try this a few times to ensure that the diode is protecting the circuit as expected.
+
+For a grade out of three marks, demonstrate your circuit and ask your instructor to grade your work in class. ___________ /3
+
+With the $+12 V_{DC}$ power supply and the $24 V_{AC}$ power supply disconnected, use a DMM as an ohmmeter to verify that the resistance between the two parts of the circuit is practically infinite at all points in the two circuits: __________ (True or False)
 
 ::: content-hidden
 {{< pagebreak >}}
@@ -150,6 +169,15 @@ Remove the signal generator, the oscilloscope, and the DC power supply.  Using a
 ### Electrostatic Isolation
 
 - 3.3
+
+#### Build and Test
+
+- True
+
+### Electromechanical Isolation
+
+- Transistor
+- 12
 
 #### Build and Test
 
