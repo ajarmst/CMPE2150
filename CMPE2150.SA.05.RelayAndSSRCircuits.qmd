@@ -81,6 +81,26 @@ Note that this datasheet covers a number of devices, so you need to make sure yo
 
   12. What is the rated coil resistance of the G2R-2-DC12 relay? \_\_\_\_\_\_\_\_\_\_
 
+  13. The specified coil voltage and current accurately reflect the expected coil resistance for the G2R-2-DC12 relay. \_\_\_\_\_\_\_\_\_\_ (True or False)
+
+  14. If a 2N3904 is used to activate the 2GR-2-DC12 relay, in microamps, the Base current must be greater than \_\_\_\_\_\_\_\_\_\_ ${\mu}A$.
+{{< pagebreak >}}
+  15. If a ZVN2110A FET transistor is used to activate the coil of a G2R-2-DC12 relay \_\_\_\_\_\_\_\_\_\_:
+      a. a diode should be placed, reverse biased, across the coil
+      b. a series resistor should be installed at the Gate
+      c. a pull-down resistor should be installed at the circuit input
+      d. all of the above
+
+  16. If a ZVN2110A FET is used to activate a G2R-2-DC12 relay, the series Gate resistor should be designed to handle the coil current.\_\_\_\_\_\_\_\_\_\_ (True or False)
+
+  17. What is the rated current-carrying capacity for the contacts of the G2R-2-DC12, in amps, with a resistive load? \_\_\_\_\_\_\_\_\_\_
+
+  18. From the performance graphs for the G2R-2-DC12, what is the current handling capacity of the contacts, in milliamps, for a resistive load, if the supply voltage is $100 V_{DC}$? \_\_\_\_\_\_\_\_\_\_
+
+  19. If a G2R-2-DC12 relay is used to switch a 120 V circuit, the transistor used should be rated to over 120 V. _\_\_\_\_\_\_\_\_\_ (True or False)
+
+  20. The G2R-2-DC12 can be used as a switch for both DC and AC circuits. _\_\_\_\_\_\_\_\_\_ (True or False)
+
 ::: content-hidden
 {{< pagebreak >}}
 
@@ -99,5 +119,13 @@ Note that this datasheet covers a number of devices, so you need to make sure yo
  10. $1.8 V$
  11. $43.6 mA$
  12. $275 \Omega$
+ 13. True
+ 14. $436 {\mu}A$
+ 15. All of the above
+ 16. False
+ 17. $5 A$
+ 18. $350 mA$
+ 19. False
+ 20. True
 :::
 :::
