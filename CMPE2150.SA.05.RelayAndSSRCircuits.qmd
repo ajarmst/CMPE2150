@@ -1,0 +1,103 @@
+---
+title: "CMPE2150 SA 05"
+subtitle: "Relay and SSR Circuits"
+author: "Taylor, Moore, and Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+format: 
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid: 
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry: 
+      - top=30mm
+      - bottom=30mm
+      - left=25mm
+      - right=70mm
+      - marginparwidth=50mm
+      - heightrounded
+    include-in-header: 
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 SA 05}
+        \fancyhead[R]{Relay and SSR Circuits}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+---
+
+### Omron G2R-2-DC12
+
+The first set of questions in this assessment are based upon your knowledge of transistor-controlled relay circuits and information provided in the manufacturer's datasheet for the relay in your kit, the [Omron G2R-2-DC12](https://omronfs.omron.com/en_US/ecb/products/pdf/en-g2r.pdf).
+
+Note that this datasheet covers a number of devices, so you need to make sure you're accessing the correct part number when accessing the specifications.
+
+  1. Dielectric strength refers to \_\_\_\_\_\_\_\_\_\_
+      a. the strength of a dielectric material, expressed as a function of aging due to repetitive arcing between terminal contacts.
+      b. the maximum voltage that may be applied across the terminals of a relay while they are open.
+      c. the maximum voltage that may be applied between the coil and the contacts before a resulting electric current will flow between them.
+      d. a measure of the capacitance of the polarizing electrostatic field that develops between switch contacts while they are open.
+  
+  2. What is the basic dielectric rating of the G2R-2-DC12 relay, in volts? \_\_\_\_\_\_\_\_\_\_
+
+  3. The G2R-2-DC12 relay in your kit has a fully-sealed enclosure. \_\_\_\_\_\_\_\_\_\_ (True or False)
+
+  4. What type of protection does the enclosure of the G2R-2-DC12 relay provide? \_\_\_\_\_\_\_\_\_\_
+      a. prevents ingress of solder flux during soldering
+      b. prevents damage due to corrosive atmospheric gases
+      c. prevents protection from electromagnetic field flux
+      d. prevents influx of cleaning solvent during immersion cleaning
+
+  5. How many circuits can the G2R-2-DC12 control simultaneously? \_\_\_\_\_\_\_\_\_\_
+
+  6. For the G2R-2-DC12 relay, how many circuit elements can each relay switch be connected to? \_\_\_\_\_\_\_\_\_\_
+
+  7. Which statement describes the operation of the contacts in the G2R-2-DC12 relay?
+      a. all contacts are normally open
+      b. all contacts are normally closed
+      c. each switch has a normally-open contact and a normally-closed contact
+
+  8. What is the nominal coil voltage for the G2R-2-DC12 relay? \_\_\_\_\_\_\_\_\_\_
+
+  9. For the G2R-2-DC12 relay, what type of power should be supplied to the relay coil? \_\_\_\_\_\_\_\_\_\_ (AC or DC)
+
+  10. For the G2R-2-DC12 relay, once the relay is activated, what can the voltage be reduced to without the relay releasing, in volts? \_\_\_\_\_\_\_\_\_\_
+
+  11. What is the coil current rating of the G2R-2-DC12 relay, in milliamps? \_\_\_\_\_\_\_\_\_\_
+
+  12. What is the rated coil resistance of the G2R-2-DC12 relay? \_\_\_\_\_\_\_\_\_\_
+
+::: content-hidden
+{{< pagebreak >}}
+
+::: border
+### Answers
+#### Omron G2R-2-DC12
+ 1. the maximum voltage that may be applied between the coil and the contacts before a resulting electric current will flow between them.
+ 2. $5000 V$
+ 3. False
+ 4. prevents ingress of solder flux during soldering
+ 5. 2
+ 6. 2
+ 7. each switch has a normally-open contact and a normally-closed contact
+ 8. $12 V$
+ 9. DC
+ 10. $1.8 V$
+ 11. $43.6 mA$
+ 12. $275 \Omega$
+:::
+:::
