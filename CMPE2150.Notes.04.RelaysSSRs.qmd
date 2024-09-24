@@ -1,0 +1,121 @@
+---
+title: "CMPE2150 Notes 04"
+subtitle: "Relays and SSRs"
+author: "Taylor, Moore, and Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+format: 
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid: 
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry: 
+      - top=30mm
+      - bottom=30mm
+      - left=25mm
+      - right=70mm
+      - marginparwidth=50mm
+      - heightrounded
+    include-in-header: 
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 Notes 04}
+        \fancyhead[R]{Relays and SSRs}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+---
+
+## Electromechanical Relays
+
+You've had quite a lot of experience with relays up to this point---you've used them in your Semiconductors course to show how circuits can be controlled using BJT and FET transistors acting as relay drivers; you've used them earlier in this course as one means of achieving Galvanic Isolation---Electromechanical Isolation.
+
+In all cases, you've had a relatively small DC current in a coil opening and closing mechanical switches which can be used to activate isolated circuits of differing voltages and even differing forms---DC or AC.
+
+You've been carefully instructed always to place a reverse-biased diode across the coil when activating a DC relay with a semiconductor. When we attempt to suddenly stop the current through an inductor or an inductive coil such as the activating coil in a relay, there will be a sudden very high voltage generated across the open spot in the circuit.  This voltage will quickly exceed the reverse breakdown voltage of a BJT or FET, resulting in a sudden current at high voltage through the semiconductor device.  The instantaneous power will be quite high ($P=IV$), and may destroy the semiconductor device.  With small coils, the energy available may not be sufficient to destroy the device, but may damage it progressively over time.  The reverse biased diode across the coil (sometimes called a "flyback diode" or "snubber diode") will become temporarily forward biased by the coil-induced voltage spike.  Since its cathode is directly connected to the DC power supply, the voltage spike will be reduced to approximately 0.7 V above the supply rail for a silicon diode or approximately 0.2 V above the supply rail for a Schottky diode, and will therefore not exceed the reverse breakdown voltage of the semiconductor device.  The energy of the spike will be dissipated as heat from the other components in the circuit---primarily the resistance of the coil itself.
+
+In addition to relays such as the one in your kit, which is to be activated using a DC supply ($12 V_{DC}$, to be specific), there are AC-activated relays.  These use different coil configurations to generate magnetic fields from AC currents, but otherwise their basic functionality is the same:  Activating the coil activates the switches to control circuits that are usually isolated from the control signal.  AC-activated coils cannot be protected by a single diode in the way that DC coils can be, since the polarity reverses many times a second, and the diode would act as a half-wave rectifier.  Instead, AC-activated relays need either snubber capacitors to prevent rapid changes in voltage across the coil or back-to-back Zener diode clippers.
+
+Of course, you only have a DC-activated coil at your disposal; but knowing a bit about AC-activated coils could be useful to you in a future employment situation.
+
+## Solid-State Relays (SSRs)
+
+Solid state relays are not, by the conventional use of the term, actually relays.  Instead, they are semiconductor devices designed to mimic (and often improve upon) electromechanical relays.
+
+There are a number of types of SSRs, so you will need to consider a number of factors when choosing an SSR.
+
+  - Control side -- most SSRs use optocouplers at their inputs, so the circuitry that drives them must be capable of turning on an LED.
+    - Most SSRs expect a DC current through a forward-biased internal LED to activate the circuit.
+    - Some SSRs have two LEDs connected anode to cathode in parallel so that they can be activated by AC signals instead of the usual DC signals.
+    - In either case, external circuitry must be capable of controlling the LED or LEDs, and must limit the current so as not to destroy the LEDs.
+  - Switching side -- unlike the electromechanical relay which simply closes switches so current can flow either way or alternatively both ways through the switch, SSRs use semiconductor switches -- BJTs, FETs, SCRs, TRIACs, etc.  Therefore, its important to pick an SSR that can handle the circuit power you need to switch.
+    - Some SSRs can only switch DC power, and polarity is critical (you can't reverse the terminals).  These SSRs use power BJTs or power FETs, controlled by phototransistors in the optocoupler section, so you'll need to keep in mind the transistor biasing rules you learned in your Semiconductors course.
+    - Some SSRs can only switch AC power.  These SSRs use power SCRs or power TRIACs, controlled by photo-SCRs and photo-TRIACs in the optocoupler section.  As with any SCR or TRIAC circuit, these can't be used to control DC circuits, because once they're turned on they can't be turned off unless the supply voltage drops to zero.
+    - Some SSRs are designed to switch both AC and DC.  These usually involve creative configurations of power FETs in the output, biased to conduct current in either direction in ways you haven't studied in previous courses.  These SSRs most closely emulate electromechanical relays, and can be used interchangeably with them, as long as they have equivalent specifications.
+
+Here are two different SSRs -- one from your kit, the other used in the Chemical Plant for the Industrial Processes course:
+
+![PR3BMF51NSLH Phototriac SSR](images/kitssr.png){width="250"}
+
+![RM1A48D50 Solid-State Industrial Relay](images/puckssr.png){width="225"}
+
+This second SSR is sometimes referred to as a "puck" SSR, as it is close to the size of a hockey puck (but is much more expensive).
+
+SSRs typically have the following advantages over electromechanical relays:
+
+  - They don't require protection diodes, as there is no inductive current to protect other parts of the circuit against.
+  - They can operate at much higher speeds, as there are no moving parts
+  - They typically last longer, as there is no mechanical wear, and there is no deterioration from arcing as would be seen in mechanical switches as they open and close
+  - They do not exhibit switch bounce, a characteristic of spring-loaded mechanical switches which can be interpreted as multiple activations
+  - They do not generate nearly as much electromagnetic noise as electromechanical relays, as there are no physical switches opening and closing to generate sparks and electrical fields
+  - They are silent, as opposed to the clicking of an electromechanical relay
+
+However, SSRs have their disadvantages, as well:
+
+  - They can be quite expensive, particularly if they need to handle significant current
+  - It is more difficult to design them to withstand high "open" voltages
+  - They may be damaged by electrostatic discharge
+  - The "holding current" at the input needs to be maintained all the time the SSR is activated; in an electromechanical relay, it is possible to reduce the activation current by up to 90% and still maintain, or "hold" the relay in position
+  - Their "ON" resistance may not be quite as low as that of an electromechanical relay
+  - Their "OFF" resistance is high, but won't be as good as an open switch
+
+## Self Test
+
+For the questions below, answer with one of:
+
+  1) G2R-2-DC12 Electromechanical Relay
+  2) PR3BMF51NSLH Solid-State Relay
+  3) Either the Electromechanical or Solid-State Relay
+
+Which device(s) in your kit could be used to control a lamp powered by the $24 V_{RMS}$ transformer in your kit? \_\_\_\_\_\_\_\_\_\_
+
+Which device(s) in your kit could be used to control a DC motor powered by the $6 V$ battery pack? \_\_\_\_\_\_\_\_\_\_
+
+Which device(s) in your kit require a snubbing diode when driven by a BJT or FET? \_\_\_\_\_\_\_\_\_\_
+
+Which device(s) in your kit could be operated directly with either $5 V$ logic or $12 V$ logic on the controlling side? \_\_\_\_\_\_\_\_\_\_
+
+{{< pagebreak >}}
+
+::: border
+## Self-Test Answers
+
+- Both
+- G2R-2-DC12 EM Relay
+- G2R-2-DC12 EM Relay
+- PR38BMF51NSLH SSR
+:::
