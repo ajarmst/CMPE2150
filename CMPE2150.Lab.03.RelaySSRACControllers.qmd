@@ -1,0 +1,81 @@
+---
+title: "CMPE2150 Lab 03"
+subtitle: "Relay and SSR AC Controllers"
+author: "Taylor, Moore, and Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+format: 
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid: 
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry: 
+      - top=30mm
+      - bottom=30mm
+      - left=25mm
+      - right=70mm
+      - marginparwidth=50mm
+      - heightrounded
+    include-in-header: 
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 Lab 03}
+        \fancyhead[R]{Relay and SSR AC Controllers}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+---
+
+## Using a Relay as an AC Controller
+
+By now, you've used your G2R-2-DC12 relay in a number of applications, so not much guidance will be provided here, other than the specification and some Multisim hints for the schematic.
+
+Design a circuit using the ZVN2110A MOSFET transistor to drive the coil of the G2R-2-DC12 relay. Include suitable pull-down and Gate inrush current protection resistors, along with a diode to protect the transistor.
+
+On the switch side, use one set of normally-open contacts as a switch to turn the halogen lamp from your kit on using your $24 V_{AC}$ transformer.
+
+Use a $0 V$ to $5 V$ unipolar pulse from a function generator, set to a duty cycle of $20\%$ and a frequency of $200 mHz$, to turn the lamp on for one second and off for four seconds.
+
+Draw or use a schematic-capture program like Multisim to create a schematic of your circuit, and submit it here for a grade out of five marks. If your instructor grades your work in class, enter the assigned grade below instead.
+
+Schematic Hints:
+
+-   The Multisim library doesn't contain the ZVN2110A. Instead, use a ZVN2106A and re-label it.
+
+-   The Multisim library doesn't contain the G2R-2-DC12 relay. Instead, create a reasonable facsimile using an inductor and two SPDT switches, and draw a dashed box around them, labelled as "K1" and the relay part number.
+
+-   The Multisim library doesn't contain a 24V_10W lamp. Instead, use a 30V_10W lamp and re-label it.
+
+-   Your schematic won't run a simulation. You might want to verify your design with your instructor before you build it!
+
+### Build and Test
+
+Once you are satisfied, build your circuit using the parts from your kit and demonstrate it for your instructor during class: \_\_\_\_\_\_\_\_\_\_
+
+## Using a Solid-State Relay as an AC Controller
+
+Unlike the relay in the previous activity, the activation side of the SSR isn't automatically current protected, and you could easily burn out the internal LED if you're not careful! Based upon the forward voltage and input test current from the manufacturer's datasheet for the PR3BMF51NSLH SSR in your CNT Year 2 Kit, design a suitable activation circuit using the ZVN2110A MOSFET transistor. As usual, include both a pull-down resistor and a Gate surge-current protection resistor.
+
+Use a $0 V$ to $5 V$ unipolar pulse from a function generator, set to a duty cycle of $20\%$ and a frequency of $200 mHz$, to turn the lamp on for one second and off for four seconds.
+
+On the power side, use the SSR to activate the halogen lamp using the $24 V_{AC}$ power supply from your kit.
+
+Draw or use a schematic-capture program like Multisim to document your design, and include it here for a grade out of five marks. If your instructor grades this in class, enter the assigned grade here instead.
+
+### Build and Test
+
+Once you are satisfied, build your circuit using the parts from your kit and demonstrate it for your instructor during class: \_\_\_\_\_\_\_\_\_\_
