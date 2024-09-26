@@ -101,6 +101,39 @@ Note that this datasheet covers a number of devices, so you need to make sure yo
 
   20. The G2R-2-DC12 can be used as a switch for both DC and AC circuits. _\_\_\_\_\_\_\_\_\_ (True or False)
 
+### PR3BMF41NSKF Solid-State Relay
+
+The second set of questions concerns the [PR3BMF51NSLH Solid-State Relay](https://media.digikey.com/pdf/Data%20Sheets/Sharp%20PDFs/PR3BMF51NSKF.pdf) in your kit.
+
+  1. How many pins are present on the PR3BMF41NSKF? \_\_\_\_\_\_\_\_\_\_
+
+  2. The PR3BMF41NSKF SSR can be used to control \_\_\_\_\_\_\_\_\_\_:
+      a. DC circuits only
+      b. AC circuits only
+      c. both DC and AC circuits
+
+  3. For the PR3BMF41NSKF SSR, what test current, in milliamps, was used to determine the Input Forward Voltage? \_\_\_\_\_\_\_\_\_\_
+
+  4. For the PR3BMF41NSKF, what is the Input Forward voltage, typically? \_\_\_\_\_\_\_\_\_\_
+
+  5. For the PR3BMF41NSKF SSR, if five-volt logic is being used to activate the input, what would be a suitable 10% standard resistor to put in series with the LED? \_\_\_\_\_\_\_\_\_\_
+
+  6. When using a transistor to activate the PR3BMF41NSKF SSR, you must protect the transistor with a reverse-biased diode.  _\_\_\_\_\_\_\_\_\_ (True or False)
+
+
+  7. For the PR3BMF41NSKF SSR, what is the maximum recommended Load Supply Voltage? \_\_\_\_\_\_\_\_\_\_
+
+  8. For the PR3BMF41NSKF SSR, which pins would you use in the load circuit? \_\_\_\_\_\_\_\_\_\_:
+      a. 1 and 2
+      b. 2 and 3
+      c. 5 and 6
+      d. 5 and 8
+      e. 6 and 8
+
+  9. For the PR3BMF41NSKF SSR, what is the Absolute Maximum continuous ON-state current, in amps? \_\_\_\_\_\_\_\_\_\_
+
+  10. For the PR3BMF41NSKF SSR, at a temperature of 100$^\circ$C with no heat sink, what is the maximum continuous ON-state current limit, in milliamps? \_\_\_\_\_\_\_\_\_\_
+
 ::: content-hidden
 {{< pagebreak >}}
 
@@ -127,5 +160,18 @@ Note that this datasheet covers a number of devices, so you need to make sure yo
  18. $350 mA$
  19. False
  20. True
+### PR3BMF41NSKF Solid-State Relay
+ 1. 7
+ 2. AC circuits only
+ 3. $20 mA$
+ 4. $1.2 V$
+ 5. $180 \Omega$
+ 6. False
+ 7. $240 V$
+ 8. 6 and 8
+ 9. $1.2 A$
+ 10. $220 mA$
+
+
 :::
 :::
