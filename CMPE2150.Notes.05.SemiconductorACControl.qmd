@@ -18,8 +18,9 @@ format:
       - bottom=30mm
       - left=25mm
       - right=70mm
-      - marginparwidth=50mm
+      - marginparwidth=60mm
       - heightrounded
+      - showframe
     include-in-header:
       text: |
         \usepackage{lastpage}
@@ -34,7 +35,8 @@ toc-expand: true
 reference-location: margin
 citation-location: margin
 cap-location: margin
-fig-cap-location: margin
+fig-align: left
+fig-cap-location: bottom
 css: content.css
 editor: visual
 title-block-banner: "#002d74"
@@ -74,7 +76,10 @@ current through the positively-biased Base to Emitter junction. For a
 PNP transistor, the Collector must be at a lower voltage than the
 Emitter, and control is exercised by running a current through the
 negatively-biased Base to Emitter junction.
-![William Shockley (1910-1985) *Wikipedia*](images/William_Shockley.jpg)
+
+::: {.column-margin}
+![William Shockley](images/William_Shockley.jpg){width=50mm fig-env="figure*"}
+:::
 William Shockley was a researcher at Bell Labs, and, beyond his role
 in inventing transistors, he had a particular interest in AC power
 control. He invented a number of semiconductor devices that had more
