@@ -16,30 +16,34 @@ format:
     geometry:
       - top=30mm
       - bottom=30mm
-      - left=25mm
-      - right=70mm
+      - left=15mm
+      - right=80mm
       - marginparwidth=60mm
+      - marginparsep=10mm
       - heightrounded
-      - showframe
     include-in-header:
       text: |
         \usepackage{lastpage}
         \usepackage{fancyhdr}
+        \usepackage{titling}
         \pagestyle{fancy}
         \fancyhead[L]{CMPE2150 Notes 05}
         \fancyhead[R]{Semiconductor AC Control}
         \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+        \setlength{\droptitle}{-2cm}
 toc: true
 toc-location: right
 toc-expand: true
 reference-location: margin
 citation-location: margin
 cap-location: margin
-fig-align: default
-fig-cap-location: margin
+fig-align: center
+fig-cap-location: bottom
 css: content.css
 editor: visual
 title-block-banner: "#002d74"
+fig-env: "figure*"
+keep-tex: true
 ---
 ## Semiconductor AC Power Controllers
 
@@ -78,7 +82,8 @@ Emitter, and control is exercised by running a current through the
 negatively-biased Base to Emitter junction.
 
 ::: {.column-margin}
-![William Shockley, 1910-1989 (Wikipedia)](images/William_Shockley.jpg){width=50mm fig-env="figure"}
+![](images/William_Shockley.jpg){width=60mm}  
+William Shockley,1910-1989 (Wikipedia)
 :::
 William Shockley was a researcher at Bell Labs, and, beyond his role
 in inventing transistors, he had a particular interest in AC power
@@ -96,9 +101,7 @@ All these devices (with the exception of two which have been specially designed 
 
 In an AC circuit, the supply voltage crosses zero twice each cycle, or 120 times per second in North America.  So, in an AC application, these devices, when activated, will be turned off 120 times a second, ready to be activated again.
 
-Although these devices can be approximately modelled as pairs of coupled transistors, the model sometimes doesn't adequately explain the operation of the device, so that particular model will not be presented in this course.  If you're interested, you can look it up for yourself.  Instead, we will simply describe the behaviour of each device from an operational point of view -- "this is what it does"  -- rather than from a theoretical point of view -- "this is why".
-
-
+Although these devices can be approximately modelled as pairs of coupled transistors, the model sometimes doesn't adequately explain the operation of the device, so that particular model will not be presented in this course.  If you're interested, you can look it up for yourself.  Instead, we will simply describe the behaviour of each device from an operational point of view ---"this is what it does"---rather than from a theoretical point of view---"this is why".
 
 Four-layer Half-Wave AC Power Controllers
 
@@ -373,9 +376,12 @@ number of factors when choosing an SSR.
 Here are two different SSRs -- one from your kit, the other used in
 the Chemical Plant for the Industrial Processes course:
 
-![PR3BMF51NSLH Phototriac SSR](images/kitssr.png){width="250"}
-
-![RM1A48D50 Solid-State Industrial Relay](images/puckssr.png){width="225"}
+::: {.column-margin}
+![](images/kitssr.png){width="60mm"}
+PR3BMF51NSLH Phototriac SSR blh de blah fe fdf jjlkjlj  ljkljl 
+![](images/puckssr.png){width="60mm"}
+RM1A48D50 Solid-State Industrial Relay
+:::
 
 This second SSR is sometimes referred to as a "puck" SSR, as it is
 close to the size of a hockey puck (but is much more expensive).
