@@ -1,6 +1,6 @@
 ---
-title: "CMPE2150 Notes 04"
-subtitle: "Relays and SSRs"
+title: "CMPE2150 Notes 05"
+subtitle: "Semiconductor AC Control"
 author: "Taylor, Moore, and Armstrong"
 date: last-modified
 date-format: "DD MMM YYYY"
@@ -26,8 +26,8 @@ format:
         \usepackage{lastpage}
         \usepackage{fancyhdr}
         \pagestyle{fancy}
-        \fancyhead[L]{CMPE2150 Notes 04}
-        \fancyhead[R]{Relays and SSRs}
+        \fancyhead[L]{CMPE2150 Notes 05}
+        \fancyhead[R]{Semiconductor AC Control}
         \fancyfoot[C]{\thepage/\pageref*{LastPage}}
 toc: true
 toc-location: right
@@ -35,8 +35,8 @@ toc-expand: true
 reference-location: margin
 citation-location: margin
 cap-location: margin
-fig-align: left
-fig-cap-location: bottom
+fig-align: default
+fig-cap-location: margin
 css: content.css
 editor: visual
 title-block-banner: "#002d74"
@@ -78,7 +78,7 @@ Emitter, and control is exercised by running a current through the
 negatively-biased Base to Emitter junction.
 
 ::: {.column-margin}
-![William Shockley](images/William_Shockley.jpg){width=50mm fig-env="figure*"}
+![William Shockley, 1910-1989 (Wikipedia)](images/William_Shockley.jpg){width=50mm fig-env="figure"}
 :::
 William Shockley was a researcher at Bell Labs, and, beyond his role
 in inventing transistors, he had a particular interest in AC power
