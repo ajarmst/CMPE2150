@@ -37,12 +37,12 @@ toc-expand: true
 reference-location: margin
 citation-location: margin
 cap-location: margin
-fig-align: center
-fig-cap-location: bottom
+fig-align: default
+fig-cap-location: margin
 css: content.css
 editor: visual
 title-block-banner: "#002d74"
-fig-env: "figure*"
+fig-env: "figure"
 keep-tex: true
 ---
 ## Semiconductor AC Power Controllers
@@ -75,26 +75,26 @@ manipulated by the operator or by control circuitry.
 The BJT transistors you studied earlier are three-layer devices,
 either PNP or NPN. As such, they must be biased appropriately with DC
 power supplies: For an NPN transistor, the Collector must be at a
-higher voltage than the Emitter, and control is exercised by running a
-current through the positively-biased Base to Emitter junction. For a
-PNP transistor, the Collector must be at a lower voltage than the
+higher voltage than the Emitter, and control is exercised by running a current through the positively-biased Base to Emitter junction. For aNP transistor, the Collector must be at a lower voltage than the
 Emitter, and control is exercised by running a current through the
 negatively-biased Base to Emitter junction.
 
 ::: {.column-margin}
-![](images/William_Shockley.jpg){width=60mm}  
-William Shockley,1910-1989 (Wikipedia)
+![](images/William_Shockley.jpg){width=40mm}
+
+William Shockley, 1910-1989 (Wikipedia)
 :::
+
 William Shockley was a researcher at Bell Labs, and, beyond his role
 in inventing transistors, he had a particular interest in AC power
 control. He invented a number of semiconductor devices that had more
 than three layers. Some of his devices were four-layer (NPNP or PNPN)
-and some were five layer (NPNPN or PNPNP). It turned out that these
+and some were five-layer (NPNPN or PNPNP). It turned out that these
 devices responded in surprising but useful ways to AC signals.
 
 Some sources use the general term *Thyristor* to include all of the
-four and five layer devices, whereas other sources use the term for
-only one of these---the SCR. Because of this uncertainty in
+four- and five-layer devices, whereas other sources use the term for
+only one of these---the Silicon Controlled Regulator(SCR). Because of this uncertainty in
 terminology, we'll use specific names for all of these devices.
 
 All these devices (with the exception of two which have been specially designed to have shut-off control) have this unusual characteristic in common:  once they have been activated, they remain ON until the voltage across them drops practically to zero.  Therefore, they are not particularly useful for DC circuits -- activate the device, and you can't turn it off!  Of course, creative people have come up with ways to use these devices in DC circuits, but they are definitely best used in AC circuits.
@@ -103,33 +103,41 @@ In an AC circuit, the supply voltage crosses zero twice each cycle, or 120 times
 
 Although these devices can be approximately modelled as pairs of coupled transistors, the model sometimes doesn't adequately explain the operation of the device, so that particular model will not be presented in this course.  If you're interested, you can look it up for yourself.  Instead, we will simply describe the behaviour of each device from an operational point of view ---"this is what it does"---rather than from a theoretical point of view---"this is why".
 
-Four-layer Half-Wave AC Power Controllers
+### Four-layer Half-Wave AC Power Controllers
 
 The four-layer devices can control only one polarity of the AC signal.  Typically, this is the positive half wave, with the negative half wave producing no useful power.  It is also possible to use these devices to control the negative half wave, with the positive half wave producing no useful power, but that is much less common.
 
-Shockley Diode
+#### Shockley Diode
 
-The basic four-layer device is called the Shockley Diode, although it is not actually a diode (the names of these devices can be a bit confusing, as you will see!).  (Don't confuse the Shockley Diode with the Schottky Diode, which is a special high-frequency/high power diode using a P-Type to metal junction.)  The Shockley Diode has only two pins, and is given the following symbol:
+The basic four-layer device is called the Shockley Diode, although it is not actually a diode (the names of these devices can be a bit confusing, as you will see)[^1]. 
 
+[^1]:Don't confuse the *Shockley* Diode with the *Schottky* Diode, which is a special high-frequency/high power diode using a P-Type to metal junction.
 
+The Shockley Diode has only two pins, and is given the symbol in the margin.
 
-To begin with, the device is OPEN, allowing no current to flow.  As the Anode to Cathode voltage increases, it remains OPEN until a relatively large breakover voltage (VBRf) is reached and sufficient current is injected into the Gate to turn the device On; after this, it continues to conduct until the current is turned off or the Anode to Cathode voltage is reduced to practically zero.  The following transfer function demonstrates this.
+::: {.column-margin}
+![](images/ShockleySymbol.jpg){size=50%}
 
+Symbol for a Shockley Diode
+:::
 
+To begin with, the device is open, allowing no current to flow.  As the Anode to Cathode voltage increases, it remains OPEN until a relatively large breakover voltage ($V_{BR_f}$) is reached and sufficient current is injected into the Gate to turn the device on; after this, it continues to conduct until the current is turned off or the Anode to Cathode voltage is reduced to practically zero.  The following transfer function demonstrates this.
 
 Note the following:
 
 This curve is not "reversible".
-It starts at (0,0), follows an increase in VAK up to the forward breakover voltage VBRf and the injection of current IH.
-VAK then drops to a much lower value, VF, as it has now been turned On.
-If biased properly, sufficient current now flows to "hold" it in the On condition -- IH.
+It starts at (0,0), follows an increase in VAK up to the forward breakover voltage $V_{BR_f}$ and the injection of current $I_H$.
+VAK then drops to a much lower value, $V_F$, as it has now been turned On.
+:::
+
+If biased properly, sufficient current now flows to "hold" it in the On condition---$I_H$.
 If the voltage across the device is dropped to zero, the cycle can start over again at (0,0).
-As with other semiconductor devices you've investigated, there is also a reverse breakdown voltage, VBRr which should be avoided to prevent damage to the device.
-The reverse breakdown of the device does not resemble the forward breakdown, and occurs at a much greater voltage; so this device only acts as an electronic switch in response to a positive VAK.
+As with other semiconductor devices you've investigated, there is also a reverse breakdown voltage, $V_{BR_r}$ which should be avoided to prevent damage to the device.
+
+The reverse breakdown of the device does not resemble the forward breakdown, and occurs at a much greater voltage; so this device only acts as an electronic switch in response to a positive $V_{AK}$.
 Once the device is conducting, its current must be limited by external biasing devices, such as a resistor, motor, lamp, etc., or the device will burn out (thermal destruction).
-When biased in an AC circuit, the current transfer function of a Shockley Diode looks like the following.  The dotted line represents the voltage of the power signal with an amplitude of 24 Vp, and the other trace represents the current in milliamps supplied to a 500 Ω load by a Shockley Diode with a forward breakover of 20 V.  (The numbers on the Y-axis represent voltage for the input signal and current for the output signal -- that's a bit confusing, so take a moment to examine this graph and the ones that follow.)
 
-
+When biased in an AC circuit, the current transfer function of a Shockley Diode looks like the following.  The dotted line represents the voltage of the power signal with an amplitude of $24 V_p$, and the other trace represents the current in milliamps supplied to a $500 Ω$ load by a Shockley Diode with a forward breakover of $20 V$.  (The numbers on the Y-axis represent voltage for the input signal and current for the output signal -- that's a bit confusing, so take a moment to examine this graph and the ones that follow.)
 
 As the positive halfwave rises, no current flows until the incoming signal passes VBRf.
 At that point, current begins to flow, and continues to flow until the voltage across the device drops to practically zero.
@@ -376,12 +384,11 @@ number of factors when choosing an SSR.
 Here are two different SSRs -- one from your kit, the other used in
 the Chemical Plant for the Industrial Processes course:
 
-::: {.column-margin}
-![](images/kitssr.png){width="60mm"}
-PR3BMF51NSLH Phototriac SSR blh de blah fe fdf jjlkjlj  ljkljl 
-![](images/puckssr.png){width="60mm"}
-RM1A48D50 Solid-State Industrial Relay
-:::
+
+![PR3BMF51NSLH Phototriac SSR blh de blah fe fdf jjlkjlj  ljkljl ](images/kitssr.png){width="60mm"}
+
+![RM1A48D50 Solid-State Industrial Relay](images/puckssr.png){width="60mm"}
+
 
 This second SSR is sometimes referred to as a "puck" SSR, as it is
 close to the size of a hockey puck (but is much more expensive).
