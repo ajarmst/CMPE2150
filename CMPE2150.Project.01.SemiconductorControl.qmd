@@ -1,0 +1,81 @@
+---
+title: "CMPE2150 Project 01"
+subtitle: "Semiconductor Control"
+author: "AJ Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+format:
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid:
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry:
+      - top=30mm
+      - bottom=30mm
+      - left=15mm
+      - right=80mm
+      - marginparwidth=60mm
+      - marginparsep=10mm
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \usepackage{titling}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 Project 01}
+        \fancyhead[R]{Semiconductor Control}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+        \setlength{\droptitle}{-2cm}
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-align: default
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+fig-env: "figure"
+keep-tex: true
+---
+
+In this Project, you will design two simple circuits using a semiconductor to control an isolated DC load (simulated by an LED): by controlling a electromechanical relay with a BJT and using a FET-controlled relay.
+
+::: callout-important
+It is important that you show your work in the design sections below. Make it clear why you selected the values that you did for your design. Make sure your schematic is neat and clear.
+:::
+
+{{< pagebreak >}}
+
+### Part 1: BJT-Controlled LED
+
+Design a circuit to control an LED using a BJT:
+
+-   On the input side, use a TTL signal and a BJT to drive an LED. The LED should be turned On or Off by a $5V$ or $0V$ TTL input. You may use either a switch or a low-frequency TTL square-wave signal to toggle the LED state.
+
+-   Make sure the transistor is biased properly, so that in saturation the collector current is enough to drive the LED (see below), and that $R_B$ is correct to drive the transistor into saturation for the worst case $\beta$ or $h_{fe}$ for your transistor. Remember the rules of thumb for selecting collector and base resistors in a basic digital (cutoff/saturation) BJT biasing.
+
+-   On the Collector/Emitter side, configure it so that when the BJT is on, an LED is illuminated. Use a $5V$ supply to power the LED and ensure you have calculated an appropriate current-limiting resistor $R_C$. Recall that you can find out the current you need from your LED's datasheet. About $75\%$ of the maximum current is a good benchmark if there isn't an optimal current in the spec.
+
+For checkoff, attach your schematic and calculations to this document and demonstrate your circuit for your instructor to sign off \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+{{< pagebreak >}}
+
+### Part 2: FET-Controlled Relay
+
+Design a new circuit that replaces the BJT with a FET-controlled relay:
+
+-   On the input side, use a FET to trip your G2R-2 relay. The relay should be powered by a $12 V$ source, and the FET should be turned On or Off by a $5V$ or $0V$ TTL input. You may use either a switch or a low-frequency TTL square-wave signal to toggle the FET state.
+
+-   Make sure you have the proper configuration to protect the transistor from the electromagnet flyback and its gate from inrush currents.
+
+-   The output side will be similar to the previous circuit. Configure it so that when the relay is tripped (the FET is on), an LED is illuminated. Use a $5V$ supply to power the LED and ensure you have calculated an appropriate current-limiting resistor $R_L$. Recall that you can find out the current you need from your LED's datasheet. About $75\%$ of the maximum current is a good benchmark if there isn't an optimal current in the spec.
+
+For checkoff, attach your schematic and calculations to this document and demonstrate your circuit for your instructor to sign off \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
