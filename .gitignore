@@ -4,3 +4,11 @@
 .DS_Store
 
 CMPE2150.Project.01.SemiconductorControl_files/
+
+*.log
+
+CMPE2150.Notes.05.SemiconductorACControl_files/libs/bootstrap/
+
+CMPE2150.Notes.05.SemiconductorACControl_files/libs/clipboard/
+
+CMPE2150.Notes.05.SemiconductorACControl_files/libs/quarto-html/

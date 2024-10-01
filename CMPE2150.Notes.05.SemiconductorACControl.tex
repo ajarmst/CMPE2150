@@ -45,28 +45,14 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 % Make \paragraph and \subparagraph free-standing
-\makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}{
-    \@ifstar
-      \xxxParagraphStar
-      \xxxParagraphNoStar
-  }
-  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
-  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}{
-    \@ifstar
-      \xxxSubParagraphStar
-      \xxxSubParagraphNoStar
-  }
-  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
-  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
-\makeatother
 
 
 \providecommand{\tightlist}{%
@@ -277,18 +263,18 @@ useful power, but that is much less common.
 
 \paragraph{Shockley Diode}\label{shockley-diode}
 
-The basic four-layer device is called the Shockley Diode, although it is
-not actually a diode (the names of these devices can be a bit confusing,
-as you will see)\sidenote{\footnotesize Don't confuse the \emph{Shockley} Diode with
-  the \emph{Schottky} Diode, which is a special high-frequency/high
-  power diode using a P-Type to metal junction.}.
+The basic four-layer device is called the Shockley Diode\sidenote{\footnotesize Don't
+  confuse the \emph{Shockley} Diode with the \emph{Schottky} Diode,
+  which is a special high-frequency/high power diode using a P-Type to
+  metal junction.} , although it is not actually a diode (the names of
+these devices can be a bit confusing, as you will see).
 
-The Shockley Diode has only two pins, and is given the symbol in the
-margin.
+The Shockley Diode has only two pins, and is given the symbol shown in
+the margin.
 
 \marginnote{\begin{footnotesize}
 
-\includegraphics{images/ShockleySymbol.jpg}
+\includegraphics[width=15mm,height=\textheight]{images/ShockleySymbol.jpg}
 
 Symbol for a Shockley Diode
 
@@ -299,32 +285,58 @@ Anode to Cathode voltage increases, it remains OPEN until a relatively
 large breakover voltage (\(V_{BR_f}\)) is reached and sufficient current
 is injected into the Gate to turn the device on; after this, it
 continues to conduct until the current is turned off or the Anode to
-Cathode voltage is reduced to practically zero. The following transfer
-function demonstrates this.
+Cathode voltage is reduced to practically zero. The graph of the
+transfer below demonstrates this.
 
 Note the following:
 
-This curve is not ``reversible''. It starts at (0,0), follows an
-increase in VAK up to the forward breakover voltage \(V_{BR_f}\) and the
-injection of current \(I_H\). VAK then drops to a much lower value,
-\(V_F\), as it has now been turned On. :::
+\begin{itemize}
+\item
+  This curve is not ``reversible''.
 
-If biased properly, sufficient current now flows to ``hold'' it in the
-On condition---\(I_H\). If the voltage across the device is dropped to
-zero, the cycle can start over again at (0,0). As with other
-semiconductor devices you've investigated, there is also a reverse
-breakdown voltage, \(V_{BR_r}\) which should be avoided to prevent
-damage to the device.
+  \begin{itemize}
+  \item
+    It starts at (0,0), follows an increase in VAK up to the forward
+    breakover voltage \(V_{BR_f}\) and the injection of current \(I_H\).
+  \item
+    \(V_{AK}\) then drops to a much lower value, \(V_F\), as it has now
+    been turned On.
+  \item
+    If biased properly, sufficient current now flows to ``hold'' it in
+    the On condition---\(I_H\).
+  \item
+    If the voltage across the device is dropped to zero, the cycle can
+    start over again at (0,0).
+  \end{itemize}
+\end{itemize}
 
-The reverse breakdown of the device does not resemble the forward
-breakdown, and occurs at a much greater voltage; so this device only
-acts as an electronic switch in response to a positive \(V_{AK}\). Once
-the device is conducting, its current must be limited by external
-biasing devices, such as a resistor, motor, lamp, etc., or the device
-will burn out (thermal destruction).
+\begin{figure}[H]
+
+\sidecaption{Shockley Diode Transfer Function}
+
+{\centering \includegraphics[width=70mm,height=\textheight]{images/ShockleyTransfer.JPG}
+
+}
+
+\end{figure}%
+
+\begin{itemize}
+\item
+  As with other semiconductor devices you've investigated, there is also
+  a reverse breakdown voltage, \(V_{BR_r}\) which should be avoided to
+  prevent damage to the device.
+\item
+  The reverse breakdown of the device does not resemble the forward
+  breakdown, and occurs at a much greater voltage; so this device only
+  acts as an electronic switch in response to a positive \(V_{AK}\).
+\item
+  Once the device is conducting, its current must be limited by external
+  biasing devices, such as a resistor, motor, lamp, etc., or the device
+  will burn out (thermal destruction).
+\end{itemize}
 
 When biased in an AC circuit, the current transfer function of a
-Shockley Diode looks like the following. The dotted line represents the
+Shockley Diode looks like the following: The dotted line represents the
 voltage of the power signal with an amplitude of \(24 V_p\), and the
 other trace represents the current in milliamps supplied to a \(500 Ω\)
 load by a Shockley Diode with a forward breakover of \(20 V\). (The
@@ -332,24 +344,54 @@ numbers on the Y-axis represent voltage for the input signal and current
 for the output signal -- that's a bit confusing, so take a moment to
 examine this graph and the ones that follow.)
 
-As the positive halfwave rises, no current flows until the incoming
-signal passes VBRf. At that point, current begins to flow, and continues
-to flow until the voltage across the device drops to practically zero.
-After this, no current flows throughout the negative half cycle, nor
-throughout the beginning of the next positive cycle. The voltage across
-the Shockley diode looks like the following, with the voltage dropping
-to under a volt once the device is turned on. Otherwise, the entire
-supply appears across it, so its voltage there looks just like the
-input.
+\begin{figure}[H]
+
+\sidecaption{Shockley Output Current Transfer Function}
+
+{\centering \includegraphics[width=100mm,height=\textheight]{images/ShockleyCurrentTrace.jpg}
+
+}
+
+\end{figure}%
+
+\begin{itemize}
+\tightlist
+\item
+  As the positive halfwave rises, no current flows until the incoming
+  signal passes \(V_{BR_f}\).
+\item
+  At that point, current begins to flow, and continues to flow until the
+  voltage across the device drops to practically zero.
+\item
+  After this, no current flows throughout the negative half cycle, nor
+  throughout the beginning of the next positive cycle.
+\end{itemize}
+
+The voltage across the Shockley diode looks like the following, with the
+voltage dropping to under a volt once the device is turned on.
+Otherwise, the entire supply appears across it, so its voltage there
+looks just like the input.
+
+\begin{figure}[H]
+
+\sidecaption{Shockley Output Voltage Transfer Function}
+
+{\centering \includegraphics[width=100mm,height=\textheight]{images/ShockleyVoltageTrace.jpg}
+
+}
+
+\end{figure}%
 
 As can be seen from these diagrams, power is available from somewhere
-between 90º and 180º out of the total 360°. The greater the amplitude of
-the AC power or the lower the forward breakdown for the Shockley Diode,
-the closer to 180° of conduction, since the breakover voltage is reached
-earlier in the cycle. Consequently, a Shockley Diode can only allow for
-less than half of the available AC power.
+between \(90^\circ\) and \(180^\circ\) out of the total \(60^\circ\).
+The greater the amplitude of the AC power or the lower the forward
+breakdown for the Shockley Diode, the closer to \(180^\circ\) of
+conduction, since the breakover voltage is reached earlier in the cycle.
+Consequently, a Shockley Diode can only allow for less than half of the
+available AC power.
 
-Silicon Controlled Rectifier -- SCR
+\paragraph{Silicon Controlled
+Rectifier---SCR}\label{silicon-controlled-rectifierscr}
 
 The SCR is a three-pin device that behaves like a Shockley Diode with a
 controlled forward breakover voltage. The controlling pin is called a
