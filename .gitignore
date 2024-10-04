@@ -1,14 +1,11 @@
 
-*.md~
+*~
 
 .DS_Store
 
-CMPE2150.Project.01.SemiconductorControl_files/
-
 *.log
 
-CMPE2150.Notes.05.SemiconductorACControl_files/libs/bootstrap/
+*.tex
 
-CMPE2150.Notes.05.SemiconductorACControl_files/libs/clipboard/
+**_files/**
 
-CMPE2150.Notes.05.SemiconductorACControl_files/libs/quarto-html/
