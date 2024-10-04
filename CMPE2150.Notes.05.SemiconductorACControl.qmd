@@ -132,7 +132,6 @@ As can be seen from these diagrams, power is available from somewhere between $9
 
 ::: column-margin
 ![](images/SCRSymbol.jpg){width="100"}
-
 Symbol for a Silicon-Controlled Rectifier (SCR)
 :::
 
@@ -158,7 +157,6 @@ As previously mentioned, SCRs are usually chosen to have a basic $V_{AK}$ that i
 
 ::: column-margin
 ![](images/SCRSimpleFader.jpg){width="200"}
-
 SCR Simple Fader Circuit
 :::
 
@@ -170,23 +168,29 @@ Some more sophisticated fader circuits introduce circuitry to inject Gate curren
 
 For both the SCR and the TRIAC (next topic), optoisolation offers at least the following two possibilities:
 
-isolating high power AC circuits from low voltage DC control circuitry -- this will be discussed in another topic allowing for logic-level trigger control of the AC power controller This last item will be investigated briefly in one of your exercises. The following is an equally brief description of the process and an evaluation of its effectiveness in comparison to AC variable power control.
+-   isolating high power AC circuits from low voltage DC control circuitry -- this will be discussed in another topic
+
+-   allowing for logic-level trigger control of the AC power controller
+
+This last item will be investigated briefly in one of our exercises. The following is an equally brief description of the process and an evaluation of its effectiveness in comparison to AC variable power control.
 
 With a comparator, it is easy to detect when the AC power signal crosses zero volts. With an edge detector, it is possible to determine if the crossing is from positive to negative or from negative to positive.
 
 Since we want to be able to control the trigger time for the SCR starting from the end of the positive half-cycle, we could create a pulse that goes LOW at that point in time. Then, we could increase the duty cycle of the pulse so that its positive-going edge moves forward with respect to the negative-going crossing point, as shown in the following graph.
 
+![PWM Control of an SCR](images/SCRPWM.JPG)
+
 This diagram shows three different pulse widths, where the red trace would turn the SCR on for only a short time and the yellowish trace would turn the SCR on for considerably more of the useful half-cycle, resulting in a brighter output in a fader application. This type of control is not possible using variable resistors and capacitors, and can be much more carefully controlled.
 
-Duty Cycle -- the duty cycle of a pulse is determined as
+*Duty Cycle*—the duty cycle of a pulse is determined by
 
-td=tpT
+$t_d=\frac{t_p}{T}$
 
 or, as a percent,
 
-td=tpT×100%
+$t_d=\frac{t_p}{T}\times100\%$
 
-where td is the duty cycle, tp is the pulse width, and T is the period of the pulse.
+where $t_d$ is the duty cycle, $t_p$ is the pulse width, and $T=\frac{1}{f}$ is the period of the pulse.
 
 Pulse Width Modulation (PWM) is the process of varying the duty cycle of a pulse, and is the term applied to the process described above.
 
@@ -196,31 +200,40 @@ The SCR is by far the most commonly used four-layer device. There are, however, 
 
 Programmable Unijunction Transistor (PUT) -- this one is really badly named: with four layers, it has three junctions, not one; and it's only "programmable" in terms of the designer being able to change its electrical conditions externally. It gets its name because it behaves somewhat similarly to a Unijunction Transistor (UJT), which, in turn, is similar to a JFET. All three of these share the characteristic of having an external pin that can turn them OFF. So, unlike the SCR, once the PUT triggers and is in its On condition, the external circuitry can turn it off before the end of the positive half-cycle.
 
-Silicon-Controlled Switch (SCS) -- this one has two Gates -- one to control when it turns ON, like an SCR, and one to control when it turns OFF, like a PUT.
+Silicon-Controlled Switch (SCS)---this one has two Gates—one to control when it turns ON, like an SCR, and one to control when it turns OFF, like a PUT.
 
-We will not further investigate these devices in this course. They are usually reserved for some pretty specialized circuits.
+We will not further investigate these devices in this course. They are usually reserved for some pretty specialized control circuits.
 
 ### Full-Wave AC Power Controllers
 
-Modern Full-Wave AC Power Controllers are usually five-layer devices. Although they may look like they could be installed either way up in a circuit, the polarity actually matters -- be sure to read the manufacturer's data sheet! This author believed what he had been told about a two-transistor model of the TRIAC, and ended up with pieces of hot plastic bouncing off the walls while working on his SAIT final project because the Gate was 180º out of phase from what it should have been!
+Modern AC Power Controllers are usually five-layer devices, which allow control of the full (positive and negative) AC wave. Although they may look like they could be installed either way up in a circuit, the polarity actually matters—be sure to read the manufacturer's data sheet! This author believed what he had been told about a two-transistor model of the TRIAC, and ended up with pieces of hot plastic bouncing off the walls while working on his SAIT final project because the Gate was $180^\circ$ out of phase from what it should have been!
 
 #### DIAC
 
-The DIAC is the full-wave equivalent of the Shockley Diode -- it breaks over both at a relatively high positive voltage on the positive half wave and at a relatively high negative voltage on the negative half wave of an AC signal.
+#### 
 
-Here's the symbol for a DIAC:
+::: column-margin
+![](images/DIACSymbol.jpg){width="100"}
+Symbol for a DIAC
+:::
 
-Note that the two pins are both Anodes -- A1 and A2. These devices have nothing labelled as a Cathode.
+The DIAC is the full-wave equivalent of the Shockley Diode---it breaks over both at a relatively high positive voltage on the positive half wave and at a relatively high negative voltage on the negative half wave of an AC signal.
+
+Note that the two pins are both Anodes---$A_1$ and $A_2$. These devices have nothing labelled as a Cathode.
 
 The transfer function for a DIAC looks like the following:
 
-Note that VBRr for this device is not a reverse breakdown in the sense we've used it before -- it's a reverse breakover voltage which triggers the device into an On condition in the negative direction, producing a significant current over a fairly small device voltage.
+![DIAC Transfer Function](images/DIACTransfer.JPG){width="400"}
 
-The following shows the current generated by a DIAC with forward and reverse breakovers of ±20 V, under the same conditions as the Shockley Diode investigated earlier.
+Note that $V_{BR_r}$ for this device is not a reverse breakdown in the sense we've used it before -- it's a reverse breakover voltage which triggers the device into an *On* condition in the negative direction, producing a significant current over a fairly small device voltage.
 
-DIAC V
+The following shows the current generated by a DIAC with forward and reverse breakovers of $\pm20 V$, under the same conditions as the Shockley Diode investigated earlier.
 
-The following shows the voltage curve expected for the DIAC in the current graphs above. As with the Shockley Diode, once the DIAC has turned on, the voltage across it drops to under ±1 V; otherwise, the entire source voltage appears across it as it acts as an Open in the circuit.
+![DIAC Output Current](images/DIACCurrentTrace.JPG)
+
+The following shows the voltage curve expected for the DIAC in the current graphs above. As with the Shockley Diode, once the DIAC has turned on, the voltage across it drops to under $\pm1 V$; otherwise, the entire source voltage appears across it as it acts as an Open in the circuit.
+
+![DIAC Output Voltage](images/DIACVoltageTrace.png)
 
 #### TRIAC
 

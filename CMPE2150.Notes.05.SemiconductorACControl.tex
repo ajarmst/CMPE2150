@@ -10,6 +10,7 @@
   oneside]{scrartcl}
 
 \usepackage{amsmath,amssymb}
+\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -19,10 +20,6 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
-\usepackage{lmodern}
-\ifPDFTeX\else  
-    % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -45,28 +42,14 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 % Make \paragraph and \subparagraph free-standing
-\makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}{
-    \@ifstar
-      \xxxParagraphStar
-      \xxxParagraphNoStar
-  }
-  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
-  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}{
-    \@ifstar
-      \xxxSubParagraphStar
-      \xxxSubParagraphNoStar
-  }
-  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
-  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
-\makeatother
 
 
 \providecommand{\tightlist}{%
@@ -104,6 +87,10 @@
 \setlength{\droptitle}{-2cm}
 \KOMAoption{captions}{tablesignature}
 \makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
 \ifdefined\contentsname
@@ -139,21 +126,25 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
-\makeatother
-\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
 \makeatother
 \makeatletter
 \@ifpackageloaded{sidenotes}{}{\usepackage{sidenotes}}
 \@ifpackageloaded{marginnote}{}{\usepackage{marginnote}}
 \makeatother
-
+\makeatletter
+\makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\usepackage{bookmark}
-
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
@@ -165,7 +156,6 @@
   citecolor={Blue},
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
-
 
 \title{CMPE2150 Notes 05}
 \usepackage{etoolbox}
@@ -180,6 +170,7 @@
 
 \begin{document}
 \maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, interior hidden, sharp corners, borderline west={3pt}{0pt}{shadecolor}, frame hidden, enhanced, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -187,9 +178,9 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
-
+\hypertarget{semiconductor-ac-power-controllers}{%
 \subsection{Semiconductor AC Power
-Controllers}\label{semiconductor-ac-power-controllers}
+Controllers}\label{semiconductor-ac-power-controllers}}
 
 Practically everything you've done in your previous work with
 semiconductor devices has involved DC power. We used diodes to convert
@@ -214,8 +205,9 @@ fan as it goes through its heating cycle. In industry, huge three-phase
 AC motors may have speed controllers that can be manipulated by the
 operator or by control circuitry.
 
+\hypertarget{four-and-five-layer-semiconductor-devices}{%
 \subsubsection{Four and Five Layer Semiconductor
-Devices}\label{four-and-five-layer-semiconductor-devices}
+Devices}\label{four-and-five-layer-semiconductor-devices}}
 
 The BJT transistors you studied earlier are three-layer devices, either
 PNP or NPN. As such, they must be biased appropriately with DC power
@@ -226,13 +218,15 @@ transistor, the Collector must be at a lower voltage than the Emitter,
 and control is exercised by running a current through the
 negatively-biased Base to Emitter junction.
 
-\marginnote{\begin{footnotesize}
+\begin{marginfigure}
 
-\includegraphics[width=40mm,height=\textheight]{images/William_Shockley.jpg}
+{\centering \includegraphics[width=40mm,height=\textheight]{images/William_Shockley.jpg}
+
+}
+
+\end{marginfigure}
 
 William Shockley, 1910-1989 (Wikipedia)
-
-\end{footnotesize}}
 
 William Shockley was a researcher at Bell Labs, and, beyond his role in
 inventing transistors, he had a particular interest in AC power control.
@@ -269,8 +263,9 @@ Instead, we will simply describe the behaviour of each device from an
 operational point of view ---``this is what it does''---rather than from
 a theoretical point of view---``this is why''.
 
+\hypertarget{four-layer-half-wave-ac-power-controllers}{%
 \subsubsection{Four-layer Half-Wave AC Power
-Controllers}\label{four-layer-half-wave-ac-power-controllers}
+Controllers}\label{four-layer-half-wave-ac-power-controllers}}
 
 The four-layer devices can control only one polarity of the AC signal.
 Typically, this is the positive half wave, with the negative half wave
@@ -278,7 +273,8 @@ producing no useful power. It is also possible to use these devices to
 control the negative half wave, with the positive half wave producing no
 useful power, but that is much less common.
 
-\paragraph{Shockley Diode}\label{shockley-diode}
+\hypertarget{shockley-diode}{%
+\paragraph{Shockley Diode}\label{shockley-diode}}
 
 The basic four-layer device is called the Shockley Diode\sidenote{\footnotesize Don't
   confuse the \emph{Shockley} Diode with the \emph{Schottky} Diode,
@@ -289,13 +285,15 @@ these devices can be a bit confusing, as you will see).
 The Shockley Diode has only two pins, and is given the symbol shown in
 the margin.
 
-\marginnote{\begin{footnotesize}
+\begin{marginfigure}
 
-\includegraphics[width=15mm,height=\textheight]{images/ShockleySymbol.jpg}
+{\centering \includegraphics[width=15mm,height=\textheight]{images/ShockleySymbol.jpg}
+
+}
+
+\end{marginfigure}
 
 Symbol for a Shockley Diode
-
-\end{footnotesize}}
 
 To begin with, the device is open, allowing no current to flow. As the
 Anode to Cathode voltage increases, it remains OPEN until a relatively
@@ -327,7 +325,7 @@ Note the following:
   \end{itemize}
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}
 
 \sidecaption{Shockley Diode Transfer Function}
 
@@ -335,7 +333,7 @@ Note the following:
 
 }
 
-\end{figure}%
+\end{figure}
 
 \begin{itemize}
 \item
@@ -361,7 +359,7 @@ numbers on the Y-axis represent voltage for the input signal and current
 for the output signal---that's a bit confusing, so take a moment to
 examine this graph and the ones that follow.)
 
-\begin{figure}[H]
+\begin{figure}
 
 \sidecaption{Shockley Diode Output Current}
 
@@ -369,7 +367,7 @@ examine this graph and the ones that follow.)
 
 }
 
-\end{figure}%
+\end{figure}
 
 \begin{itemize}
 \tightlist
@@ -389,7 +387,7 @@ voltage dropping to under a volt once the device is turned on.
 Otherwise, the entire supply appears across it, so its voltage there
 looks just like the input.
 
-\begin{figure}[H]
+\begin{figure}
 
 \sidecaption{Shockley Output Voltage}
 
@@ -397,7 +395,7 @@ looks just like the input.
 
 }
 
-\end{figure}%
+\end{figure}
 
 As can be seen from these diagrams, power is available from somewhere
 between \(90^\circ\) and \(180^\circ\) out of the total \(60^\circ\).
@@ -407,13 +405,13 @@ conduction, since the breakover voltage is reached earlier in the cycle.
 Consequently, a Shockley Diode can only allow for less than half of the
 available AC power.
 
+\hypertarget{silicon-controlled-rectifierscr}{%
 \paragraph{Silicon Controlled
-Rectifier---SCR}\label{silicon-controlled-rectifierscr}
+Rectifier---SCR}\label{silicon-controlled-rectifierscr}}
 
 \marginnote{\begin{footnotesize}
 
 \includegraphics[width=1.04167in,height=\textheight]{images/SCRSymbol.jpg}
-
 Symbol for a Silicon-Controlled Rectifier (SCR)
 
 \end{footnotesize}}
@@ -439,7 +437,7 @@ the positive half-cycle.
 The following transfer function shows how varying the timing of the
 injection current into the Gate affects the forward breakover voltage.
 
-\begin{figure}[H]
+\begin{figure}
 
 \sidecaption{Shockley Diode Transfer Function}
 
@@ -447,13 +445,13 @@ injection current into the Gate affects the forward breakover voltage.
 
 }
 
-\end{figure}%
+\end{figure}
 
 The graph below shows an SCR with Gate current injected to reduce the
 forward breakover voltage to just under \(24 V\), then \(20 V\), and
 finally to \(10 V\).
 
-\begin{figure}[H]
+\begin{figure}
 
 \sidecaption{Shockley Output Current}
 
@@ -461,12 +459,12 @@ finally to \(10 V\).
 
 }
 
-\end{figure}%
+\end{figure}
 
 Here are the voltage curves for the same settings as in the current
 graphs above:
 
-\begin{figure}[H]
+\begin{figure}
 
 \sidecaption{Shockley Output Voltage}
 
@@ -474,7 +472,7 @@ graphs above:
 
 }
 
-\end{figure}%
+\end{figure}
 
 As can be seen from these sets of graphs, the SCR can be adjusted to
 provide between approximately \(90^\circ\) and close to \(180^\circ\)
@@ -492,7 +490,6 @@ of circuit, which is a fader, but not a very good one.
 \marginnote{\begin{footnotesize}
 
 \includegraphics[width=2.08333in,height=\textheight]{images/SCRSimpleFader.jpg}
-
 SCR Simple Fader Circuit
 
 \end{footnotesize}}
@@ -511,17 +508,24 @@ Gate current at any point during the SCR's active half-cycle, allowing
 for power control from zero to half of what's available from the AC
 source.
 
-\paragraph{Optoisolation}\label{optoisolation}
+\hypertarget{optoisolation}{%
+\paragraph{Optoisolation}\label{optoisolation}}
 
 For both the SCR and the TRIAC (next topic), optoisolation offers at
 least the following two possibilities:
 
-isolating high power AC circuits from low voltage DC control circuitry
--- this will be discussed in another topic allowing for logic-level
-trigger control of the AC power controller This last item will be
-investigated briefly in one of your exercises. The following is an
-equally brief description of the process and an evaluation of its
-effectiveness in comparison to AC variable power control.
+\begin{itemize}
+\item
+  isolating high power AC circuits from low voltage DC control circuitry
+  -- this will be discussed in another topic
+\item
+  allowing for logic-level trigger control of the AC power controller
+\end{itemize}
+
+This last item will be investigated briefly in one of our exercises. The
+following is an equally brief description of the process and an
+evaluation of its effectiveness in comparison to AC variable power
+control.
 
 With a comparator, it is easy to detect when the AC power signal crosses
 zero volts. With an edge detector, it is possible to determine if the
@@ -534,6 +538,16 @@ duty cycle of the pulse so that its positive-going edge moves forward
 with respect to the negative-going crossing point, as shown in the
 following graph.
 
+\begin{figure}
+
+\sidecaption{PWM Control of an SCR}
+
+{\centering \includegraphics{images/SCRPWM.JPG}
+
+}
+
+\end{figure}
+
 This diagram shows three different pulse widths, where the red trace
 would turn the SCR on for only a short time and the yellowish trace
 would turn the SCR on for considerably more of the useful half-cycle,
@@ -541,21 +555,22 @@ resulting in a brighter output in a fader application. This type of
 control is not possible using variable resistors and capacitors, and can
 be much more carefully controlled.
 
-Duty Cycle -- the duty cycle of a pulse is determined as
+\emph{Duty Cycle}---the duty cycle of a pulse is determined by
 
-td=tpT
+\(t_d=\frac{t_p}{T}\)
 
 or, as a percent,
 
-td=tpT×100\%
+\(t_d=\frac{t_p}{T}\times100\%\)
 
-where td is the duty cycle, tp is the pulse width, and T is the period
-of the pulse.
+where \(t_d\) is the duty cycle, \(t_p\) is the pulse width, and
+\(T=\frac{1}{f}\) is the period of the pulse.
 
 Pulse Width Modulation (PWM) is the process of varying the duty cycle of
 a pulse, and is the term applied to the process described above.
 
-\paragraph{Other Four-Layer Devices}\label{other-four-layer-devices}
+\hypertarget{other-four-layer-devices}{%
+\paragraph{Other Four-Layer Devices}\label{other-four-layer-devices}}
 
 The SCR is by far the most commonly used four-layer device. There are,
 however, two other devices you may run into:
@@ -570,57 +585,97 @@ an external pin that can turn them OFF. So, unlike the SCR, once the PUT
 triggers and is in its On condition, the external circuitry can turn it
 off before the end of the positive half-cycle.
 
-Silicon-Controlled Switch (SCS) -- this one has two Gates -- one to
+Silicon-Controlled Switch (SCS)---this one has two Gates---one to
 control when it turns ON, like an SCR, and one to control when it turns
 OFF, like a PUT.
 
 We will not further investigate these devices in this course. They are
-usually reserved for some pretty specialized circuits.
+usually reserved for some pretty specialized control circuits.
 
+\hypertarget{full-wave-ac-power-controllers}{%
 \subsubsection{Full-Wave AC Power
-Controllers}\label{full-wave-ac-power-controllers}
+Controllers}\label{full-wave-ac-power-controllers}}
 
-Modern Full-Wave AC Power Controllers are usually five-layer devices.
-Although they may look like they could be installed either way up in a
-circuit, the polarity actually matters -- be sure to read the
-manufacturer's data sheet! This author believed what he had been told
-about a two-transistor model of the TRIAC, and ended up with pieces of
-hot plastic bouncing off the walls while working on his SAIT final
-project because the Gate was 180º out of phase from what it should have
-been!
+Modern AC Power Controllers are usually five-layer devices, which allow
+control of the full (positive and negative) AC wave. Although they may
+look like they could be installed either way up in a circuit, the
+polarity actually matters---be sure to read the manufacturer's data
+sheet! This author believed what he had been told about a two-transistor
+model of the TRIAC, and ended up with pieces of hot plastic bouncing off
+the walls while working on his SAIT final project because the Gate was
+\(180^\circ\) out of phase from what it should have been!
 
-\paragraph{DIAC}\label{diac}
+\hypertarget{diac}{%
+\paragraph{DIAC}\label{diac}}
 
-The DIAC is the full-wave equivalent of the Shockley Diode -- it breaks
+\hypertarget{section}{%
+\paragraph{}\label{section}}
+
+\marginnote{\begin{footnotesize}
+
+\includegraphics[width=1.04167in,height=\textheight]{images/DIACSymbol.jpg}
+Symbol for a DIAC
+
+\end{footnotesize}}
+
+The DIAC is the full-wave equivalent of the Shockley Diode---it breaks
 over both at a relatively high positive voltage on the positive half
 wave and at a relatively high negative voltage on the negative half wave
 of an AC signal.
 
-Here's the symbol for a DIAC:
-
-Note that the two pins are both Anodes -- A1 and A2. These devices have
-nothing labelled as a Cathode.
+Note that the two pins are both Anodes---\(A_1\) and \(A_2\). These
+devices have nothing labelled as a Cathode.
 
 The transfer function for a DIAC looks like the following:
 
-Note that VBRr for this device is not a reverse breakdown in the sense
-we've used it before -- it's a reverse breakover voltage which triggers
-the device into an On condition in the negative direction, producing a
-significant current over a fairly small device voltage.
+\begin{figure}
+
+\sidecaption{DIAC Transfer Function}
+
+{\centering \includegraphics[width=4.16667in,height=\textheight]{images/DIACTransfer.JPG}
+
+}
+
+\end{figure}
+
+Note that \(V_{BR_r}\) for this device is not a reverse breakdown in the
+sense we've used it before -- it's a reverse breakover voltage which
+triggers the device into an \emph{On} condition in the negative
+direction, producing a significant current over a fairly small device
+voltage.
 
 The following shows the current generated by a DIAC with forward and
-reverse breakovers of ±20 V, under the same conditions as the Shockley
-Diode investigated earlier.
+reverse breakovers of \(\pm20 V\), under the same conditions as the
+Shockley Diode investigated earlier.
 
-DIAC V
+\begin{figure}
+
+\sidecaption{DIAC Output Current}
+
+{\centering \includegraphics{images/DIACCurrentTrace.JPG}
+
+}
+
+\end{figure}
 
 The following shows the voltage curve expected for the DIAC in the
 current graphs above. As with the Shockley Diode, once the DIAC has
-turned on, the voltage across it drops to under ±1 V; otherwise, the
-entire source voltage appears across it as it acts as an Open in the
+turned on, the voltage across it drops to under \(\pm1 V\); otherwise,
+the entire source voltage appears across it as it acts as an Open in the
 circuit.
 
-\paragraph{TRIAC}\label{triac}
+\begin{figure}
+
+\sidecaption{DIAC Output Voltage}
+
+{\centering \includegraphics{images/DIACVoltageTrace.png}
+
+}
+
+\end{figure}
+
+\hypertarget{triac}{%
+\paragraph{TRIAC}\label{triac}}
 
 The TRIAC is the full-wave equivalent to the SCR -- a device with a Gate
 to control both the forward and reverse breakover voltages.
@@ -661,7 +716,8 @@ current into the Gate is turned on suddenly when the DIAC breaks over,
 producing a much more reliable On starting condition. Without the DIAC,
 a TRIAC fader will typically flicker at low power settings.
 
-\paragraph{Optoisolation}\label{optoisolation-1}
+\hypertarget{optoisolation-1}{%
+\paragraph{Optoisolation}\label{optoisolation-1}}
 
 As with the SCR, optoisolators with light-activated TRIACs are
 available. These can be used simply to turn a power TRIAC on or off.
@@ -674,7 +730,8 @@ following:
 
 \newpage{}
 
-\subsection{Self-Test Answers}\label{self-test-answers}
+\hypertarget{self-test-answers}{%
+\subsection{Self-Test Answers}\label{self-test-answers}}
 
 \begin{itemize}
 \tightlist
@@ -687,7 +744,6 @@ following:
 \item
   PR38BMF51NSLH SSR
 \end{itemize}
-
 
 
 
