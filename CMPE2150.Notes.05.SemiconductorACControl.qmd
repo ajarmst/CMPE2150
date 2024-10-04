@@ -131,8 +131,7 @@ As can be seen from these diagrams, power is available from somewhere between $9
 #### Silicon Controlled Rectifier—SCR
 
 ::: column-margin
-![](images/SCRSymbol.jpg){width="100"}
-Symbol for a Silicon-Controlled Rectifier (SCR)
+![](images/SCRSymbol.jpg){width="100"} Symbol for a Silicon-Controlled Rectifier (SCR)
 :::
 
 The SCR is a three-pin device that behaves like a Shockley Diode with a controlled forward breakover voltage. The controlling pin is called a Gate, although its function is considerably different from that of the Gate in a FET. In the context of an SCR, the Gate "opens" the main current path in response to the injection of sufficient Gate current. In many circuits, this occurs at a voltage established using a voltage divider that follows the voltage across the SCR. In this configuration, once the trigger occurs and the SCR is turned On, the voltage at the Gate drops, so no further Gate current is injected. It is no longer needed, as the SCR remains On until the signal crosses the zero line anyway.
@@ -156,8 +155,7 @@ As can be seen from these sets of graphs, the SCR can be adjusted to provide bet
 As previously mentioned, SCRs are usually chosen to have a basic $V_{AK}$ that is significantly higher than the peak voltage of the AC signal so that, with no Gate current injected, the SCR will be Off. If a voltage divider is used to control the Gate injection current, as the voltage divider is adjusted, it will bring VAK down to where it first starts to fire at the top of the cycle ( $90^\circ$ ) then will move it toward $180^\circ$. The circuit to the right demonstrates this type of circuit, which is a fader, but not a very good one.
 
 ::: column-margin
-![](images/SCRSimpleFader.jpg){width="200"}
-SCR Simple Fader Circuit
+![](images/SCRSimpleFader.jpg){width="200"} SCR Simple Fader Circuit
 :::
 
 The problem with this circuit is that it kicks in at $90^\circ$ of the available $360^\circ$, and it can only be adjusted to increase the conduction angle to somewhat less than $180^\circ$. In other words, it can adjust the power from about a quarter of the total to just under a half -- not very impressive. We would most likely prefer to have a fader that starts from zero and can increase the conduction angle to the maximum available, which, for an SCR, is ideally $180^\circ$; in other words, from no power to half power.
@@ -210,11 +208,8 @@ Modern AC Power Controllers are usually five-layer devices, which allow control 
 
 #### DIAC
 
-#### 
-
 ::: column-margin
-![](images/DIACSymbol.jpg){width="100"}
-Symbol for a DIAC
+![](images/DIACSymbol.jpg){width="100"} Symbol for a DIAC
 :::
 
 The DIAC is the full-wave equivalent of the Shockley Diode---it breaks over both at a relatively high positive voltage on the positive half wave and at a relatively high negative voltage on the negative half wave of an AC signal.
@@ -237,33 +232,82 @@ The following shows the voltage curve expected for the DIAC in the current graph
 
 #### TRIAC
 
+::: column-margin
+![](images/TRIACSymbol.JPG){width="100"} Symbol for a TRIAC
+:::
+
 The TRIAC is the full-wave equivalent to the SCR -- a device with a Gate to control both the forward and reverse breakover voltages.
 
-Here are the symbol and expected transfer function for the TRIAC:
+Here is a typical transfer function for a TRIAC:
 
-The following shows a TRIAC with basic breakover voltages much higher than the peak voltage of the power signal, with Gate current injected to trigger the device at just under 24 V, then 20 V and finally 10 V.
+![DIAC Transfer Function](images/TRIACTransfer.JPG){width="300"}
+
+The following shows a TRIAC with basic breakover voltages much higher than the peak voltage of the power signal, with Gate current injected to trigger the device at just under $24 V$, then $20 V$ and finally $10 V$.
+
+![TRIAC Output Current](images/TRIACCurrentTrace.JPG)
 
 Here are the matching voltage curves for the current curves in the graph above:
 
+![TRIAC Output Voltage](images/TRIACVoltageTrace.JPG)
+
 Notice that, when the TRIAC is set to turn on for most of the cycle, the signal looks like just short spikes following the zero crossing points of the incoming signal, then the device remains turned on until the next zero crossing point.
 
-When connecting a modern TRIAC in a circuit, the Gate phase needs to be matched to the A1 anode.
+When connecting a modern TRIAC in a circuit, the Gate phase needs to be matched to the $A_1$ anode.
 
-As with the SCR, the TRIAC can be used in a power fader. Assume the TRIAC chosen has inherent breakover voltages that are greater than the peak voltage of the power signal. With no Gate current injected, the TRIAC will be Off. If the Gate current is injected using a controllable voltage divider, the TRIAC can be triggered to turn on from just about 90º to 180º, then to turn on again from just about 270º to 360º. That means that, once the TRIAC is triggered, the minimum power delivered to the load will be just over half the total available. A fader circuit like this can provide power control from half to full power, but not from zero to half power. With more sophisticated circuitry, the starting angles can be moved towards 0º and 180º, allowing for a full control from 0º to 360º. The TRIAC doubles the amount of power that can delivered by an SCR.
+As with the SCR, the TRIAC can be used in a power fader. Assume the TRIAC chosen has inherent breakover voltages that are greater than the peak voltage of the power signal. With no Gate current injected, the TRIAC will be Off. If the Gate current is injected using a controllable voltage divider, the TRIAC can be triggered to turn on from just about $90^\circ$ to $180^\circ$, then to turn on again from just about $270^\circ$ to $360^\circ$. That means that, once the TRIAC is triggered, the minimum power delivered to the load will be just over half the total available. A fader circuit like this can provide power control from half to full power, but not from zero to half power. With more sophisticated circuitry, the starting angles can be moved towards $0^\circ$ and $180^\circ$, allowing for a full control from $0^\circ$ to $360^\circ$. The TRIAC doubles the amount of power that can be delivered by an SCR.
 
-In many TRIAC faders, a DIAC is used to trigger the Gate so that the current into the Gate is turned on suddenly when the DIAC breaks over, producing a much more reliable On starting condition. Without the DIAC, a TRIAC fader will typically flicker at low power settings.
+In many TRIAC faders, a DIAC is used to trigger the Gate so that the current into the Gate is turned on suddenly when the DIAC breaks over, producing a much more reliable *On* starting condition. Without the DIAC, a TRIAC fader will typically flicker at low power settings.
 
 #### Optoisolation
 
 As with the SCR, optoisolators with light-activated TRIACs are available. These can be used simply to turn a power TRIAC on or off. However, as with the SCR optoisolator, it is possible to synchronize a pulse width modulator (PWM) to both the positive-going and negative-going zero crossing points of the AC power signal to provide carefully-managed full power control. In order to establish full-wave power control, the pulse width modulation would look something like the following:
 
+[![](images/TRIACPWM.jpg)](PWM%20Control%20of%20a%20TRIAC)
+
+### Optically-Isolated Power Controllers
+
+In a Smart Home application or a PLC-controlled industrial process, some form of logic circuit or microcontroller will be used to control an AC-powered device. Although other devices such as relays and solid state relays (SSR) could be used, often an SCR or a TRIAC is used as an inexpensive and quiet alternative.
+
+To protect the logic circuit or microcontroller, the circuit should be optically isolated. Just as was the case for controlling power transistors, optocouplers have been designed for SCR and TRIAC circuits.
+
+In one of your projects, you will be using a TRIAC optocoupler to activate a TRIAC in a circuit similar to the one below. Note that this is an ON/OFF only circuit–-more complex circuitry would be required to produce a power range such as that needed for a power fader.
+
+Since the concept is the same for an optically-isolated SCR, you haven't been asked to purchase an SCR optocoupler. Typically, designers opt for TRIACs in power controllers due to the extra power available anyway, so SCR optocouplers are not as readily available as TRIAC optocouplers.
+
+![Optoisolated TRIAC Switching](images/TRIACOptocoupled.jpg)
+
+In this circuit, the switch forms an *Active-Low* logic switch. It could be replaced by an NPN transistor driven by the logic circuit or microcontroller, in which case the transistor would be capable of providing sufficient current to turn on the LED in the optocoupler, while the much smaller Base current required to turn on the transistor would not load the logic circuit or microcontroller.
+
+1.  When the switch in the above circuit is OPEN, current will \_\_\_\_\_\_\_\_\_\_ (Flow/Not Flow) through the LED, and the optocoupler's TRIAC will \_\_\_\_\_\_\_\_\_\_ (activate/not activate) the power TRIAC, and the Lamp will \_\_\_\_\_\_\_\_\_\_ (glow/not glow).
+2.  If the switch was to be replaced by a 2N3904 BJT, driving the properly-biased Base HIGH would put the transistor into \_\_\_\_\_\_\_\_\_\_ (cutoff/saturation) , the LED would \_\_\_\_\_\_\_\_\_\_ (glow/not glow) , and, following the circuit through, the Lamp would \_\_\_\_\_\_\_\_\_\_ (glow/not glow).
+3.  A better circuit could be built by putting the 2N3904 transistor between optocoupler pin 2 and ground. Now, driving the Base HIGH would put the transistor into \_\_\_\_\_\_\_\_\_\_ (cutoff/saturation), and the Lamp would \_\_\_\_\_\_\_\_\_\_ (glow/not glow) .
+4.  In the circuit of question 2, if the microcontroller was accidentally disconnected, the Lamp would \_\_\_\_\_\_\_\_\_\_ (glow/not glow) . Consequently, from a power consumption and safety perspective, the safer circuit is \_\_\_\_\_\_\_\_\_\_(circuit 2/circuit 3).
+
 {{< pagebreak >}}
 
 ::: border
 ## Self-Test Answers
-
--   Both
--   G2R-2-DC12 EM Relay
--   G2R-2-DC12 EM Relay
--   PR38BMF51NSLH SSR
 :::
+
+1.  
+
+    -   flow
+    -   activate
+    -   glow
+
+2.  
+
+    -   saturation
+    -   not glow
+    -   not glow
+
+3.  
+
+    -   saturation
+    -   glow
+
+4.  
+
+    -   glow
+
+    -   circuit 3
