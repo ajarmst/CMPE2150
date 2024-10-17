@@ -49,9 +49,9 @@ fig-env: "figure"
 keep-tex: true
 ---
 
-## Calculating Cooling Requirments
+## Calculating Heat Sink Cooling Requirments
 
-Integrated circuits generate heat as they operate. This heat may damage or destroy the IC itself, or it may affect surrounding circuitry, plastic enclosures, and/or people that may interact with the circuitry. Texas Instruments' \[AN-2020 Technical Report\](). [@AN-2020] It's important to do an analysis to determine:
+Integrated circuits generate heat as they operate. This heat may damage or destroy the IC itself, or it may affect surrounding circuitry, plastic enclosures, and/or people that may interact with the circuitry. Texas Instruments' [Understanding Thermal Dissipation](https://www.ti.com/lit/an/slva462/slva462.pdf) technical report[@SLVA462] is a good introduction to the calculations. It's important to do an analysis to determine:
 
 -   if the heat can be adequately removed from the IC,
 
@@ -97,16 +97,62 @@ This is well below the maximum junction temperature for the IC.
 
 Using Digikey, locate a heat sink for a TO220 pack with a thermal resistance slightly below the calculated value. (Something like 533602B02500G)
 
-Often, components can be soldered directly to copper pours on a PCB for heat dissipation. There are a lot of parameters to consider when doing this, including putting copper pours on both sides of the PCB and connecting them together with a large number of through-hole vias, etc. More detail can be found in Texas Instruments' \[AN-2020 Technical Report\](<https://www.ti.com/lit/an/snva419c/snva419c.pdf>) [@AN-2020].
+## Using Copper Planes for Printed-Circuit Device Cooling
 
-However, for our purposes, we'll do a few simplifications.A reasonable approximation of the thermal resistance of 1 oz copper, derived from values in this link, can be arrived at usingRθSA = -11ln(A)+63...where the area, A, is in square centimetres.What is the approximate thermal resistance of a copper pour 2 cm x 3 cm? Answer 8 oC/WSince this is logarithmic, increasing the copper area results in diminishing returns. Typically, it makes no sense to make a copper pour bigger than about 100 cm2.What is the thermal resistance of 100 cm\^2 1 oz copper? Answer 9 oC/WThe thermal resistance of typical PCB material is about 13 oC/W.What is the overall thermal resistance of two overlapping copper planes 100 cm2? Start with a simplified model that shows the thermal resistance of the two copper layers connected at each end by thermal resistances of the PCB material, and solve for the Thevenin equivalent, looking down from the top. Answer 10 oC/WIf the thermal resistance of the PCB was reduced to practically zero using closely-spaced vias, what would the thermal resistance of the two copper pours be? Answer 11 oC/WFor a temperature difference of 50 oC, how much power could be dissipated by the two copper pours connected by closely spaced vias? Answer 12 W
+Often, components can be soldered directly to copper pours on a PCB for heat dissipation. There are a lot of parameters to consider when doing this, including putting copper pours on both sides of the PCB and connecting them together with a large number of through-hole vias, etc. More detail can be found in Texas Instruments' [AN-2020 Technical Report](https://www.ti.com/lit/an/snva419c/snva419c.pdf)[@AN2020].
+
+For our purposes, we'll do a few simplifications:
+
+A reasonable approximation of the thermal resistance of 1 ounce copper[^1], derived from values in the above, can be arrived at using
+
+[^1]: 1 oz Copper is an industry term for the standard copper thickness on a single plane of a printed circuit board (PCB). In this context, it does not literally mean a weight of one ounce, but a commonly used thickness.
+
+$$θ_{SA} = -11 \ln(A) +6$$ {#eq-A}
+
+Where the area, $A$, is in square centimetres ($cm^2$).
+
+8.  What is the approximate thermal resistance of a copper pour of $2 cm \times 3 cm$? \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$
+
+Since this is logarithmic, increasing the copper area results in diminishing returns. Typically, it makes no sense to make a copper pour bigger than about $100 cm^2$.
+
+9.  What is the thermal resistance of $100 cm^2$ of 1 oz copper? \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$
+
+### Example
+
+The thermal resistance of typical PCB material is about $13^\circ C/W$. What is the overall thermal resistance of two overlapping copper planes of $100 cm^2$?
+
+10. Start with a simplified model that shows the thermal resistance of the two copper layers connected at each end by thermal resistances of the PCB material. Solve for the Thevenin equivalent circuit, looking down from the top: \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$
+
+11. If the thermal resistance of the PCB was reduced to practically zero using closely-spaced vias, what would the thermal resistance of the two copper pours be? \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$
+
+12. For a temperature difference of $50^\circ C$, how much power could be dissipated by the two copper pours connected by closely spaced vias? \_\_\_\_\_\_\_\_\_\_ $W$
 
 {{< pagebreak >}}
 
 ::: border
-## Self-Test Answers
+## Answers
 :::
 
-1.  
+1.  5.12
 
-    -   
+2.  356
+
+3.  52.6
+
+4.  58.7
+
+5.  3.9
+
+6.  5.6
+
+7.  58.7
+
+8.  43.3
+
+9.  12.3
+
+10. 9.31
+
+11. 6.15
+
+12. 8.13
