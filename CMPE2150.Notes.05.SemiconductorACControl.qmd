@@ -56,12 +56,12 @@ However, you've likely encountered full-range AC power controllers as implemente
 
 ### Four and Five Layer Semiconductor Devices
 
-The BJT transistors you studied earlier are three-layer devices, either PNP or NPN. As such, they must be biased appropriately with DC power supplies: For an NPN transistor, the Collector must be at a higher voltage than the Emitter, and control is exercised by running a current through the positively-biased Base to Emitter junction. For aNP transistor, the Collector must be at a lower voltage than the Emitter, and control is exercised by running a current through the negatively-biased Base to Emitter junction.
+The BJT transistors you studied earlier are three-layer devices, either PNP or NPN. As such, they must be biased appropriately with DC power supplies: For an NPN transistor, the Collector must be at a higher voltage than the Emitter, and control is exercised by running a current through the positively-biased Base to Emitter junction. For a PNP transistor, the Collector must be at a lower voltage than the Emitter, and control is exercised by running a current through the negatively-biased Base to Emitter junction.
 
 ::: column-margin
-![](images/William_Shockley.jpg){width="40mm"}
-
-William Shockley, 1910-1989 (Wikipedia)
+| ![](images/William_Shockley.jpg){width="40mm"}
+| William Shockley, 1910-1989 
+| (Wikipedia)
 :::
 
 William Shockley was a researcher at Bell Labs, and, beyond his role in inventing transistors, he had a particular interest in AC power control. He invented a number of semiconductor devices that had more than three layers. Some of his devices were four-layer (NPNP or PNPN) and some were five-layer (NPNPN or PNPNP). It turned out that these devices responded in surprising but useful ways to AC signals.
@@ -87,9 +87,8 @@ The basic four-layer device is called the Shockley Diode[^1] , although it is no
 The Shockley Diode has only two pins, and is given the symbol shown in the margin.
 
 ::: column-margin
-![](images/ShockleySymbol.jpg){width="15mm"}
-
-Symbol for a Shockley Diode
+| ![](images/ShockleySymbol.jpg){width="15mm"}
+| Symbol for a Shockley Diode
 :::
 
 To begin with, the device is open, allowing no current to flow. As the Anode to Cathode voltage increases, it remains OPEN until a relatively large breakover voltage ($V_{BR_f}$) is reached and sufficient current is injected into the Gate to turn the device on; after this, it continues to conduct until the current is turned off or the Anode to Cathode voltage is reduced to practically zero. The graph of the transfer below demonstrates this.
@@ -131,7 +130,9 @@ As can be seen from these diagrams, power is available from somewhere between $9
 #### Silicon Controlled Rectifier—SCR
 
 ::: column-margin
-![](images/SCRSymbol.jpg){width="100"} Symbol for a Silicon-Controlled Rectifier (SCR)
+| ![](images/SCRSymbol.jpg){width="100"}
+| Symbol for a Silicon-Controlled
+| Rectifier (SCR)
 :::
 
 The SCR is a three-pin device that behaves like a Shockley Diode with a controlled forward breakover voltage. The controlling pin is called a Gate, although its function is considerably different from that of the Gate in a FET. In the context of an SCR, the Gate "opens" the main current path in response to the injection of sufficient Gate current. In many circuits, this occurs at a voltage established using a voltage divider that follows the voltage across the SCR. In this configuration, once the trigger occurs and the SCR is turned On, the voltage at the Gate drops, so no further Gate current is injected. It is no longer needed, as the SCR remains On until the signal crosses the zero line anyway.
@@ -155,7 +156,8 @@ As can be seen from these sets of graphs, the SCR can be adjusted to provide bet
 As previously mentioned, SCRs are usually chosen to have a basic $V_{AK}$ that is significantly higher than the peak voltage of the AC signal so that, with no Gate current injected, the SCR will be Off. If a voltage divider is used to control the Gate injection current, as the voltage divider is adjusted, it will bring VAK down to where it first starts to fire at the top of the cycle ( $90^\circ$ ) then will move it toward $180^\circ$. The circuit to the right demonstrates this type of circuit, which is a fader, but not a very good one.
 
 ::: column-margin
-![](images/SCRSimpleFader.jpg){width="200"} SCR Simple Fader Circuit
+| ![](images/SCRSimpleFader.jpg){width="200"}
+| SCR Simple Fader Circuit
 :::
 
 The problem with this circuit is that it kicks in at $90^\circ$ of the available $360^\circ$, and it can only be adjusted to increase the conduction angle to somewhat less than $180^\circ$. In other words, it can adjust the power from about a quarter of the total to just under a half -- not very impressive. We would most likely prefer to have a fader that starts from zero and can increase the conduction angle to the maximum available, which, for an SCR, is ideally $180^\circ$; in other words, from no power to half power.
@@ -209,7 +211,8 @@ Modern AC Power Controllers are usually five-layer devices, which allow control 
 #### DIAC
 
 ::: column-margin
-![](images/DIACSymbol.jpg){width="100"} Symbol for a DIAC
+| ![](images/DIACSymbol.jpg){width="100"}
+| Symbol for a DIAC
 :::
 
 The DIAC is the full-wave equivalent of the Shockley Diode---it breaks over both at a relatively high positive voltage on the positive half wave and at a relatively high negative voltage on the negative half wave of an AC signal.
@@ -232,10 +235,6 @@ The following shows the voltage curve expected for the DIAC in the current graph
 
 #### TRIAC
 
-::: column-margin
-![](images/TRIACSymbol.JPG){width="100"} Symbol for a TRIAC
-:::
-
 The TRIAC is the full-wave equivalent to the SCR -- a device with a Gate to control both the forward and reverse breakover voltages.
 
 Here is a typical transfer function for a TRIAC:
@@ -253,6 +252,11 @@ Here are the matching voltage curves for the current curves in the graph above:
 Notice that, when the TRIAC is set to turn on for most of the cycle, the signal looks like just short spikes following the zero crossing points of the incoming signal, then the device remains turned on until the next zero crossing point.
 
 When connecting a modern TRIAC in a circuit, the Gate phase needs to be matched to the $A_1$ anode.
+
+::: column-margin
+| ![](images/TRIACSymbol.JPG){width="100"} 
+| Symbol for a TRIAC
+:::
 
 As with the SCR, the TRIAC can be used in a power fader. Assume the TRIAC chosen has inherent breakover voltages that are greater than the peak voltage of the power signal. With no Gate current injected, the TRIAC will be Off. If the Gate current is injected using a controllable voltage divider, the TRIAC can be triggered to turn on from just about $90^\circ$ to $180^\circ$, then to turn on again from just about $270^\circ$ to $360^\circ$. That means that, once the TRIAC is triggered, the minimum power delivered to the load will be just over half the total available. A fader circuit like this can provide power control from half to full power, but not from zero to half power. With more sophisticated circuitry, the starting angles can be moved towards $0^\circ$ and $180^\circ$, allowing for a full control from $0^\circ$ to $360^\circ$. The TRIAC doubles the amount of power that can be delivered by an SCR.
 
@@ -284,10 +288,9 @@ In this circuit, the switch forms an *Active-Low* logic switch. It could be repl
 4.  In the circuit of question 2, if the microcontroller was accidentally disconnected, the Lamp would \_\_\_\_\_\_\_\_\_\_ (glow/not glow) . Consequently, from a power consumption and safety perspective, the safer circuit is \_\_\_\_\_\_\_\_\_\_(circuit 2/circuit 3).
 
 {{< pagebreak >}}
-
+---
 ::: border
 ## Self-Test Answers
-:::
 
 1.  
 
@@ -311,3 +314,4 @@ In this circuit, the switch forms an *Active-Low* logic switch. It could be repl
     -   glow
 
     -   circuit 3
+:::
