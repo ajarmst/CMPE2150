@@ -166,11 +166,11 @@
 \makeatother
 \subtitle{Semiconductor AC Control}
 \author{Taylor, Moore, and Armstrong}
-\date{04 Oct 2024}
+\date{17 Oct 2024}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, interior hidden, sharp corners, borderline west={3pt}{0pt}{shadecolor}, frame hidden, enhanced, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, breakable, frame hidden, boxrule=0pt]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -213,20 +213,18 @@ The BJT transistors you studied earlier are three-layer devices, either
 PNP or NPN. As such, they must be biased appropriately with DC power
 supplies: For an NPN transistor, the Collector must be at a higher
 voltage than the Emitter, and control is exercised by running a current
-through the positively-biased Base to Emitter junction. For aNP
+through the positively-biased Base to Emitter junction. For a PNP
 transistor, the Collector must be at a lower voltage than the Emitter,
 and control is exercised by running a current through the
 negatively-biased Base to Emitter junction.
 
-\begin{marginfigure}
+\marginnote{\begin{footnotesize}
 
-{\centering \includegraphics[width=40mm,height=\textheight]{images/William_Shockley.jpg}
+\includegraphics[width=40mm,height=\textheight]{images/William_Shockley.jpg}\\
+William Shockley, 1910-1989\\
+(Wikipedia)
 
-}
-
-\end{marginfigure}
-
-William Shockley, 1910-1989 (Wikipedia)
+\end{footnotesize}}
 
 William Shockley was a researcher at Bell Labs, and, beyond his role in
 inventing transistors, he had a particular interest in AC power control.
@@ -285,15 +283,12 @@ these devices can be a bit confusing, as you will see).
 The Shockley Diode has only two pins, and is given the symbol shown in
 the margin.
 
-\begin{marginfigure}
+\marginnote{\begin{footnotesize}
 
-{\centering \includegraphics[width=15mm,height=\textheight]{images/ShockleySymbol.jpg}
-
-}
-
-\end{marginfigure}
-
+\includegraphics[width=15mm,height=\textheight]{images/ShockleySymbol.jpg}\\
 Symbol for a Shockley Diode
+
+\end{footnotesize}}
 
 To begin with, the device is open, allowing no current to flow. As the
 Anode to Cathode voltage increases, it remains OPEN until a relatively
@@ -411,8 +406,9 @@ Rectifier---SCR}\label{silicon-controlled-rectifierscr}}
 
 \marginnote{\begin{footnotesize}
 
-\includegraphics[width=1.04167in,height=\textheight]{images/SCRSymbol.jpg}
-Symbol for a Silicon-Controlled Rectifier (SCR)
+\includegraphics[width=1.04167in,height=\textheight]{images/SCRSymbol.jpg}\\
+Symbol for a Silicon-Controlled\\
+Rectifier (SCR)
 
 \end{footnotesize}}
 
@@ -489,7 +485,7 @@ of circuit, which is a fader, but not a very good one.
 
 \marginnote{\begin{footnotesize}
 
-\includegraphics[width=2.08333in,height=\textheight]{images/SCRSimpleFader.jpg}
+\includegraphics[width=2.08333in,height=\textheight]{images/SCRSimpleFader.jpg}\\
 SCR Simple Fader Circuit
 
 \end{footnotesize}}
@@ -608,12 +604,9 @@ the walls while working on his SAIT final project because the Gate was
 \hypertarget{diac}{%
 \paragraph{DIAC}\label{diac}}
 
-\hypertarget{section}{%
-\paragraph{}\label{section}}
-
 \marginnote{\begin{footnotesize}
 
-\includegraphics[width=1.04167in,height=\textheight]{images/DIACSymbol.jpg}
+\includegraphics[width=1.04167in,height=\textheight]{images/DIACSymbol.jpg}\\
 Symbol for a DIAC
 
 \end{footnotesize}}
@@ -680,14 +673,45 @@ circuit.
 The TRIAC is the full-wave equivalent to the SCR -- a device with a Gate
 to control both the forward and reverse breakover voltages.
 
-Here are the symbol and expected transfer function for the TRIAC:
+Here is a typical transfer function for a TRIAC:
+
+\begin{figure}
+
+\sidecaption{DIAC Transfer Function}
+
+{\centering \includegraphics[width=3.125in,height=\textheight]{images/TRIACTransfer.JPG}
+
+}
+
+\end{figure}
 
 The following shows a TRIAC with basic breakover voltages much higher
 than the peak voltage of the power signal, with Gate current injected to
-trigger the device at just under 24 V, then 20 V and finally 10 V.
+trigger the device at just under \(24 V\), then \(20 V\) and finally
+\(10 V\).
+
+\begin{figure}
+
+\sidecaption{TRIAC Output Current}
+
+{\centering \includegraphics{images/TRIACCurrentTrace.JPG}
+
+}
+
+\end{figure}
 
 Here are the matching voltage curves for the current curves in the graph
 above:
+
+\begin{figure}
+
+\sidecaption{TRIAC Output Voltage}
+
+{\centering \includegraphics{images/TRIACVoltageTrace.JPG}
+
+}
+
+\end{figure}
 
 Notice that, when the TRIAC is set to turn on for most of the cycle, the
 signal looks like just short spikes following the zero crossing points
@@ -695,26 +719,34 @@ of the incoming signal, then the device remains turned on until the next
 zero crossing point.
 
 When connecting a modern TRIAC in a circuit, the Gate phase needs to be
-matched to the A1 anode.
+matched to the \(A_1\) anode.
+
+\marginnote{\begin{footnotesize}
+
+\includegraphics[width=1.04167in,height=\textheight]{images/TRIACSymbol.JPG}\\
+Symbol for a TRIAC
+
+\end{footnotesize}}
 
 As with the SCR, the TRIAC can be used in a power fader. Assume the
 TRIAC chosen has inherent breakover voltages that are greater than the
 peak voltage of the power signal. With no Gate current injected, the
 TRIAC will be Off. If the Gate current is injected using a controllable
 voltage divider, the TRIAC can be triggered to turn on from just about
-90º to 180º, then to turn on again from just about 270º to 360º. That
-means that, once the TRIAC is triggered, the minimum power delivered to
-the load will be just over half the total available. A fader circuit
-like this can provide power control from half to full power, but not
-from zero to half power. With more sophisticated circuitry, the starting
-angles can be moved towards 0º and 180º, allowing for a full control
-from 0º to 360º. The TRIAC doubles the amount of power that can
-delivered by an SCR.
+\(90^\circ\) to \(180^\circ\), then to turn on again from just about
+\(270^\circ\) to \(360^\circ\). That means that, once the TRIAC is
+triggered, the minimum power delivered to the load will be just over
+half the total available. A fader circuit like this can provide power
+control from half to full power, but not from zero to half power. With
+more sophisticated circuitry, the starting angles can be moved towards
+\(0^\circ\) and \(180^\circ\), allowing for a full control from
+\(0^\circ\) to \(360^\circ\). The TRIAC doubles the amount of power that
+can be delivered by an SCR.
 
 In many TRIAC faders, a DIAC is used to trigger the Gate so that the
 current into the Gate is turned on suddenly when the DIAC breaks over,
-producing a much more reliable On starting condition. Without the DIAC,
-a TRIAC fader will typically flicker at low power settings.
+producing a much more reliable \emph{On} starting condition. Without the
+DIAC, a TRIAC fader will typically flicker at low power settings.
 
 \hypertarget{optoisolation-1}{%
 \paragraph{Optoisolation}\label{optoisolation-1}}
@@ -728,22 +760,134 @@ carefully-managed full power control. In order to establish full-wave
 power control, the pulse width modulation would look something like the
 following:
 
+{
+\makeatletter
+\def\LT@makecaption#1#2#3{%
+  \noalign{\smash{\hbox{\kern\textwidth\rlap{\kern\marginparsep
+  \parbox[t]{\marginparwidth}{%
+    \footnotesize{%
+      \vspace{(1.1\baselineskip)}
+    #1{#2: }\ignorespaces #3}}}}}}%
+    }
+\makeatother
+
+\href{PWM\%20Control\%20of\%20a\%20TRIAC}{\includegraphics{images/TRIACPWM.jpg}}
+
+}
+
+\hypertarget{optically-isolated-power-controllers}{%
+\subsubsection{Optically-Isolated Power
+Controllers}\label{optically-isolated-power-controllers}}
+
+In a Smart Home application or a PLC-controlled industrial process, some
+form of logic circuit or microcontroller will be used to control an
+AC-powered device. Although other devices such as relays and solid state
+relays (SSR) could be used, often an SCR or a TRIAC is used as an
+inexpensive and quiet alternative.
+
+To protect the logic circuit or microcontroller, the circuit should be
+optically isolated. Just as was the case for controlling power
+transistors, optocouplers have been designed for SCR and TRIAC circuits.
+
+In one of your projects, you will be using a TRIAC optocoupler to
+activate a TRIAC in a circuit similar to the one below. Note that this
+is an ON/OFF only circuit---more complex circuitry would be required to
+produce a power range such as that needed for a power fader.
+
+Since the concept is the same for an optically-isolated SCR, you haven't
+been asked to purchase an SCR optocoupler. Typically, designers opt for
+TRIACs in power controllers due to the extra power available anyway, so
+SCR optocouplers are not as readily available as TRIAC optocouplers.
+
+\begin{figure}
+
+\sidecaption{Optoisolated TRIAC Switching}
+
+{\centering \includegraphics{images/TRIACOptocoupled.jpg}
+
+}
+
+\end{figure}
+
+In this circuit, the switch forms an \emph{Active-Low} logic switch. It
+could be replaced by an NPN transistor driven by the logic circuit or
+microcontroller, in which case the transistor would be capable of
+providing sufficient current to turn on the LED in the optocoupler,
+while the much smaller Base current required to turn on the transistor
+would not load the logic circuit or microcontroller.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  When the switch in the above circuit is OPEN, current will
+  \_\_\_\_\_\_\_\_\_\_ (Flow/Not Flow) through the LED, and the
+  optocoupler's TRIAC will \_\_\_\_\_\_\_\_\_\_ (activate/not activate)
+  the power TRIAC, and the Lamp will \_\_\_\_\_\_\_\_\_\_ (glow/not
+  glow).
+\item
+  If the switch was to be replaced by a 2N3904 BJT, driving the
+  properly-biased Base HIGH would put the transistor into
+  \_\_\_\_\_\_\_\_\_\_ (cutoff/saturation) , the LED would
+  \_\_\_\_\_\_\_\_\_\_ (glow/not glow) , and, following the circuit
+  through, the Lamp would \_\_\_\_\_\_\_\_\_\_ (glow/not glow).
+\item
+  A better circuit could be built by putting the 2N3904 transistor
+  between optocoupler pin 2 and ground. Now, driving the Base HIGH would
+  put the transistor into \_\_\_\_\_\_\_\_\_\_ (cutoff/saturation), and
+  the Lamp would \_\_\_\_\_\_\_\_\_\_ (glow/not glow) .
+\item
+  In the circuit of question 2, if the microcontroller was accidentally
+  disconnected, the Lamp would \_\_\_\_\_\_\_\_\_\_ (glow/not glow) .
+  Consequently, from a power consumption and safety perspective, the
+  safer circuit is \_\_\_\_\_\_\_\_\_\_(circuit 2/circuit 3).
+\end{enumerate}
+
 \newpage{}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{self-test-answers}{%
 \subsection{Self-Test Answers}\label{self-test-answers}}
 
-\begin{itemize}
-\tightlist
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \item
-  Both
+  \begin{itemize}
+  \tightlist
+  \item
+    flow
+  \item
+    activate
+  \item
+    glow
+  \end{itemize}
 \item
-  G2R-2-DC12 EM Relay
+  \begin{itemize}
+  \tightlist
+  \item
+    saturation
+  \item
+    not glow
+  \item
+    not glow
+  \end{itemize}
 \item
-  G2R-2-DC12 EM Relay
+  \begin{itemize}
+  \tightlist
+  \item
+    saturation
+  \item
+    glow
+  \end{itemize}
 \item
-  PR38BMF51NSLH SSR
-\end{itemize}
+  \begin{itemize}
+  \item
+    glow
+  \item
+    circuit 3
+  \end{itemize}
+\end{enumerate}
 
 
 
