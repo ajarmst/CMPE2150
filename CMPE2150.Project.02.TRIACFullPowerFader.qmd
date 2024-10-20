@@ -1,0 +1,75 @@
+---
+title: "CMPE2150 Project 02"
+subtitle: "TRIAC Full Power Fader"
+author: "AJ Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+format:
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid:
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry:
+      - top=30mm
+      - bottom=30mm
+      - left=15mm
+      - right=80mm
+      - marginparwidth=60mm
+      - marginparsep=10mm
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \usepackage{titling}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 Project 02}
+        \fancyhead[R]{TRIAC Full Power Fader}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+        \setlength{\droptitle}{-2cm}
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-align: default
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+fig-env: "figure"
+keep-tex: true
+---
+
+
+
+::: callout-important
+This is a complex circuit with many potential pitfalls, some of which could be dangerous.  Do not attempt to build this circuit all at once!  As indicated in the discussion below, you should understand what each section of the circuit is intended to do so you can test and troubleshoot your work as you build it stage by stage. It is important in this project that you build the circuit in the order specified.  After each sub-circuit is built and tested, make sure you get screen captures or photographs of the oscilloscope traces you need to demonstrate your circuit.  *You must take the oscilloscope measurements for each phase of circuit development below, or you will have to rebuild the circuit.*
+:::
+
+There may be times in your career when you will be asked to build and test a circuit designed by someone else in the company.  The ability to assemble a complicated circuit, understand what it is doing, and make it work could prove invaluable to you and to your company.
+
+The following circuit incorporates a great deal of what you have learned in your Basic Electricity and Semiconductors Courses, and takes your circuit-building and testing skills to a whole new level.  As you carry out this exercise, note how many of the concepts you've learned come together to do what, from the outside, seems to be a fairly simple task---dimming a bulb over its full range of power without flickering.  Also take note, mental or otherwise, of the testing and troubleshooting skills you will use as you proceed through this exercise.
+
+There are times when you'll be testing a circuit for which the operation is well-known, and you will be provided with expected values.  In this project, you will be provided with expected waveforms (in gray-scale) which you will compare your circuit's behaviour to, and submit full-colour shots of what you see for grading.
+
+TRIAC Full-Power Fader---Complete Schematic
+
+This is an entirely stand-alone circuit, other than the $24 V_{AC}$ transformer from your kit.  It contains the following sections, which you will build and test in steps:
+
+- Full-wave bridge rectifier
+- +5 VDC regulated supply
+- 120 Hz zero-crossing detector
+- Constant current source ramp generator
+- Variable analog pulse width modulator (PWM)
+- TRIAC-Output Optocoupler
+- TRIAC power controller for a halogen lamp
+
+
+
+For checkoff, attach your schematic and calculations to this document and demonstrate your circuit for your instructor to sign off \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
