@@ -1,0 +1,84 @@
+---
+title: "CMPE2150 SA 07"
+subtitle: "Heat Sink for T2800D TRIAC"
+author: "Taylor, Moore, and Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+format:
+  docx: 
+    toc: true
+    number-sections: true
+    highlight-style: github
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid: 
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry: 
+      - top=30mm
+      - bottom=30mm
+      - left=25mm
+      - right=70mm
+      - marginparwidth=50mm
+      - heightrounded
+    include-in-header: 
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 SA 07}
+        \fancyhead[R]{Heat Sink for T2800D TRIAC}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+---
+
+1.  Given that we're using the T2800D to turn on a $10 W$ halogen bulb using $24 V_{AC}$, what is the expected current when the bulb is fully illuminated? \_\_\_\_\_\_\_\_\_\_ $mW$.
+2.  From the "Power Dissipation" figure in the [spec sheet](https://www.mouser.ca/datasheet/2/308/1/t2800_d-1196084.pdf) for the T2800D, estimate the *maximum* power dissipation for the TRIAC at this current: \_\_\_\_\_\_\_\_\_\_ $mW$.
+3.  Use the value given at <https://daycounter.com/Calculators/Heat-Sink-Temperature-Calculator.phtml> for the TO-220 pack as the value for $\theta_{JA}$. If the ambient temperature is $25^\circ C$, what would the junction temperature be, worst case? \_\_\_\_\_\_\_\_\_\_ $^\circ C$.
+4.  This would be acceptable in that it wouldn't burn out the TRIAC.  However, the case temperature would definitely be hot enough to damage skin. From the specifications for the T2800D , what is $θ_{JC}$ for the T2800D?  \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$.
+5.  What would the case temperature be? \_\_\_\_\_\_\_\_\_\_ $^\circ C$.
+6.  To lower the temperature, we'll install the heatsink from the CNT Year 2 Kit.  You can access its specifications [online](https://4donline.ihs.com/images/VipMasterIC/IC/AAVT/AAVTS00794/AAVTS00585-1.pdf?hkey=CECEF36DEECDED6468708AAF2E19C0C6)^[
+    https://4donline.ihs.com/images
+    /VipMasterIC/IC/AAVT
+    /AAVTS00794/AAVTS00585-1.pdf?hkey=CECEF36
+    DEECDED6468708AAF2E19C0C6
+  ]. What is the thermal resistance specified for this heatsink, in degrees Celsius per watt?  \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$.  (This number represents $θ_{SA}$.)
+7.  For this calculation, assume an $θ_{CS}$ of $0.5 ^\circ C/W$ for a properly-mounted heat sink. With the heat sink installed and the conditions given above for a fully-illuminated bulb, what would the junction temperature be, if the ambient temperature is $25^\circ C$? \_\_\_\_\_\_\_\_\_\_ $^\circ C$.
+8.  What would the heat sink temperature be? \_\_\_\_\_\_\_\_\_\_ $^\circ C$.
+9.  This will be warm, but shouldn't pose any safety risk.
+
+    Install the heat sink on your T2800D, and leave it installed for all subsequent activities for which it is used.  Here are some directions:
+
+    - The "mica heat pad" is a heat-conducting insulator that should go between the T2800D and the heat sink.
+    - Your instructor may supply you with conductive paste---if so, use it very sparingly, and clean up any exposed paste The paste provides the best possible contact between two metal surfaces, as it fills in any gaps or rough surfaces.
+    - Use the 4-40 screw and nut from the kit, and tighten using a nut driver for best contact.
+
+For a grade out of two, show your instructor the T2800D with the heatsink installed.  If your instructor isn't available, upload a picture instead: \_\_\_\_\_\_\_\_\_\_
+
+{{< pagebreak >}}
+
+::: border
+### Answers
+
+1.  417
+2.  500
+3.  56.3
+4.  2.2
+5.  55.2
+6.  24
+7.  38.4
+8.  37.0
+9.  
+:::
