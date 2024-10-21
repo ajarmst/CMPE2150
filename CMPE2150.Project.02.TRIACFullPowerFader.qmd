@@ -46,8 +46,6 @@ fig-env: "figure"
 keep-tex: true
 ---
 
-
-
 ::: callout-important
 This is a complex circuit with many potential pitfalls, some of which could be dangerous.  Do not attempt to build this circuit all at once!  As indicated in the discussion below, you should understand what each section of the circuit is intended to do so you can test and troubleshoot your work as you build it stage by stage. It is important in this project that you build the circuit in the order specified.  After each sub-circuit is built and tested, make sure you get screen captures or photographs of the oscilloscope traces you need to demonstrate your circuit.  *You must take the oscilloscope measurements for each phase of circuit development below, or you will have to rebuild the circuit.*
 :::
@@ -60,6 +58,11 @@ There are times when you'll be testing a circuit for which the operation is well
 
 TRIAC Full-Power Fader---Complete Schematic
 
+::: callout-important
+
+Some time after the design above was first drawn, we discovered an error.  Depending on the vendor and detailed specifications of your voltage regulator, the circuit above might destroy it.  The reason is because, if you consult the datasheet for the LM7805, its $V_{max}$ rating is 
+
+:::
 This is an entirely stand-alone circuit, other than the $24 V_{AC}$ transformer from your kit.  It contains the following sections, which you will build and test in steps:
 
 - Full-wave bridge rectifier
@@ -69,7 +72,5 @@ This is an entirely stand-alone circuit, other than the $24 V_{AC}$ transformer 
 - Variable analog pulse width modulator (PWM)
 - TRIAC-Output Optocoupler
 - TRIAC power controller for a halogen lamp
-
-
 
 For checkoff, attach your schematic and calculations to this document and demonstrate your circuit for your instructor to sign off \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
