@@ -81,9 +81,9 @@ There are a number of ways of getting around this problem:
 
 -   Redesign the circuit to use a different voltage regulator.
 
-Because you have an *LM339N Adjustable Voltage Regulator*—whose [datasheet](https://www.ti.com/lit/ds/symlink/lm317.pdf) specifies a $V_{max}$ of $40 V$, we will use that.
+Because you have an *LM317TG Adjustable Voltage Regulator*—whose [datasheet](https://www.ti.com/lit/ds/symlink/lm317.pdf) specifies a $V_{max}$ of $40 V$, we will use that.
 
-**Redesign the schematic above to use the LM339 Adjustable Voltage Regulator** to provide a regulated $5 V_{DC}$ supply.
+**Redesign the schematic above to use the LM317 Adjustable Voltage Regulator** to provide a regulated $5 V_{DC}$ supply.
 :::
 
 This is an entirely stand-alone circuit, other than the $24 V_{AC}$ transformer from your kit. It contains the following sections, which you will build and test in steps:
