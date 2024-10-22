@@ -56,7 +56,7 @@ The following circuit incorporates a great deal of what you have learned in your
 
 There are times when you'll be testing a circuit for which the operation is well-known, and you will be provided with expected values. In this project, you will be provided with expected waveforms (in gray-scale) which you will compare your circuit's behaviour to, and submit full-colour shots of what you see for grading.
 
-![TRIAC Full-Power Fader---Complete Schematic](images/TRIACFullPowerFader.png){.fullwidth}
+![TRIAC Full-Power Fader---Complete Schematic](images/TRIACFullPowerFader.png)
 
 ::: callout-important
 Some time after the design above was first drawn, we discovered an error. Depending on the vendor and detailed specifications of your voltage regulator, the circuit above might destroy it.
@@ -69,31 +69,122 @@ You will notice that this is getting pretty close to the maximum voltage of the 
 
 $$V_P = 28.7\sqrt{2} V = 40.6 V_P$$
 
-which (even after the voltage is dropped by three diodes ($= 2.1 V_{DC}$) is well over what our LM7805 is certified to handle. It actually worked fine for a number of years, probably because the vendor supplying our parts was providing ones robust enough to handle the excursions. However, some vendor's products have started failing over recent years.
-
-There are a number of ways of getting around this problem:
+which---even after the voltage is dropped by three diodes ($= 2.1 V_{DC}$)---is well over what our LM7805 is certified to handle. It actually worked fine for a number of years, probably because the vendor supplying our parts was providing ones robust enough to handle the excursions. However, some vendors' products have started failing over recent years. There are a number of ways of getting around this problem:
 
 -   Change from a $24 V_{RMS}$ source to a lower value, although this might require a redesign of the lamp circuit.
 
--   Add some additional diodes in series with $D_5$ to drop enough voltage to reduce $V_p$ below $35 V_P$. Three standard silicon signal diodes would drop the peak voltage by $3\times0.7 V = 2.1 V$.
+-   Add some additional diodes in series with $D_5$ to drop enough voltage to reduce $V_p$ below $35 V_p$. Three standard silicon signal diodes would drop the peak voltage by another $3\times0.7 V = 2.1 V$.
 
 -   Add one or two zener diodes in series with $D_5$ to reduce the peak voltage—Zeners typically have a reverse-bias voltage drop of several volts.
 
 -   Redesign the circuit to use a different voltage regulator.
 
-Because you have an *LM317TG Adjustable Voltage Regulator*—whose [datasheet](https://www.ti.com/lit/ds/symlink/lm317.pdf) specifies a $V_{max}$ of $40 V$, we will use that.
+Because you have an LM317TG Adjustable Voltage Regulator---whose [datasheet](https://www.ti.com/lit/ds/symlink/lm317.pdf) specifies a $V_{max}$ of $40 V$---we will use that.
 
-**Redesign the schematic above to use the LM317 Adjustable Voltage Regulator** to provide a regulated $5 V_{DC}$ supply.
+In one of the sections below, you will **redesign the schematic above to use the LM317 Adjustable Voltage Regulator** to provide the regulated $5 V_{DC}$ supply.
 :::
 
 This is an entirely stand-alone circuit, other than the $24 V_{AC}$ transformer from your kit. It contains the following sections, which you will build and test in steps:
 
 -   Full-wave bridge rectifier
--   +5 VDC regulated supply
--   120 Hz zero-crossing detector
--   Constant current source ramp generator
+-   $+5 V_{DC}$ regulated supply
+-   $120 Hz$ zero-crossing detector
+-   Constant-current source ramp generator
 -   Variable analog pulse width modulator (PWM)
--   TRIAC-Output Optocoupler
+-   TRIAC-Output optocoupler
 -   TRIAC power controller for a halogen lamp
 
-For checkoff, attach your schematic and calculations to this document and demonstrate your circuit for your instructor to sign off \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+### Full-Wave Bridge Rectifier
+
+In this circuit, k
+tely, we can have both by inserting a diode between the rectifier and the capacitor ($D_5$).  The capacitor only draws current from the rectifier when the waveform is at a higher potential than the capacitor voltage, so as the signal amplitude falls, the diode will be reverse biased, effectively disconnecting the rectifier from the filter capacitor.  $R_1$ acts as a load resistor for the unfiltered signal, ensuring that it pulls down to ground at the zero crossing points.
+
+Install the following components from the schematic above:
+
+- $V_1$ - $244 V_{AC}$ transformer from CNT Year 2 Kit
+- $S_1$ - SPST Toggle switch from CNT Year 1 Kit
+- $F_1$ - $500 mA$ fuse from CNT Year 2 Kit
+- $D_1$ through $D_5$ - 1N400x rectifier diodes
+- $R_1$ - $2.2 kΩ$ resistor
+- $C_1$ - $220 μF$ electrolytic capacitor
+
+#### Notes
+
+1.  Assign two of the breadboard power rails to the switched AC signal -- the output from the fuse on the top rail and the low side of the secondary to the bottom rail
+2.  Assign two other breadboard power rails to $+5 V_{DC}$ and ground
+3. Try to build your circuit as compactly as you can---It can be done on a single breadboard with some careful planning!
+4. Be very careful with the orientation and connection of the diodes in the bridge
+5. Be very careful with the orientation and connection of the filter capacitor---the schematic highlights the '+' pin, but the '-' pin is marked on the body of the capacitor; ensure that the negative pin is connected to ground 
+6.  Do NOT connect anything on the transformer side of the bridge to ground
+7.  Do NOT put your oscilloscope probe ground clip anywhere on the transformer side of the bridge---put it on the ground bus
+
+#### Testing
+
+1.  With the switch turned on, you should observe a full-wave signal across $R_1$.  Display this with oscilloscope Channel 1.
+2.  Across the filter capacitor $C_1$, you should observe an almost completely flat DC signal when the regulator is not connected.  Display this with oscilloscope Channel 2.  This is what a filtered rectifier looks like with no load to draw current from the filter capacitor---the ripple voltage is effectively zero, since in the formula $V_r=\frac{I_LT}{C}$, $I_L$ is zero.
+
+![Rectified and Filtered Waveforms](images/Project02RectifierAndFilter.jpg)
+
+Verify that the shape, amplitudes, and timing are satisfactory, and ask your instructor for a grade out of one mark; record the grade below.  If your instructor isn't available, take a picture of the oscilloscope screen and attach it here. \_\_\_\_\_\_\_\_\_\_
+
+### $+5 V$ Regulated Supply
+
+This the section where you will modify the existing design.  Replace the Voltage Rectifier subcircuit ($U_1$ and $C_2$) with an LM317 subcircuit for delivering $5 V_{DC}$. Recall that, because the LM317 is adjustable, you will need to add some external resistors to set the voltage.  The output decoupling capacitor $C_2$ should be retained. Draw your subcircuit schematic and include it here.
+
+#### Testing
+
+You should observe a constant voltage at the output pin of $U_1$.  Record its value here for one mark: \_\_\_\_\_\_\_\_\_\_
+
+### $120 Hz$ Zero-Crossing Detector
+
+In order to synchronize the Pulse Width Modulator so that its falling edge occurs as closely as possible to $0^\circ$ and $180^\circ$, we need to detect when the unfiltered full-wave rectifier signal drops to practically $0 V$.  Since $0.7$ V is pretty close, we will use the Base-Emitter junction of an NPN transistor to detect these events.  Whenever the signal driving the Base of $Q1$ through $R2$ is greater than $0.7 V$, $Q1$ will saturate, pulling its Collector practically to zero.  When the signal drops below $0.7 V$, the transistor will be in cutoff, and $R3$ will pull the signal HIGH.  Thus, the zero crossing points will be seen as *HIGH* voltage spikes in an otherwise *LOW* signal.
+
+Install $Q_1$, $R_2$, and $R_3$.
+
+#### Notes
+
+1.  Make sure you have the correct pinout for $Q_1$.
+2.  In an IEEE-standard schematic, a line crossing another line is not connected unless there is a junction marker (dot).  Don't make connections you shouldn't make!
+
+#### Testing
+
+With no connection to $Q_2$, display the signal across $R_1$ using Channel 1 for reference, and the signal at the Collector of $Q_1$ using Channel 2.  You should see something like the following.  (Note the different channel settings).
+
+![Zero Crossing Detector Waveforms](images/Project02CrossingDetector.jpg)
+
+Once you have verified the amplitude and timing of the zero-crossing detector signal, ask your instructor to give you a grade out of one mark; record your grade here.  If your instructor isn't available, attach a picture of your oscilloscope screen here. \_\_\_\_\_\_\_\_\_\_
+
+### Constant Current Source Ramp Generator
+
+You've been told numerous times that transistors are practically ideal current sources.  This part of the circuit uses a transistor as an ideal current source to charge a capacitor.  You've also been told that, when charged by a constant current, a capacitor's voltage will increase linearly over time according to the formula $V_C=\frac{It_c}{C}$.
+
+In our circuit, $Q_2$ will short capacitor $C_3$ to ground each time the incoming AC voltage nears zero.  Theoretically, from the time between zero-crossings of the input signal, what is the charging time $t_c$ in the formula above?  \_\_\_\_\_\_\_\_\_\_ $ms$.
+
+$Q_3$, the transistor acting as a constant current source, is in a *Voltage Divider Bias* configuration, following the design requirements for a "good" circuit that were provided in your Semiconductors course.  As such, its current should be reliably predictable regardless of the characteristics of the transistor.  To determine the current, start by determining the Base voltage ($V_b$) from the voltage divider.  The Emitter is at a potential $V_{be} = 0.7 V$ higher than the Base.  From that, you should be able to determine the current through $R_6$: \_\_\_\_\_\_\_\_\_\_ $μA$.
+
+From this, you should be able to determine the maximum voltage expected across $C_3$ between zero-crossing events (it gets discharged to zero at each of these): \_\_\_\_\_\_\_\_\_\_ $V$.
+
+Now, install the following:
+
+- $Q_2$ and $Q_3$
+- $R_4$ through $R_6$
+- $C_3$
+
+#### Notes
+
+1.  $Q_3$ is a 2N3906 PNP transistor.  Make sure you know which pins are Emitter and Collector, both on the device and in the schematic.
+2.  In the schematic, watch out for a line crossing another line with no junction marker (dot).  Don't make connections you shouldn't make!
+ 
+#### Testing
+
+With Channel 1 still on the rectifier output for reference, use Channel 2 to display the signal across $C_3$.  You should see something like the following:
+
+![Constant Current Ramp Waveforms](images/Project02Ramp.JPG)
+
+Verify that the maximum ramp voltage matches your prediction, and that the timing is correct. 
+
+Ask your instructor to grade your work out of one mark, and record the grade assigned below.  If your instructor isn't available, attach a picture of your oscilloscope screen here.  \_\_\_\_\_\_\_\_\_\_
+
+
+
+
