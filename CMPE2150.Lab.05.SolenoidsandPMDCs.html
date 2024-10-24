@@ -3123,9 +3123,14 @@ window.Quarto = {
   <li><a href="#build-and-test" id="toc-build-and-test" class="nav-link" data-scroll-target="#build-and-test">Build and Test</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   </ul></li>
-  <li><a href="#permanent-magnet-dc-pmdc-motor" id="toc-permanent-magnet-dc-pmdc-motor" class="nav-link" data-scroll-target="#permanent-magnet-dc-pmdc-motor">Permanent Magnet DC (PMDC) Motor</a></li>
+  <li><a href="#permanent-magnet-dc-pmdc-motor" id="toc-permanent-magnet-dc-pmdc-motor" class="nav-link" data-scroll-target="#permanent-magnet-dc-pmdc-motor">Permanent Magnet DC (PMDC) Motor</a>
+  <ul class="collapse">
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
+  <li><a href="#circuit-investigation" id="toc-circuit-investigation" class="nav-link" data-scroll-target="#circuit-investigation">Circuit Investigation</a></li>
+  <li><a href="#speed-control-using-pwm" id="toc-speed-control-using-pwm" class="nav-link" data-scroll-target="#speed-control-using-pwm">Speed Control using PWM</a></li>
+  </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="CMPE2150.Lab.05.SolenoidsandPMDCs.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="CMPE2150.Lab.05.SolenoidsandPMDCs.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="CMPE2150.Lab.05.SolenoidsandPMDCs.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
 </div>
 <main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
 
@@ -3139,7 +3144,7 @@ window.Quarto = {
 <p>From an electrical perspective, solenoids have similar characteristics to the coil of an electromechanical relay. When a solenoid is energized with an appropriate voltage, the resulting current creates a magnetic field that moves a metal plunger, thereby doing mechanical work. The plunger works against the force of a spring, so it returns to the normal position when current is not flowing.</p>
 <p>Although the data sheet for the solenoid in your kit is not available, some tests and research were done to discover the following specifications:</p>
 <ul>
-<li><p>Operating Voltage: <span class="math inline">\(12 VDC\)</span></p></li>
+<li><p>Operating Voltage: <span class="math inline">\(12 V_{DC}\)</span></p></li>
 <li><p>Resistance: <span class="math inline">\(55 Ω\)</span></p></li>
 <li><p>Maximum temperature rise: <span class="math inline">\(65°C\)</span> If operated with a duty cycle of <span class="math inline">\(50\%\)</span> at a relatively low frequency (i.e. <span class="math inline">\(500 mHz\)</span>), the solenoid does not appear to undergo significant temperature rise, but it is only rated for <span class="math inline">\(65°C\)</span> maximum internal temperature which should not be exceeded.</p></li>
 </ul>
@@ -3185,17 +3190,115 @@ window.Quarto = {
 <section id="permanent-magnet-dc-pmdc-motor" class="level2">
 <h2 class="anchored" data-anchor-id="permanent-magnet-dc-pmdc-motor">Permanent Magnet DC (PMDC) Motor</h2>
 <p>For this project, we want to design and build a motor control circuit that does the following:</p>
-<p>Uses a +6 VDC battery pack to power a PMDC motor Uses an H-Bridge to establish forward/reverse/stopped conditions using 5 V TTL logic levels Controls motor speed using Pulse Width Modulation (PWM) For a subsequent project, we’ll program a microcontroller kit to control the motor while monitoring its speed of rotation and completing a simple control loop; however, for this project we will use a logic level generator and signal generator, such as the Analog Discovery 2, to establish control.</p>
-<p>This link provides the information for the PMDC motor in your CNT Year 2 kit.</p>
-<p>This link provides information on the 293D H-Bridge IC in your CNT Year 2 Kit. Note that we’re using the L293D, not the L293. The L293D has internal protection diodes, so you don’t need to add any external protection diodes as you would need to do with the L293.</p>
+<p>Uses a <span class="math inline">\(+6 V_{DC}\)</span> battery pack to power a PMDC motor Uses an H-Bridge to establish forward/reverse/stopped conditions using <span class="math inline">\(5 V\)</span> TTL logic levels Controls motor speed using Pulse Width Modulation (PWM). For a subsequent Project, we’ll program a microcontroller to control the motor while monitoring its speed of rotation and completing a simple control loop; however, for this project we will use a logic level generator and signal generator, such as the Analog Discovery 2, to establish control.</p>
+<p>Review the <a href="https://www.pololu.com/product/4797">information for the PMDC motor</a> in your CNT Year 2 kit.</p>
+<p>You will also need information on the <a href="https://www.pololu.com/product/4797">293D H-Bridge IC</a> in your CNT Year 2 Kit. Note that we’re using the L293D, not the L293. <em>The L293D has internal protection diodes, so you don’t need to add any external protection diodes as you would need to do with the L293.</em></p>
 <p>The L293D contains four half-bridges. We only need one full H-Bridge, so we’ll use two of the half-bridges. For consistency, let’s use Pins 1 through 7.</p>
 <p>The L293D requires two power sources:</p>
-<p>VCC1 needs to be +5 VDC for the internal logic circuitry VCC2 is the high-current +6 VDC circuit needed to drive the motor The two power sources need to share a common ground, and share that with the logic controller, as well In the manufacturer’s data sheet for the L293D, locate Table 3: Bidirectional DC Motor Control (and ignore the typo in the title!) Note that there are two different “Motor stop” modes, which we will investigate below:</p>
-<p>Fast motor stop Free-running motor stop In order to exercise full control over the motor, according to this table, we will need three logic control lines:</p>
-<p>1A 2A Enable Schematic (out of five marks)</p>
-<p>Draw a suitable schematic to help you with building your circuit. Here are some notes.</p>
-<p>The motor is powered through the WHITE and RED wires – with RED connected to positive and WHITE as the return, the motor should turn clockwise when activated. (The other four wires are for the encoder, which we will revisit later.) Multisim doesn’t have the L293D H-bridge in its library. You can create a reasonable facsimile using a “rectangle” and some wires to look like a component (with appropriate labelling), or you could build up the guts of the L293D using enabled buffers (e.g. 74126) and 1N4005 diodes. If you do this, you might be able to get a simplistic simulation to run. Just make sure you use DGND and VCC symbols for the logic side, as those will be connected to the hidden power pins in the logic device symbols. The motors available in the Multisim library are also not suited to our design. You can make a model of the motor using a 20 Ω resistance in series with a 1 mH inductor, and draw a box around it, properly labelled to represent the motor part number. Indicate your connections to the Analog Discovery 2 (or other logic controller) each using an “Input connector”, appropriately labelled to indicate which of the AD2 outputs you’ve chosen for each control line. Also show a connection for the Common Ground between your circuit and the off-page logic controller. Make 1A and 2A both logic outputs Use Waveform Generator 1 for the Enable, as that will prepare you for both the first and second parts of the circuit build. If you want to try a simulation, use an “INTERACTIVE_DIGITAL_CONSTANT” for each logic input.</p>
-<p>Your instructor will grade your schematic out of five marks. If your work is graded in class, indicate the grade awarded below; otherwise, upload a screen capture of your schematic here.</p>
+<ol type="1">
+<li><p><span class="math inline">\(V_{CC1}\)</span> needs to be <span class="math inline">\(+5 V_{DC}\)</span> for the internal logic circuitry</p></li>
+<li><p><span class="math inline">\(V_{CC2}\)</span> is the high-current <span class="math inline">\(+6 V_{DC}\)</span> circuit needed to drive the motor</p></li>
+<li><p>The two power sources need to share a common ground, and share that with the logic controller, as wel.</p></li>
+</ol>
+<p>In the manufacturer’s data sheet for the L293D, locate T<em>able 3: Bidirectional DC Motor Control</em> (and ignore the typo in the title!) Note that there are two different “Motor stop” modes, which we will investigate below:</p>
+<ol type="1">
+<li><p>Fast motor stop</p></li>
+<li><p>Free-running motor stop</p></li>
+</ol>
+<p>In order to exercise full control over the motor, according to this table, we will need three logic control lines:</p>
+<ul>
+<li><p>1A</p></li>
+<li><p>2A</p></li>
+<li><p>Enable</p></li>
+</ul>
+<section id="schematic" class="level3">
+<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<p>Draw a suitable schematic to help you with building your circuit. Here are some notes:</p>
+<ul>
+<li><p>The motor is powered through the WHITE and RED wires – with RED connected to positive and WHITE as the return, the motor should turn clockwise when activated. (The other four wires are for the encoder, which we will revisit later.)</p></li>
+<li><p>Multisim doesn’t have the L293D H-bridge in its library. You can create a reasonable facsimile using a “rectangle” and some wires to look like a component (with appropriate labeling), or you could build up the guts of the L293D using enabled buffers (e.g. 74126) and 1N4005 diodes. If you do this, you might be able to get a simplistic simulation to run. Just make sure you use <span class="math inline">\(DGND\)</span> and <span class="math inline">\(V_{CC}\)</span> symbols for the logic side, as those will be connected to the hidden power pins in the logic device symbols.</p></li>
+<li><p>The motors available in the Multisim library are also not suited to our design. You can make a model of the motor using a <span class="math inline">\(20 Ω\)</span> resistance in series with a <span class="math inline">\(1 mH\)</span> inductor, and draw a box around it, properly labelled to represent the motor part number.</p></li>
+<li><p>Indicate your connections to the Analog Discovery 2 (or other logic controller) each using an “Input connector”, appropriately labelled to indicate which of the AD2 outputs you’ve chosen for each control line. Also show a connection for the Common Ground between your circuit and the off-page logic controller.</p>
+<ul>
+<li><p>Make 1A and 2A both logic outputs</p></li>
+<li><p>Use Waveform Generator 1 for the Enable, as that will prepare you for both the first and second parts of the circuit build. If you want to try a simulation, use an “INTERACTIVE_DIGITAL_CONSTANT” for each logic input.</p></li>
+</ul></li>
+</ul>
+<p>Your instructor will grade your schematic out of five marks. If your work is graded in class, indicate the grade awarded below; otherwise, attach your schematic here. __________</p>
+</section>
+<section id="circuit-investigation" class="level3">
+<h3 class="anchored" data-anchor-id="circuit-investigation">Circuit Investigation</h3>
+<p>Start with the Enable set to <span class="math inline">\(5 V\)</span> (high), so that to begin with motor control will be strictly dependent upon the logic pins activating the two half-bridges.</p>
+<p>Complete the last column of the following table by selecting the appropriate descriptions (Off, Forward, or Reverse):</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>1A</th>
+<th>2A</th>
+<th>Motor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>L</td>
+<td>L</td>
+<td>__________</td>
+</tr>
+<tr class="even">
+<td>L</td>
+<td>H</td>
+<td>Forward</td>
+</tr>
+<tr class="odd">
+<td>H</td>
+<td>L</td>
+<td>__________</td>
+</tr>
+<tr class="even">
+<td>h</td>
+<td>H</td>
+<td>__________</td>
+</tr>
+</tbody>
+</table>
+<p>Now, modify the “Enable” to run as a very slow unipolar pulse—HIGH = <span class="math inline">\(5 V\)</span>, LOW = <span class="math inline">\(0 V\)</span>, frequency = <span class="math inline">\(0.2 Hz\)</span>. Pay attention to how the motor stops when the Enable goes LOW, and compare that to how the motor stops under control of inputs 1A and 2A. Describe your observations by selecting <em>two</em> of the following statements:</p>
+<ul class="task-list">
+<li><p><label><input type="checkbox">Enable stops the motor slowly.</label></p></li>
+<li><p><label><input type="checkbox">Enable stops the motor instantly.</label></p></li>
+<li><p><label><input type="checkbox">H-Bridge logic stops the motor slowly.</label></p></li>
+<li><p><label><input type="checkbox">H-Bridge logic stops the motor instantly.</label></p></li>
+</ul>
+</section>
+<section id="speed-control-using-pwm" class="level3">
+<h3 class="anchored" data-anchor-id="speed-control-using-pwm">Speed Control using PWM</h3>
+<p>The speed of a PMDC motor is largely dependent upon the amount of energy supplied to the motor—-more energy results in higher speed.</p>
+<p>In the previous investigation, you simply controlled the presence or absence of energy, resulting in either full speed in either direction or stopped.</p>
+<p>The amount of energy supplied to the motor can be controlled in two ways:</p>
+<ul>
+<li><p>Reduce the DC voltage (and therefore the current) applied to the motor.</p></li>
+<li><p>Reduce the effective average voltage applied to the motor by turning the power supplied to the motor on and off at a rate higher than what the motor can immediately respond to.</p></li>
+</ul>
+<p>This last technique is referred to as pulse width modulation (PWM).</p>
+<p>For a repetitive pulse, the effective average voltage is directly related to the duty cycle, or the percentage of time that the signal is active to the period of the signal:</p>
+<p><span class="math display">\[d=\frac{t}{τ}⋅100\%\]</span></p>
+<p>For a <span class="math inline">\(0\)</span> to <span class="math inline">\(5 V\)</span> unipolar pulse, if the duty cycle is <span class="math inline">\(0\)</span>, the signal spends all of its time at <span class="math inline">\(0 V\)</span>, so the motor will be OFF. if the duty cycle is at <span class="math inline">\(100\%\)</span>, the signal spends all of its time at <span class="math inline">\(5 V\)</span>, so the motor will be ON at full speed. As the duty cycle increases, so should the motor speed.</p>
+<p>In Waveforms or the controls for whatever you are using for the Enable line, set up a unipolar pulse (<span class="math inline">\(0 V\)</span> to <span class="math inline">\(5 V\)</span>) with the frequency set to <span class="math inline">\(10 kHz\)</span>. (Documentation indicates that a suitable frequency for most PMDC motors would be between <span class="math inline">\(5 kHz\)</span> and <span class="math inline">\(20 kHz\)</span>; if you can hear the “chopping” frequency in the motor’s rotation, increase it to a point where it is outside your audible range.)</p>
+<p>If you are using the AD2, select the “Basic” controls instead of the usual “Simple” controls so that you can adjust the duty cycle (called “Symmetry” in Waveforms) with a slider.</p>
+<p>Once you are satisfied that your system can control the speed of rotation through the full range for both forward and reverse, ask your instructor to grade your work out of five marks. Record the assigned grade below. If your instructor is not available, attach a video demonstrating full range motion in both directions of rotation. __________</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If possible, save this circuit and control system setup, as you will be using it again for a subsequent Self Assessment and the final motor-related Project.</p>
+</div>
+</div>
+</section>
 </section>
 
 </main>
