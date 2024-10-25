@@ -1,0 +1,158 @@
+---
+title: "CMPE2150 Notes 06"
+subtitle: "Heat Management"
+author: "Taylor, Moore, and Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+bibliography: references.bib
+biblio-style: ieee
+csl: ieee.csl
+format:
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid:
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry:
+      - top=30mm
+      - bottom=30mm
+      - left=15mm
+      - right=80mm
+      - marginparwidth=60mm
+      - marginparsep=10mm
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \usepackage{titling}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 Notes 06}
+        \fancyhead[R]{Heat Management}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+        \setlength{\droptitle}{-2cm}
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-align: default
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+fig-env: "figure"
+keep-tex: true
+---
+
+## Calculating Heat Sink Cooling Requirments
+
+Integrated circuits generate heat as they operate. This heat may damage or destroy the IC itself, or it may affect surrounding circuitry, plastic enclosures, and/or people that may interact with the circuitry. Texas Instruments' [Understanding Thermal Dissipation](https://www.ti.com/lit/an/slva462/slva462.pdf) technical report[@SLVA462] is a good introduction to the calculations. It's important to do an analysis to determine:
+
+-   if the heat can be adequately removed from the IC,
+
+-   if the operating temperature can be tolerated by items or people in the vicinity,
+
+-   if a heatsink is needed,
+
+-   if a heatsink is needed, what its characteristics should be.
+
+For heat analysis, manufacturers provide various thermal resistance values (often called "theta" ($\theta$ or $R\theta$), using the unit $\frac{{^\circ}C}{W}$. Just like regular resistance, these resistances can be added together in a "series" path to determine the total thermal resistance, or any missing part of the total thermal resistance can be determined by subtraction.The thermal resistances that we need to consider are:
+
+-   $θ_{JC}$---the resistance between the junction (i.e. the actual silicon) and the case of the IC.
+
+-   $θ_{CA}$---the resistance between the case and ambient air (this is only used if there is no heatsink installed).
+
+-   $θ_{CS}$---the resistance between the case and the heatsink.
+
+-   $θ_{SA}$---the resistance between the heatsink and ambient air.
+
+The resistance values given for case to air or for heatsink to air are also affected by air movement: more heat is removed when air movement is forced by a fan than when the air only moves due to natural convection. In this course, we will only work with natural convection. If you need to use a fan for an application of your own, you will need to do some more research. Typically, graphs will be provided for components that are candidates for fan cooling.
+
+### Example
+
+A particular power transistor has a $V_{CEon}$ maximum value of $1.6 V$. Its $θ_{JC}$ is $1.2 {^\circ}C/W$, and it is housed in a TO220 package that has an $θ_{CA}$ of $60.0 {^\circ}C/W$ and an $θ_{CS}$ of $0.5 {^\circ}C/W$ when thermal transfer grease is used.
+
+1.  If the continuous current handled by this transistor could be as high as $3.2 A$, how much power does it dissipate? \_\_\_\_\_\_\_\_\_\_ $W$
+
+2.  With no heatsink installed, and with an ambient temperature of $30 V$, what would the junction temperature be? \_\_\_\_\_\_\_\_\_\_ $^\circ C$
+
+Most ICs cannot operate reliably at temperatures above $125^\circ C$, so clearly this IC will need a heatsink. It is theoretically possible to run the IC temperature up to the maximum allowed, but that's well above the boiling point of water, so we usually aim for a much lower operating temperature.
+
+3.  Let's assume that a heatsink temperature of $50^\circ C$ will be relatively safe for operation.What would the case temperature be? \_\_\_\_\_\_\_\_\_\_ $^\circ C$
+
+4.  What would the junction temperature be? \_\_\_\_\_\_\_\_\_\_ $^\circ C$
+
+This is well below the maximum junction temperature for the IC.
+
+5.  What would be the maximum $θ_{SA}$ for a heatsink at $50^\circ C$ for this device, if the ambient temperature is $30^\circ C$? \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$
+
+6.  Using a heatsink with the maximum $θ_{SA}$, what would be the total thermal resistance, $θ_{JA}$? \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$
+
+7.  As a double-check, what would the junction temperature be, if the ambient temperature was $30^\circ C$? \_\_\_\_\_\_\_\_\_ $^\circ C$
+
+Using Digikey, locate a heat sink for a TO220 pack with a thermal resistance slightly below the calculated value. (Something like 533602B02500G)
+
+## Using Copper Planes for Printed-Circuit Device Cooling
+
+Often, components can be soldered directly to copper pours on a PCB for heat dissipation. There are a lot of parameters to consider when doing this, including putting copper pours on both sides of the PCB and connecting them together with a large number of through-hole vias, etc. More detail can be found in Texas Instruments' [AN-2020 Technical Report](https://www.ti.com/lit/an/snva419c/snva419c.pdf)[@AN2020].
+
+For our purposes, we'll do a few simplifications:
+
+A reasonable approximation of the thermal resistance of 1 ounce copper[^1], derived from values in the above, can be arrived at using
+
+[^1]: 1 oz Copper is an industry term for the standard copper thickness on a single plane of a printed circuit board (PCB). In this context, it does not literally mean a weight of one ounce, but a commonly used thickness.
+
+$$θ_{SA} = -11 \ln(A) +6$$ {#eq-A}
+
+Where the area, $A$, is in square centimetres ($cm^2$).
+
+8.  What is the approximate thermal resistance of a copper pour of $2 cm \times 3 cm$? \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$
+
+Since this is logarithmic, increasing the copper area results in diminishing returns. Typically, it makes no sense to make a copper pour bigger than about $100 cm^2$.
+
+9.  What is the thermal resistance of $100 cm^2$ of 1 oz copper? \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$
+
+### Example
+
+The thermal resistance of typical PCB material is about $13^\circ C/W$. What is the overall thermal resistance of two overlapping copper planes of $100 cm^2$?
+
+10. Start with a simplified model that shows the thermal resistance of the two copper layers connected at each end by thermal resistances of the PCB material. Solve for the Thevenin equivalent circuit, looking down from the top: \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$
+
+11. If the thermal resistance of the PCB was reduced to practically zero using closely-spaced vias, what would the thermal resistance of the two copper pours be? \_\_\_\_\_\_\_\_\_\_ $^\circ C/W$
+
+12. For a temperature difference of $50^\circ C$, how much power could be dissipated by the two copper pours connected by closely spaced vias? \_\_\_\_\_\_\_\_\_\_ $W$
+
+{{< pagebreak >}}
+
+::: border
+## Answers
+:::
+
+1.  5.12
+
+2.  356
+
+3.  52.6
+
+4.  58.7
+
+5.  3.9
+
+6.  5.6
+
+7.  58.7
+
+8.  43.3
+
+9.  12.3
+
+10. 9.31
+
+11. 6.15
+
+12. 8.13
