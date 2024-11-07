@@ -6,3 +6,7 @@
   padding-left: 10px;
   background-origin: content-box;
 }
+
+pre code {
+  font-size: 0.8em;
+}
