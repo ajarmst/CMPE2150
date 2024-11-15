@@ -112,7 +112,7 @@ The motor in your kit is a hobbyist Unipolar Stepper motor with the centre taps 
 
 Here's the motor itself:
 
-![28BYJ Unipolar Stepper](images/stepperunipolar3.png){width="500"}
+![28BYJ Unipolar Stepper](images/stepperunipolar3.png){width="400"}
 
 Note that there are five wires, as would be expected for a Unipolar Stepper motor. The simplified wiring diagram shows how these are connected internally.
 
@@ -134,11 +134,11 @@ What percent error in motion would be introduced using the rounded value from th
 
 The driver board that comes with your Unipolar Stepper motor really just contains a single IC which is the inverting seven-driver ULN2003A, along with connectors and some LEDs because everyone loves flashing lights. (Only four of the seven drivers are actually used, one for each half-coil or "phase".)
 
-From a Logic perspective, the ULN2003A looks like this:
+From a Logic perspective, the ULN2003A looks like the figure below.
 
 ![ULN2003A Driver Chip](images/ULN2003A.png){width="300"}
 
-In reality, it's really seven Darlington Pair BJTs. Here's one channel:
+In reality, it's really seven Darlington Pair BJTs, also included in a figure below.
 
 ![ULN2003A Darlington Pair Driver Channel](images/ULN2003AChannel.png){width="400"}
 
@@ -154,7 +154,7 @@ It should, at this point, be fairly clear that, to drive a Stepper motor, a logi
 
 #### Wave Stepping
 
-What we've been alluding to in the introductory discussion is a mode in which the motor moves from coil to coil as each one is activated independently of other coils. Although the motor performs a full step in this mode, the term "Full Stepping" is reserved for a better mode of activation than Wave Stepping. However, Wave Stepping is the easiest to explain and visualize, so it's a good starting point from an educational perspective. Here's the sequence:
+What we've been alluding to in the introductory discussion is a mode in which the motor moves from coil to coil as each one is activated independently of other coils. Although the motor performs a full step in this mode, the term "Full Stepping" is reserved for a better mode of activation than Wave Stepping. However, Wave Stepping is the easiest to explain and visualize, so it's a good starting point from an educational perspective. The sequence is diagrammed below.
 
 ![Wave Stepping Control Sequence](images/stepperwave.png){width="450"}
 
@@ -180,31 +180,109 @@ To drive the motor backward, starting with the highest numeric value, the logic 
 
 The Wave Stepping sequence generates the least torque of all the sequences, because only one coil is activated at a time.
 
+{{< pagebreak >}}
+
 #### Full Stepping
 
 Full-Stepping again moves the motor by a full step each time, although it has a slightly different starting position that Wave Stepping. The advantage of Full-Stepping over Wave Stepping is the torque: Full-Stepping activates two coils at the same time, with the armature positioned half-way between the two, so the torque is increased by a factor of $\sqrt{2}$ , or approximately $1.41$ times that of the Wave Stepping sequence.
+
+![Full Stepping Control Sequence](images/stepperfull.png){width="450"}
 
 Check to see if you can interpret this sequence correctly.
 
 Starting with the "top" and "right" coils, write the sequence for driving the motor forward:
 
-Answer 1
+1.  \_\_\_\_\_\_\_\_\_\_
 
-Answer 2
+2.  \_\_\_\_\_\_\_\_\_\_
 
-Answer 3
+3.  \_\_\_\_\_\_\_\_\_\_
 
-Answer 4
+4.  \_\_\_\_\_\_\_\_\_\_
 
 Starting with the "top" and "left" coils, write the sequence for driving the motor in reverse:
 
-Answer 5
+1.  \_\_\_\_\_\_\_\_\_\_
 
-Answer 6
+2.  \_\_\_\_\_\_\_\_\_\_
 
-Answer 7
+3.  \_\_\_\_\_\_\_\_\_\_
 
-Answer 8
+4.  \_\_\_\_\_\_\_\_\_\_
+
+#### Half Stepping
+
+A third mode of operation combines the Wave Stepping and Full Stepping sequences to produce twice as many steps per rotation, and is therefore called Half Stepping. The resolution of Half Stepping is double the resolution of either of the previous two modes, and the torque is part way between that of Wave Stepping and Full Stepping.
+
+![Half Stepping Control Sequence](images/stepperhalf.png){width="450"}
+
+For your Unipolar Stepper motor, what is the Half Stepping resolution at the motor itself, in degrees per step? \_\_\_\_\_\_\_\_\_\_ $^\circ/step$
+
+What is the resolution at the output shaft, using the actual gearing ratios? \_\_\_\_\_\_\_\_\_\_ $^\circ/step$
+
+Indicate the Half Stepping sequence for forward rotation, starting with just the "top" coil activated.
+
+1.  \_\_\_\_\_\_\_\_\_\_
+
+2.  \_\_\_\_\_\_\_\_\_\_
+
+3.  \_\_\_\_\_\_\_\_\_\_
+
+4.  \_\_\_\_\_\_\_\_\_\_
+
+5.  \_\_\_\_\_\_\_\_\_\_
+
+6.  \_\_\_\_\_\_\_\_\_\_
+
+7.  \_\_\_\_\_\_\_\_\_\_
+
+8.  \_\_\_\_\_\_\_\_\_\_
+
+To drive the motor in reverse, you would simply reverse this sequence.
+
+{{< pagebreak >}}
+
+Which one of the following statements is correct?
+
+a.  Half Stepping has higher resolution and higher torque than Full Stepping.
+
+b.  Full Stepping has higher torque but lower resolution than Half Stepping.
+
+c.  Wave Stepping has higher torque but lower resolution than Full Stepping.
+
+d.  For greater speed of rotation, choose Half Stepping rather than Full Stepping.
+
+#### Micro Stepping
+
+We've now discovered that we can locate the armature half-way between two coils by turning them both on fully.  It should, therefore, be possible to locate the armature at other points between two coils by adjusting the power of the coils.  This process is referred to as Micro Stepping.
+
+The concept is to adjust the average current through two coils, typically so that the resultant force exerted on the armature is equivalent throughout the cycle.  The best way to do this is to apply sinusoids to the two coils, one 90^o^ out of phase with the other -- as would be seen for a sine wave and a cosine wave.
+
+![Microstepping Control Sequence](images/steppermicro.png){width="450"}
+
+Note that, at $0^\circ$, $90^\circ$, $180^\circ$, and $270^\circ$, the "logical" result is the same as Wave Stepping; however, in between, the position of the armature would vary smoothly through the positions in between the two activated coils.
+
+It's not usually practical to try to control currents truly sinusoidally.  It's much easier to create digitized approximations of sinusoids using Pulse Width Modulation.  As the duty cycle increases, the average current increases, and as the duty cycle decreases, the average current decreases.
+
+So, by varying the duty cycle from $0\%$ to $100\%$ using a sinusoidal approximation (maybe from a lookup table), it is possible to move the armature relatively smoothly between coils.
+
+The "Micro Stepping" name comes from the tiny steps generated by the difference between different digitally-generated duty cycles, which depends upon the resolution of the Pulse Width Modulator (PWM).
+
+How many micro steps could a 6-bit PWM generate as it changes the current from zero to maximum? \_\_\_\_\_\_\_\_\_\_.
+
+What is the resolution, in degrees per step, that can be generated by a 4-bit PWM, for a Unipolar Stepper with 200 full steps per revolution? \_\_\_\_\_\_\_\_\_\_ $^\circ/step$.
+
+### Notes
+
+Stepper motors have their limitations and quirks.  Here are some of them.
+
+-   The speed at which a stepper can be operated is limited by the rate at which the magnetic fields in the motor can change.  When a stepper motor is operating well within range, the motion isn't completely smooth, at the motor is attempting to stop at each new step or half-step.  As the motor approaches its maximum speed, its operation becomes smoother, but the motor will begin to miss steps and get out of sync with the driver.  At a high enough pulse rate, the motor will simply stop rotating.  Consequently, it is important to determine what the maximum speed of rotation is and stay well below that for accurate motion control.
+
+-   When loaded too heavily, a stepper motor will occasionally miss steps and get out of sync with the driver.  Again, it is important to stay below the specified loading torque for the motor.
+
+-   A stopped stepper draws just as much current as a rotating stepper, because the coils that stopped the armature will still be drawing current.  This is both good and bad -- good in that the motor will hold in the stopped position and will resist external forces on the shaft; bad, in that a stopped stepper is 0% efficient -- drawing current but performing no useful work.  This can also result in coil overheating and possible damage to the motor over time.
+
+-   It is possible to determine which leads on a stepper are connected to the same coil by shorting pairs of leads together and attempting to turn the shaft:  if the pair you've chosen are the two ends of the coil, you will generate a current and the back EMF will try to prevent you from turning the shaft; if the pair you've chosen are isolated internally, the shaft will rotate much more freely.  With a unipolar motor, you should even be able to tell the difference between the two ends of a coil and its centre tap, as half the coil will produce half the back EMF of the full coil.
 
 {{< pagebreak >}}
 
@@ -220,4 +298,20 @@ Answer 8
 -   `0001, 0010, 0100, 1000`
 
 -   `1000, 0100, 0010, 0001`
+
+-   `0011, 0110, 1100, 1001`
+
+-   `1001, 1100, 0110, 0011`
+
+-   $5.625^\circ/step$
+
+-   $0.08833^\circ/step$
+
+-   `0001, 0011, 0010, 0110, 0100, 1100, 1000, 1001`
+
+-   b\. Full Stepping has higher torque but lower resolution than Half Stepping.
+
+-   $64$
+
+-   $0.1125^\circ/step$
 :::
