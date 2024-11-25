@@ -1,0 +1,134 @@
+---
+title: "CMPE2150 SA 11"
+subtitle: "Rotary Encoders"
+author: "Taylor, Moore, and Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+format:
+  docx: 
+    toc: true
+    number-sections: true
+    highlight-style: github
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid: 
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry: 
+      - top=30mm
+      - bottom=30mm
+      - left=25mm
+      - right=70mm
+      - marginparwidth=50mm
+      - heightrounded
+    include-in-header: 
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 SA 11}
+        \fancyhead[R]{Rotary Encoders}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+    monofont: "Inconsolatazi4-Regular.otf"
+    monofontoptions: 
+      - Scale=0.8
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+---
+
+1.  Which of the following statements are correct (choose all that apply)?
+
+    a.  Gray Wheel encoders provide precise motor shaft positioning information.
+    b.  Gray Wheel encoders suffer from race conditions from multiple bits changing simultaneously.
+    c.  Quadrature encoders provide accurate rotational counts, useful for rotational velocity determination.
+    d.  Quadrature encoders cannot be used for detecting the direction of rotation of a motor shaft.
+
+2.  How many different positions can be distinguished using a three-ring Gray Wheel encoder? \_\_\_\_\_\_\_\_\_\_
+
+3.  In your CNT Year 2 Kit, you will find a tiny three-pin Hall Effect Sensor. Check the Component Listing for the CNT Year 2 Kit to find its part number, and look up the manufacturer's specification sheet. Use the picture of the device to help identify the correct pinout.
+
+    Locate the "Typical Applications" schematic, and build this circuit using a $+5 V_{DC}$ power supply and the closest standard $10\%$ resistor value to the one shown. Also include a power supply decoupling capacitor, which helps to prevent switching noise from affecting the power supply, as it supplies instantaneous current through a low-resistance path to the device while preventing a sudden change in voltage.
+
+    Use a DMM to observe the voltage at the output, and use a small magnet such as a fridge magnet, bulletin board magnet, or magnetized screwdriver to test the device.
+
+    a.  With no magnet nearby, the measured output voltage is \_\_\_\_\_\_\_\_\_\_ $V$
+
+    b.  With a magnet held in front of the Hall Effect sensor (this is the "planar" version of the sensor, not the "axial" version), the output voltage is \_\_\_\_\_\_\_\_\_\_ $V$
+
+    c.  This could be described as a magnetically-activated \_\_\_\_\_\_\_\_\_\_ (Active High or Active Low) Switch.
+
+4.  **PMDC Rotary Encoder**
+
+    Hopefully, you still have the circuit and control system from a previous exercise. If not, revisit that project and rebuild the circuit.
+
+    We'll be using the 9S12XDP512 microcontroller kit as the motor controller.
+
+    You will need to solder solid wire extensions to the four wires for the rotary encoder, which is mounted on the back end of the motor. (You should already have solid wire extensions for the *RED and WHITE* motor wires, which *should still be connected to the H-Bridge* to receive *power from the 6 V battery pack*.)
+
+    Here's the pinout for the Rotary Encoder, which is also printed on its PCB:
+
+    -   BLACK wire---provides power to the encoder---we'll use +5 VDC from the microcontroller kit
+    -   BLUE wire---ground---make this common to all other grounds in the system
+    -   GREEN wire---$C_1$ Hall Effect sensor
+    -   YELLOW wire---$C_2$ Hall Effect sensor
+
+    Connect your circuit to your microcontroller board as follows:
+
+    -   C1 to pin 9 (Timer Input Compare 0 -- you'll use this and C2 in the associated Project)
+    -   C2 to pin 18 (PortT pin 7)
+    -   "Enable" of the L293D H-Bridge to pin 109 (16-bit PWM output)
+    -   "1A" of the L293D to pin 10 (Port T pin 1)
+    -   "2A" of the L293D to pin 11 (Port T pin 2) (If you prefer, you can choose other GPIO pins for "1A" and "2A".)
+
+    Write a simple program which:
+
+    -   Sets up the 16-bit PWM channel (Channel67) to drive the Enable pin, with the following characteristics:
+        -   Channels 6 and 7 concatenated into a single 16-bit PWM channel, available on pin 109
+        -   The period is 10,000 clock cycles to allow for an easy conversion between percent duty cycle and the required PWMDTY value
+        -   The frequency is 500 Hz  (Hint: to get this speed, you'll probably need to set the prescaler exponent to 0)
+    -   The H-Bridge is fully Enabled (100% duty cycle), to let the motor run at full speed for this exercise
+    -   Pressing the "Left" pushbutton will drive the motor in reverse (clockwise as seen when looking down the shaft, not the encoder)
+    -   Pressing the "Right" pushbutton will drive the motor forward (counterclockwise)
+
+    Using two oscilloscope channels, simultaneously display $C_1$ and $C_2$, and answer the following questions:
+
+    1.  When the motor is rotating forward, which signal "leads" in phase? \_\_\_\_\_\_\_\_\_\_ ($C_1$ or $C_2$)
+    2.  When the motor is rotating in reverse, which signal "leads" in phase? \_\_\_\_\_\_\_\_\_\_ ($C_1$ or $C_2$)
+    3.  With the motor rotating forward, what is the frequency observed on the two channels, in kilohertz? \_\_\_\_\_\_\_\_\_\_ kHz
+    4.  Given the number of poles on the encoder wheel, what is the rotational velocity of the motor, in RPM? \_\_\_\_\_\_\_\_\_\_ RPM
+    5.  Given the actual gear ratio (not the approximation), what is the rotational velocity of the output shaft, in RPM? \_\_\_\_\_\_\_\_\_\_ RPM
+    6.  Count the rotations of the output shaft for sixty seconds to get the actual rotational velocity in RPM: \_\_\_\_\_\_\_\_\_\_ RPM
+
+    ***Note: Don't tear down this circuit! You will be using it and its software in the associated Project!***
+
+{{< pagebreak >}}
+
+::: border
+### Answers
+
+1.  a and c
+
+2.  8
+
+3.  $5 V$, $0 V$, Active Low
+
+4.  
+
+    1.  $C_1$
+    2.  $C_2$
+    3.  $1.3 kHz$
+    4.  $11000$ RPM
+    5.  $29$ RPM
+    6.  $29$ RPM
+:::
