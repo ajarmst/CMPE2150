@@ -1,0 +1,110 @@
+---
+title: "CMPE2150 Notes 11"
+subtitle: "PCB Design"
+author: "Taylor, Moore, and Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+bibliography: references.bib
+biblio-style: ieee
+csl: ieee.csl
+format:
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid:
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry:
+      - top=30mm
+      - bottom=30mm
+      - left=15mm
+      - right=80mm
+      - marginparwidth=60mm
+      - marginparsep=10mm
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \usepackage{titling}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 Notes 11}
+        \fancyhead[R]{PCB Design}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+        \setlength{\droptitle}{-2cm}
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-align: default
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+fig-env: "figure"
+keep-tex: true
+---
+
+### History of Schematics and Printed Circuit Board Layout
+
+Schematics used to be hand-drawn representations of electrical circuits, and, as such, were "passive" documents with no transferable electrical information that could be used in simulating circuits or building printed circuit boards.  Designers were solely responsible for the correctness of their schematics.  They then needed to test their work in a prototyping environment, such as a breadboard or perforated soldering board, because simulation wasn't an option.  Once the design was finalized, they would use opaque tape on layers of clear plastic or Mylar that would be used in a photographic process as the first step in creating the copper layers in a printed circuit board (more on that later).  Of course, the results were only as good as the designer's skills, concentration to detail, and tenacity.
+
+To begin with, there were few standards for drawing schematic circuits, leading to confusion and errors.  Standards organizations, particularly IEEE, developed sets of rules for how schematics should be drawn and what components should look like.  For example, IEEE specifies that a resistor should be drawn with exactly three points on each side of the symbol, and all lines on a schematic should be orthogonal -- up/down and left/right only.
+
+### Current Methods
+
+With the advent of computers, *Computer-Aided Design* (CAD) and *Computer-Aided Manufacturing* (CAM), commonly known as CAD/CAM, became available, and much of what was previously subject to human error could now be addressed.
+
+Schematic Capture software now provides the designer with much more than a passive drawing environment:
+
+-   Net Lists are maintained, which group all the component pins that are connected together in each electrical node in the circuit.
+
+-   Nets may be named for easier identification (e.g. VCC, GND, Vin, Vout).  Net names must be unique—it isn't possible to have two nets with the same name in a schematic, as they will be considered a single net by the software.
+
+-   Nets may be "hidden".  For example, when you place a NAND gate in a Multisim circuit, you don't have to indicate that it is connected to VCC and GND -- those assignments have been made using net names in the model of the component.
+
+-   Power and ground symbols can be used rather than drawing lines between all pins connected to each power source or ground.
+
+-   On-page and between-page connectors can be placed to make other net connections without physically drawing lines between component pins.
+
+-   Pins on components may be defined electrically as Input, Output, Passive, Open Collector, Power, Tristate, etc.
+
+-   Design Rules are either inherent or can be specified by the designer to prevent a designer from making errors.  For example, an inherent design rule will flag two output pins being connected together, as that would result in an electrical fault; or connecting power to ground.  Any of a number of similar errors that would render a design unworkable, so Design Rule checking flags these for the designer to correct.
+
+-   Components may have their electrical characteristics entered into a SPICE model which can then be used for simulating the circuit, reducing the need for prototyping.  Of course, the simulation is only as good as the models behind the components.
+
+-   Components will usually be tied to printed circuit board footprints, so that the output data from a schematic can be brought directly into a printed circuit board layout package with the right footprints.
+
+-   The correct connections are also brought into the PCB software in the form of a "rat's nest" of lines indicating which pins are connected together in each net.
+
+-   Libraries of components can be created or are available from software manufacturers. These libraries may be added to or modified by the designer to meet specific needs.
+
+### **Documentation**
+
+Since the schematic is the foundation of any electrical design, it is important that it be:
+
+-   correct, both electrically and in terms of the items transferred to the PCB software (component footprints, in particular)
+
+-   complete (no missing or assumed parts or connections)
+
+-   an exact representation of the circuit on the PCB -- no electrical connectivity  or component changes should be made to the PCB that are not contained in the schematic
+
+-   clear and easy to interpret
+
+-   useful as a troubleshooting tool
+
+-   maintained using a revision tracking system
+
+-   clearly marked with the names of the companies and people involved in the design----originator, draftsperson, approver, etc.
+
+**Details**
+
+Unlike many of our previous topics, Schematic Capture and PCB design is best investigated with a hands-on exploration of the tools with worked examples, and that is the approach we will follow. You will start with a schematic that we will provide, transfer and capture it into KiCAD, adding the information about components that is needed by the PCB editor, use that editor to design a printed circuit board that realizes the schematic, and then prepare all the files that you would need to send to a manufacturer to actually produce your board. We'll leave the actual manufacture of the board to a later course, but you will go through the entire process up to actually shipping the order in this one.
+
+In the references section of this unit, you will find the manuals for KiCad and a few online references on PCB development that you can use to expand your knowledge.
+
+In the first self-assessment, you will follow through a tutorial introducing the major tools and interfaces in KiCad, which is a powerful (and free!) tool for schematic capture and PCB design.
