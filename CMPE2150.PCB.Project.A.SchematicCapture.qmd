@@ -1,0 +1,62 @@
+---
+title: "CMPE2150 PCB Project A"
+subtitle: "Schematic Capture"
+author: "AJ Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+bibliography: references.bib
+biblio-style: ieee
+csl: ieee.csl
+format:
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid:
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry:
+      - top=30mm
+      - bottom=30mm
+      - left=15mm
+      - right=80mm
+      - marginparwidth=60mm
+      - marginparsep=10mm
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \usepackage{titling}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 PCB Project A}
+        \fancyhead[R]{Schematic Capture}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+        \setlength{\droptitle}{-2cm}
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-align: default
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+fig-env: "figure"
+keep-tex: true
+---
+
+::: callout-important
+You should already have completed an exercise introducing and exploring KiCAD 8.0. This exercise assumes you are already familiar with the tools and interfaces of KiCAD and that you have completed a simple introductory project. If you have not done so, please complete the KiCAD introductory tutorial before proceeding with this lab assignment. On the course LMS, you should find KiCAD manuals and other guides. This document assumes you have access to those and does not go into great detail on the specifics of basic actions and functions in the application.
+:::
+
+### Schematic Capture
+
+You are already quite familiar with schematic capture and simulation using the *NI Multisim* application used in our Electronics courses. Multisim is integrated with a PCB design package called *Ultiboard*, which students in this program have used in the past. Unfortunately, Ultiboard has an old-fashioned and perhaps overly-complicated interface, and is not commonly used in the industry. If you find yourself working with PCB design in industry, it is more likely you will work with *Altium*, *Autodesk Eagle*, or *OrCAD*. It is also increasingly likely to see the open source *KiCAD*, especially in smaller organizations unable to invest in enterprise-class products. We have selected KiCAD because it is cheap, well-maintained and multi-platform.
+
+The reason that we have not similarly moved to KiCAD from Multisim for our electronics classes is that Multisim has a very powerful and intuitive simulation feature, which is very useful for students, especially in their first year or so of studies. KiCad also supports simulation using SPICE[^1], an industry-standard platform for electronic simulation, but it is not particularly novice-friendly. More information can be found at
+
+[^1]: Simulation Program with Integrated Circuit Emphasis
