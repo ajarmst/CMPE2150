@@ -42,6 +42,7 @@ citation-location: margin
 cap-location: margin
 fig-align: default
 fig-cap-location: margin
+footnotes-hover: true
 css: content.css
 editor: visual
 title-block-banner: "#002d74"
@@ -81,10 +82,46 @@ Some significant features and changes from your earlier circuit include:
 
 1.  Obviously, the outer AC circuit driving the bulb, the bulb itself, and the TRIAC connecting the two parts of the circuit have been removed, leaving the inner PWM generation circuit.
 
-2.  The power source has been changed to $12V$, as we no longer need to drive a halogen bulb, and it drops the input voltage down to a range appropriate for the simpler LM7805 regulator.
+2.  The power source has been changed to $12V$, as we no longer need to drive a halogen bulb, and it drops the input voltage down to a range appropriate for the simpler LM7805 regulator ($U_1$) .
 
 3.  A power indicator LED has been added ($LED_1$). Note that it turns on or off depending on if the switch $S_1$ is toggled in the simulation.
 
 4.  The potentiometer ($R_9$) has been changed to $5K\Omega$, to make the range of PWM values output more smooth and linear.
 
 5.  Some output pins have been added.
+
+### Part 1 - KiCAD Project Setup
+
+Follow the procedure below—nearly identical to the detailed one presented in the tutorial—to create your project to realize the schematic above.
+
+::: callout-note
+It is strongly recommended that you create your KiCAD project in a Github repository to track your progress, keep a backup, and foster working in multiple locations. You should find KiCAD 8.0 installed on all CNT computers.
+:::
+
+1.  Create and checkout a Github repository using whatever tool you ordinarily use, like *Github Desktop*. Remember to regularly check in your work and use *Pull* and *Push* at the beginning and end of work sessions to ensure your work is tracked and backed up. Your proof-of-work is a detailed Github history.
+
+2.  Open KiCAD 8.0 and select *File → New Project*. Name your project "PWMGenerator-*\<UserID\>*", replacing *\<UserID\>* with your NAIT username. You do not need to create a new folder if you already did so for the Github project. Then click *Save*.
+
+3.  If you have not already done so, set up the automatic project backups to your preferences. Note that it is usually unnecessary to push backups to Github, but they are nice to have for local faults and emergency recovery.
+
+4.  If you haven't already done so, setup the Symbol Library to use the recommended option of copying the default global symbol library table.
+
+5.  For settings not mentioned above, select the defaults or use your own judgement.
+
+### Part 2 - Schematic Sheet Setup
+
+Now, open the *Schematic Editor* and perform the following procedure:
+
+1.  Select *File → Page Settings* to open the sheet setup.
+
+2.  Choose a size of *8.5 x 11in* with *Landscape* orientation. Set the revision to 0. Use today's date. You'll only need one sheet. Add a title of "CMPE2150 PWM Generator - *\<UserID\>*[^5]". Use "NAIT CNT" as your Company. Add your full name to the first comment. Save your work and confirm that the Title Block looks correct.[^6]
+
+    ::: callout-note
+    Get in the habit of incrementing the revision number every time you do a check in of a new major feature or significant update or fix. This author uses a scheme where the major revision is incremented for such significant updates, and minor revisions are incremented each *Push* to Github. Thus, Rev. 2.3 would be the third push since the second major revision.
+    :::
+
+3.  
+
+[^5]: *Mutatis mutandis*
+
+[^6]: Now would be a good time to check in your work to GitHub.

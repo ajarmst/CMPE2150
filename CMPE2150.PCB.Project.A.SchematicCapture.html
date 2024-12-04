@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="AJ Armstrong">
-<meta name="dcterms.date" content="2024-12-02">
+<meta name="dcterms.date" content="2024-12-03">
 
 <title>CMPE2150 PCB Project A</title>
 <style>
@@ -3243,7 +3243,7 @@ font-size: 0.8em;
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">02 Dec 2024</p>
+        <p class="date">03 Dec 2024</p>
       </div>
     </div>
     
@@ -3258,6 +3258,8 @@ font-size: 0.8em;
    
   <ul>
   <li><a href="#schematic-capture" id="toc-schematic-capture" class="nav-link active" data-scroll-target="#schematic-capture">Schematic Capture</a></li>
+  <li><a href="#part-1---kicad-project-setup" id="toc-part-1---kicad-project-setup" class="nav-link" data-scroll-target="#part-1---kicad-project-setup">Part 1 - KiCAD Project Setup</a></li>
+  <li><a href="#part-2---schematic-sheet-setup" id="toc-part-2---schematic-sheet-setup" class="nav-link" data-scroll-target="#part-2---schematic-sheet-setup">Part 2 - Schematic Sheet Setup</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="CMPE2150.PCB.Project.A.SchematicCapture.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -3300,13 +3302,59 @@ Important
 <div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup> Pulse-Width Modulation</p></div></div><p>Some significant features and changes from your earlier circuit include:</p>
 <ol type="1">
 <li><p>Obviously, the outer AC circuit driving the bulb, the bulb itself, and the TRIAC connecting the two parts of the circuit have been removed, leaving the inner PWM generation circuit.</p></li>
-<li><p>The power source has been changed to <span class="math inline">\(12V\)</span>, as we no longer need to drive a halogen bulb, and it drops the input voltage down to a range appropriate for the simpler LM7805 regulator.</p></li>
+<li><p>The power source has been changed to <span class="math inline">\(12V\)</span>, as we no longer need to drive a halogen bulb, and it drops the input voltage down to a range appropriate for the simpler LM7805 regulator (<span class="math inline">\(U_1\)</span>) .</p></li>
 <li><p>A power indicator LED has been added (<span class="math inline">\(LED_1\)</span>). Note that it turns on or off depending on if the switch <span class="math inline">\(S_1\)</span> is toggled in the simulation.</p></li>
 <li><p>The potentiometer (<span class="math inline">\(R_9\)</span>) has been changed to <span class="math inline">\(5K\Omega\)</span>, to make the range of PWM values output more smooth and linear.</p></li>
 <li><p>Some output pins have been added.</p></li>
 </ol>
-
 </section>
+</section>
+<section id="part-1---kicad-project-setup" class="level3">
+<h3 class="anchored" data-anchor-id="part-1---kicad-project-setup">Part 1 - KiCAD Project Setup</h3>
+<p>Follow the procedure below—nearly identical to the detailed one presented in the tutorial—to create your project to realize the schematic above.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is strongly recommended that you create your KiCAD project in a Github repository to track your progress, keep a backup, and foster working in multiple locations. You should find KiCAD 8.0 installed on all CNT computers.</p>
+</div>
+</div>
+<ol type="1">
+<li><p>Create and checkout a Github repository using whatever tool you ordinarily use, like <em>Github Desktop</em>. Remember to regularly check in your work and use <em>Pull</em> and <em>Push</em> at the beginning and end of work sessions to ensure your work is tracked and backed up. Your proof-of-work is a detailed Github history.</p></li>
+<li><p>Open KiCAD 8.0 and select <em>File → New Project</em>. Name your project “PWMGenerator-<em>&lt;UserID&gt;</em>”, replacing <em>&lt;UserID&gt;</em> with your NAIT username. You do not need to create a new folder if you already did so for the Github project. Then click <em>Save</em>.</p></li>
+<li><p>If you have not already done so, set up the automatic project backups to your preferences. Note that it is usually unnecessary to push backups to Github, but they are nice to have for local faults and emergency recovery.</p></li>
+<li><p>If you haven’t already done so, setup the Symbol Library to use the recommended option of copying the default global symbol library table.</p></li>
+<li><p>For settings not mentioned above, select the defaults or use your own judgement.</p></li>
+</ol>
+</section>
+<section id="part-2---schematic-sheet-setup" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="part-2---schematic-sheet-setup">Part 2 - Schematic Sheet Setup</h3>
+<p>Now, open the <em>Schematic Editor</em> and perform the following procedure:</p>
+<ol type="1">
+<li><p>Select <em>File → Page Settings</em> to open the sheet setup.</p></li>
+<li><p>Choose a size of <em>8.5 x 11in</em> with <em>Landscape</em> orientation. Set the revision to 0. Use today’s date. You’ll only need one sheet. Add a title of “CMPE2150 PWM Generator - <em>&lt;UserID&gt;</em><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>”. Use “NAIT CNT” as your Company. Add your full name to the first comment. Save your work and confirm that the</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Get in the habit of incrementing the revision number every time you do a check in of a new major feature or significant update or fix. This author uses a scheme where the major revision is incremented for such significant updates, and minor revisions are incremented each <em>Push</em> to Github. Thus, Rev. 2.3 would be the third push since the second major revision.</p>
+</div>
+</div></li>
+<li></li>
+</ol>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup> <em>Mutatis mutandis</em></p></div></div>
 </section>
 
 
