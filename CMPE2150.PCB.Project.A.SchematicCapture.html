@@ -3260,6 +3260,8 @@ font-size: 0.8em;
   <li><a href="#schematic-capture" id="toc-schematic-capture" class="nav-link active" data-scroll-target="#schematic-capture">Schematic Capture</a></li>
   <li><a href="#part-1---kicad-project-setup" id="toc-part-1---kicad-project-setup" class="nav-link" data-scroll-target="#part-1---kicad-project-setup">Part 1 - KiCAD Project Setup</a></li>
   <li><a href="#part-2---schematic-sheet-setup" id="toc-part-2---schematic-sheet-setup" class="nav-link" data-scroll-target="#part-2---schematic-sheet-setup">Part 2 - Schematic Sheet Setup</a></li>
+  <li><a href="#part-3---place-schematic-symbols" id="toc-part-3---place-schematic-symbols" class="nav-link" data-scroll-target="#part-3---place-schematic-symbols">Part 3 - Place Schematic Symbols</a></li>
+  <li><a href="#part-4---wire-the-schematic" id="toc-part-4---wire-the-schematic" class="nav-link" data-scroll-target="#part-4---wire-the-schematic">Part 4 - Wire the Schematic</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="CMPE2150.PCB.Project.A.SchematicCapture.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -3288,7 +3290,7 @@ Important
 <p>The reason that we have not similarly moved to KiCAD from Multisim for our electronics classes is that Multisim has a very powerful and intuitive simulation feature, which is very useful for students, especially in their first year or so of studies. KiCad also supports simulation using SPICE<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, an industry-standard platform for electronic simulation, but it is not particularly novice-friendly. More information can be found at the KiCAD site<span class="citation" data-cites="KiCadEDA"><a href="#ref-KiCadEDA" role="doc-biblioref">[1]</a></span>.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup> Simulation Program with Integrated Circuit Emphasis</p></div><div id="ref-KiCadEDA" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline"><span>“SPICE simulation,”</span> <em>KiCad EDA</em>. Available: <a href="https://www.kicad.org/discover/spice/">https://www.kicad.org/discover/spice/</a></div>
-</div><div id="fn2"><p><sup>2</sup> Computer-Aided Design/Computer-Aided Manufacturer</p></div><div id="fn3"><p><sup>3</sup> Both NEMA (US) and the IEC (Europe) publish standards for electrical and electronic schematics. Canadians, for the most part, use the NEMA standard.</p></div></div><p>As you have read, CAD/CAM<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Schematic Capture is used to formally, and in a computer-readable and -analyzeable format, the electrical circuit that you are developing. Use of standardized symbols<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> and connections mean that we can easily communicate about a circuit to our colleagues—and software systems—without ambiguity. That allows us to use software to check the integrity of our design. In some cases, you will be given a design that must be imported or entered into your Schematic Capture system, and annoted to prepare for laying out a PCB to realize the design. This is the scenario we will simulate</p>
+</div><div id="fn2"><p><sup>2</sup> Computer-Aided Design/Computer-Aided Manufacturer</p></div><div id="fn3"><p><sup>3</sup> Both NEMA (US) and the IEC (Europe) publish standards for electrical and electronic schematics. Canadians, for the most part, use the NEMA standard.</p></div></div><p>As you have read, CAD/CAM<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Schematic Capture is used to formally, and in a computer-readable and -analyzeable format, the electrical circuit that you are developing. Use of standardized symbols<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> and connections mean that we can easily communicate about a circuit to our colleagues—and software systems—without ambiguity. That allows us to use software to check the integrity of our design. In some cases, you will be given a design that must be imported or entered into your Schematic Capture system, and annoted to prepare for laying out a PCB to realize the design. This is the scenario we will simulate.</p>
 <section id="the-circuit-designanalog-pwm-generator" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="the-circuit-designanalog-pwm-generator">The Circuit Design—Analog PWM Generator</h4>
 <p>The circuit we have selected for you to realize is shown below. You should also have access to an NI Multisim file for the circuit, which will allow you to see it in detail and even simulate it to investigate its behaviour.</p>
@@ -3338,7 +3340,7 @@ Note
 <p>Now, open the <em>Schematic Editor</em> and perform the following procedure:</p>
 <ol type="1">
 <li><p>Select <em>File → Page Settings</em> to open the sheet setup.</p></li>
-<li><p>Choose a size of <em>8.5 x 11in</em> with <em>Landscape</em> orientation. Set the revision to 0. Use today’s date. You’ll only need one sheet. Add a title of “CMPE2150 PWM Generator - <em>&lt;UserID&gt;</em><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>”. Use “NAIT CNT” as your Company. Add your full name to the first comment. Save your work and confirm that the</p>
+<li><p>Choose a size of <em>8.5 x 11in</em> with <em>Landscape</em> orientation. Set the revision to 0. Use today’s date. You’ll only need one sheet. Add a title of “CMPE2150 PWM Generator - <em>&lt;UserID&gt;</em><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>”. Use “NAIT CNT” as your Company. Add your full name to the first comment. Save your work and confirm that the <em>Title Block</em> looks correct.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3349,12 +3351,35 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Get in the habit of incrementing the revision number every time you do a check in of a new major feature or significant update or fix. This author uses a scheme where the major revision is incremented for such significant updates, and minor revisions are incremented each <em>Push</em> to Github. Thus, Rev. 2.3 would be the third push since the second major revision.</p>
+<p>Get in the habit of incrementing the revision number every time you do a check in of a new major feature or significant update or fix. This author uses a scheme where the major revision is incremented for such significant updates, and minor revisions are incremented each <em>Push</em> to Github. Thus, Rev. 2.3 would be the third push since the second major revision. Note that you can access the Schematic Sheet properties to update the revision number or anything else by double-clicking the title block.</p>
 </div>
 </div></li>
-<li></li>
 </ol>
-<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup> <em>Mutatis mutandis</em></p></div></div>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup> <em>Mutatis mutandis</em></p></div><div id="fn6"><p><sup>6</sup> Now would be a good time to check in your work to GitHub.</p></div></div></section>
+<section id="part-3---place-schematic-symbols" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="part-3---place-schematic-symbols">Part 3 - Place Schematic Symbols</h3>
+<p>It’s finally time to start capturing our schematic. We will do this in several phases: first we will place the component symbols using the NEMA (US) symbols that you are used to. Then we will wire the schematic with connections between the components. This will be followed by choosing the values, features and appropriate footprints for our PCB realization. Finally, we will make some adjustments to the schematic to prepare it for use in creating our PCB design. Of course, as you become familiar with the tools and processes, you won’t be quite so fastidious. It is common to select values and footprints, and even wire components together as we place them. While we won’t stop you from doing so, beginners may find it helpful to go through this more structured phased approach.</p>
+<p>Add the components from our schematic using the tools and techniques you learned from the tutorial. The notes below may be helpful.</p>
+<ol type="1">
+<li><p>Capture the schematic the same way we design and analyze them: left to right (input to output) and top to bottom (Vcc to GND).</p></li>
+<li><p>Get used to using the hotkeys from the KiCAD cheat sheet rather than selecting buttons and menus (eg. using <span class="math inline">\(A\)</span> for adding a symbol). It’s much faster and more efficient once you get used to them.</p></li>
+<li><p>Use the grid to align components neatly, anticipating the upcoming wired connections.</p></li>
+<li><p>At this point, focus on neat placement and arrangement of the symbols. Do not bother with values and footprints until later.</p></li>
+<li><p>It’s helpful when finding the symbols that you want to use the various keywords that you have learned in your studies. For example, “AC” is a good search for the power supply<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, and “SPST” for the switch. You should feel free to help each other in finding symbols. Do not worry—if you get an incorrect symbol, it’s relatively trivial to fix.</p></li>
+<li><p>It is acceptable to use the KiCAD-generated labels and references. However, in such a case, you should be careful what order you add components to keep the numbers organized (ie. resistor numbers incrementing left to right) and make it easier to find components on the schematic.</p></li>
+<li><p>Make sure you do a check-in (and probably a push) to GitHub when you’re done this section.</p></li>
+</ol>
+<div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup> But don’t get too attached to it. We’ll be replacing it with a barrel-jack connector soon enough.</p></div></div></section>
+<section id="part-4---wire-the-schematic" class="level3">
+<h3 class="anchored" data-anchor-id="part-4---wire-the-schematic">Part 4 - Wire the Schematic</h3>
+<p>Once you have all the symbols (or suitable stand-ins) in place. Use the techniques and tools that you used in the tutorial. This is pretty straightforward, but neatness counts. Ensure that symbols are properly aligned and rotated, and that the wire routes are short, simple and neat.</p>
+<p>Notes:</p>
+<ol type="1">
+<li><p>Add a <code>VCC</code> and <code>GND</code> net connection, as described in the tutorial. Note that the AC source still <em>does not</em> connect to those nets. That’s one thing we’ll deal with in the final stage.</p></li>
+<li><p>Visually confirm that you have all the connections in the original schematic.</p></li>
+<li><p>Again, remember to check in and push when you’re done this stage. Remember to update the revision number.</p></li>
+</ol>
+
 </section>
 
 

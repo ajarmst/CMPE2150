@@ -62,7 +62,7 @@ The reason that we have not similarly moved to KiCAD from Multisim for our elect
 
 [^1]: Simulation Program with Integrated Circuit Emphasis
 
-As you have read, CAD/CAM[^2] Schematic Capture is used to formally, and in a computer-readable and -analyzeable format, the electrical circuit that you are developing. Use of standardized symbols[^3] and connections mean that we can easily communicate about a circuit to our colleagues—and software systems—without ambiguity. That allows us to use software to check the integrity of our design. In some cases, you will be given a design that must be imported or entered into your Schematic Capture system, and annoted to prepare for laying out a PCB to realize the design. This is the scenario we will simulate
+As you have read, CAD/CAM[^2] Schematic Capture is used to formally, and in a computer-readable and -analyzeable format, the electrical circuit that you are developing. Use of standardized symbols[^3] and connections mean that we can easily communicate about a circuit to our colleagues—and software systems—without ambiguity. That allows us to use software to check the integrity of our design. In some cases, you will be given a design that must be imported or entered into your Schematic Capture system, and annoted to prepare for laying out a PCB to realize the design. This is the scenario we will simulate.
 
 [^2]: Computer-Aided Design/Computer-Aided Manufacturer
 
@@ -114,14 +114,46 @@ Now, open the *Schematic Editor* and perform the following procedure:
 
 1.  Select *File → Page Settings* to open the sheet setup.
 
-2.  Choose a size of *8.5 x 11in* with *Landscape* orientation. Set the revision to 0. Use today's date. You'll only need one sheet. Add a title of "CMPE2150 PWM Generator - *\<UserID\>*[^5]". Use "NAIT CNT" as your Company. Add your full name to the first comment. Save your work and confirm that the Title Block looks correct.[^6]
+2.  Choose a size of *8.5 x 11in* with *Landscape* orientation. Set the revision to 0. Use today's date. You'll only need one sheet. Add a title of "CMPE2150 PWM Generator - *\<UserID\>*[^5]". Use "NAIT CNT" as your Company. Add your full name to the first comment. Save your work and confirm that the *Title Block* looks correct.[^6]
 
     ::: callout-note
-    Get in the habit of incrementing the revision number every time you do a check in of a new major feature or significant update or fix. This author uses a scheme where the major revision is incremented for such significant updates, and minor revisions are incremented each *Push* to Github. Thus, Rev. 2.3 would be the third push since the second major revision.
+    Get in the habit of incrementing the revision number every time you do a check in of a new major feature or significant update or fix. This author uses a scheme where the major revision is incremented for such significant updates, and minor revisions are incremented each *Push* to Github. Thus, Rev. 2.3 would be the third push since the second major revision. Note that you can access the Schematic Sheet properties to update the revision number or anything else by double-clicking the title block.
     :::
-
-3.  
 
 [^5]: *Mutatis mutandis*
 
 [^6]: Now would be a good time to check in your work to GitHub.
+
+### Part 3 - Place Schematic Symbols
+
+It's finally time to start capturing our schematic. We will do this in several phases: first we will place the component symbols using the NEMA (US) symbols that you are used to. Then we will wire the schematic with connections between the components. This will be followed by choosing the values, features and appropriate footprints for our PCB realization. Finally, we will make some adjustments to the schematic to prepare it for use in creating our PCB design. Of course, as you become familiar with the tools and processes, you won't be quite so fastidious. It is common to select values and footprints, and even wire components together as we place them. While we won't stop you from doing so, beginners may find it helpful to go through this more structured phased approach.
+
+Add the components from our schematic using the tools and techniques you learned from the tutorial. The notes below may be helpful.
+
+1.  Capture the schematic the same way we design and analyze them: left to right (input to output) and top to bottom (Vcc to GND).
+
+2.  Get used to using the hotkeys from the KiCAD cheat sheet rather than selecting buttons and menus (eg. using $A$ for adding a symbol). It's much faster and more efficient once you get used to them.
+
+3.  Use the grid to align components neatly, anticipating the upcoming wired connections.
+
+4.  At this point, focus on neat placement and arrangement of the symbols. Do not bother with values and footprints until later.
+
+5.  It's helpful when finding the symbols that you want to use the various keywords that you have learned in your studies. For example, "AC" is a good search for the power supply[^7], and "SPST" for the switch. You should feel free to help each other in finding symbols. Do not worry—if you get an incorrect symbol, it's relatively trivial to fix.
+
+6.  It is acceptable to use the KiCAD-generated labels and references. However, in such a case, you should be careful what order you add components to keep the numbers organized (ie. resistor numbers incrementing left to right) and make it easier to find components on the schematic.
+
+7.  Make sure you do a check-in (and probably a push) to GitHub when you're done this section.
+
+[^7]: But don't get too attached to it. We'll be replacing it with a barrel-jack connector soon enough.
+
+### Part 4 - Wire the Schematic
+
+Once you have all the symbols (or suitable stand-ins) in place. Use the techniques and tools that you used in the tutorial. This is pretty straightforward, but neatness counts. Ensure that symbols are properly aligned and rotated, and that the wire routes are short, simple and neat.
+
+Notes:
+
+1.  Add a `VCC` and `GND` net connection, as described in the tutorial. Note that the AC source still *does not* connect to those nets. That's one thing we'll deal with in the final stage.
+
+2.  Visually confirm that you have all the connections in the original schematic.
+
+3.  Again, remember to check in and push when you're done this stage. Remember to update the revision number.
