@@ -117,7 +117,7 @@ Now, open the *Schematic Editor* and perform the following procedure:
 2.  Choose a size of *8.5 x 11in* with *Landscape* orientation. Set the revision to 0. Use today's date. You'll only need one sheet. Add a title of "CMPE2150 PWM Generator - *\<UserID\>*[^5]". Use "NAIT CNT" as your Company. Add your full name to the first comment. Save your work and confirm that the *Title Block* looks correct.[^6]
 
     ::: callout-note
-    Get in the habit of incrementing the revision number every time you do a check in of a new major feature or significant update or fix. This author uses a scheme where the major revision is incremented for such significant updates, and minor revisions are incremented each *Push* to Github. Thus, Rev. 2.3 would be the third push since the second major revision. Note that you can access the Schematic Sheet properties to update the revision number or anything else by double-clicking the title block.
+    Get in the habit of incrementing the revision number every time you do a check in of a new major feature or significant update or fix. This author uses a scheme where the major revision is incremented for such significant updates, and minor revisions are incremented each *Push* to Github. Thus, Rev. 2.3 would be the third push since the second major revision. Note that you can access the Schematic Sheet properties to update the revision number or anything else by double-clicking the title.
     :::
 
 [^5]: *Mutatis mutandis*
@@ -138,13 +138,25 @@ Add the components from our schematic using the tools and techniques you learned
 
 4.  At this point, focus on neat placement and arrangement of the symbols. Do not bother with values and footprints until later.
 
-5.  It's helpful when finding the symbols that you want to use the various keywords that you have learned in your studies. For example, "AC" is a good search for the power supply[^7], and "SPST" for the switch. You should feel free to help each other in finding symbols. Do not worry—if you get an incorrect symbol, it's relatively trivial to fix.
+5.  Please use NEMA (sometimes called 'US' or 'American') symbols. The only one likely to matter is the resistors. Use the sawtooth symbol, not the rectangle (look for `_US` in the symbol name).
 
-6.  It is acceptable to use the KiCAD-generated labels and references. However, in such a case, you should be careful what order you add components to keep the numbers organized (ie. resistor numbers incrementing left to right) and make it easier to find components on the schematic.
+6.  You can use "VSIN" as a search to find the power supply[^7].
 
-7.  Make sure you do a check-in (and probably a push) to GitHub when you're done this section.
+7.  It's helpful when finding the symbols that you want to use the various keywords that you have learned in your studies. For example, try "SPST" for the switch. You should feel free to help each other in finding symbols. Do not worry—if you get an incorrect symbol, it's relatively trivial to fix.
+
+8.  It is acceptable to use the KiCAD-generated labels and references. However, in such a case, you should be careful what order you add components to keep the numbers organized (ie. resistor numbers incrementing left to right) and make it easier to find components on the schematic.
+
+9.  Note that there are two NPN and two PNP transistors in the circuit, and the orientation of the PNPs. The mirror tool ($X$ or $Y$) will be helpful
+
+10. Two of the connections (VCC and GND) on the LM339 in Multisim do not appear in KiCAD. It is normal practice to leave those connections out in a schematic unless they are connected to sources other than the circuit's VCC and GND. You can leave them out.
+
+11. You can use a `CONN_01x03`[^8] to get the three output pins on the right of the schematic.
+
+12. Make sure you do a check-in (and probably a push) to GitHub when you're done this section.
 
 [^7]: But don't get too attached to it. We'll be replacing it with a barrel-jack connector soon enough.
+
+[^8]: Three-pin header row
 
 ### Part 4 - Wire the Schematic
 
@@ -152,8 +164,16 @@ Once you have all the symbols (or suitable stand-ins) in place. Use the techniqu
 
 Notes:
 
-1.  Add a `VCC` and `GND` net connection, as described in the tutorial. Note that the AC source still *does not* connect to those nets. That's one thing we'll deal with in the final stage.
+1.  Add a `VCC` and `GND` net connection using power symbols ($P$), as described in the tutorial. Note that the AC source still *does not* connect to those nets. That's one thing we'll deal with in the final stage.
 
-2.  Visually confirm that you have all the connections in the original schematic.
+2.  Let's also add some power symbols ($P$) for the AC power side. Use `VAC` on the top of the AC source the way you used `VCC` above, and `GNDPWR` for the bottom.
 
-3.  Again, remember to check in and push when you're done this stage. Remember to update the revision number.
+3.  Add power flags (`PWR_FLG`) too all four of those for now.
+
+4.  Visually confirm that you have all the connections in the original schematic.
+
+5.  Again, remember to check in and push when you're done this stage. Remember to update the revision number.
+
+### Submission
+
+When you have completed the above and checked and reviewed your work, increment the version number (yet again), check in and push the schematic design. Ask your instructor to review your schematic with you, and make any changes they require. When you are done (after, of course, incrementing the version number, checking in and pushing) submit the schematic.
