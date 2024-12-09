@@ -1,0 +1,67 @@
+---
+title: "CMPE2150 PCB Project B"
+subtitle: "Schematic Annotation"
+author: "AJ Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+bibliography: references.bib
+biblio-style: ieee
+csl: ieee.csl
+format:
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid:
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry:
+      - top=30mm
+      - bottom=30mm
+      - left=15mm
+      - right=80mm
+      - marginparwidth=60mm
+      - marginparsep=10mm
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \usepackage{titling}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 PCB Project B}
+        \fancyhead[R]{Schematic Annotation}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+        \setlength{\droptitle}{-2cm}
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-align: default
+fig-cap-location: margin
+footnotes-hover: true
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+fig-env: "figure"
+keep-tex: true
+---
+
+::: callout-tip
+I'm going to stop reminding you to increment version numbers, check in and push at major milestones, because you already do that reflexively.
+:::
+
+### Schematic Annotation
+
+Now that we have the basic symbols and connections input, we're going to modify this schematic, which currently represents the design of the circuit in a generalized, abstract way to a schematic that also contains (but does not always display) information about actual physical components and characteristics
+
+By the time we are finished, KiCAD will be satisfied that it knows enough to help us lay out a PCB design, and our electrical rule check (ERC) will be clean.
+
+### Part 1 - Adding Values and Footprints
+
+### Submission
+
+When you have completed the above and checked and reviewed your work, increment the version number (yet again), check in and push the schematic design. Ask your instructor to review your schematic with you, and make any changes they require. When you are done (after, of course, incrementing the version number, checking in and pushing) submit the schematic.
