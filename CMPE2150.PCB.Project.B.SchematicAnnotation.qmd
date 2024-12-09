@@ -85,11 +85,9 @@ In general, you can do both by double clicking on the symbol with the selection 
 
 4.  Do the same for the 2N3906 PNP transistors.
 
-5.  For the two electrolytic capacitors, $C_1$ and $C_2$, we'll select some through-hole barrel caps.
+5.  The LM7805 should be in a T0220[^3] package footprint.
 
-6.  The LM7805 should be in a T0220[^3] package footprint.
-
-7.  The LM339 should be in a SOIC-14[^4] package footprint. Of course, a real LM339 actually has four comparators, and we only need one. In the symbol properties, make sure that "Unit A" is selected, which means the first of the four comparator units. Try changing it to "B" or "C" and note what happens to the pin numbers on the schematic before changing back to "A".
+6.  The LM339 should be in a SOIC-14[^4] package footprint. Of course, a real LM339 actually has four comparators, and we only need one. In the symbol properties, make sure that "Unit A" is selected, which means the first of the four comparator units. Try changing it to "B" or "C" and note what happens to the pin numbers on the schematic before changing back to "A".
 
 [^1]: Surface Mount Device, 0.08 inches by 0.05 inches.
 
@@ -111,14 +109,21 @@ Some devices that we want to use aren't already in the KiCAD symbol library. How
     b.  On that part's page, click on the link for the EDA/CAD Models. In the next page, click on "Select Download Format". Choose "KiCAD (V6 and Later)" and Download. Create a folder in your KiCad Project (I use one named `lib`) and copy the extracted files into it.
     c.  Now you can import it into your KiCAD symbol library, possibly by just double clicking on it, depending on your platform and version. There should be a file in the downloaded symbol/model that describes how to import the `*.kicad_sym` symbol using *Preferences → Manage Symbol Libraries → Global Libraries* from the main (not Schematic Editor) window then browsing (little folder icon) and opening the file to add to your library.
     d.  Perform a similar procedure to import the `*.kicad_mod` model file Footprint using *Preferences → Manage Footprint Libraries → Global Libraries*. Note that Footprint libraries are added by folder, so you won't be able to see the file—just select the folder that contains it.
-    e.  Now, go to your schematic and edit the polyfuse symbol, to select what you just imported. Try searching on the NANOSMDC... part number for the symbol. The footprint you just imported can be found under the folder name that you selected (in my case, it show as a new dropdown named `local)`.
-    f.  While you're in the symbol table, update the datasheet for the polyfuse to an appropriate datasheet on the web and change the value to `NANOSMDC016F-2`.
+    e.  Now, go to your schematic and edit the polyfuse symbol, to select what you just imported. Try searching on the NANOSMDC... part number for the symbol. The footprint you just imported can be found under the folder name that you selected (in my case, it show as a new dropdown named `lib)`.
+    f.  While you're in the symbol table, update the datasheet for the polyfuse to an appropriate datasheet URL on the web and change the value to `NANOSMDC016F-2`.
 
-2.  
+2.  The two electrolytic capacitors are next. For $C_1$ and $C_2$, we'll select some through-hole barrel caps. Remember to set the value field for the symbols (syntax like "220uF" or "220u" will work).
+
+    a.  Let's try Mouser[^7] this time. Search on "electrolytic", and select "Aluminum Electrolytic capacitors - Radial Leaded". This will give you a filter dialog. Select the capacitance value you need, ensure the voltage rating for the bigger cap is well above the peak voltage of its input (hint: what is the peak voltage of $12V_{rms}$?). The smaller cap must be able to manage more than $5V$. From the available options, choose one that is in stock and reasonably priced, with the correct value.
+    b.  Whatever part you have chosen, go to its datasheet. First, confirm that it does come in the value and voltage we specified—you can't always trust the search filters. If you are satisfied, zcopy the URL of that datasheet
+
+3.  Finally, we need to do something about that $12V_{DC}$ supply. Obviously, we're not going to actually install an AC source onto our board. What is meant by that symbol is the wall-wart plug connected to our board to provide the AC power source. From the point of view of our board, that just appears as the barrel-jack connector our wall-wart will plug in to. So let's change it.
 
 [^5]: <https://www.digikey.ca/>
 
 [^6]: Of course, in the real world for a real project, you would compare this part to other parts, check the availability and price, and probably order some.
+
+[^7]: <https://www.mouser.ca/>
 
 ### Submission
 

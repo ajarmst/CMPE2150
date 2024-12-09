@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="AJ Armstrong">
-<meta name="dcterms.date" content="2024-12-08">
+<meta name="dcterms.date" content="2024-12-09">
 
 <title>CMPE2150 PCB Project B</title>
 <style>
@@ -3223,7 +3223,7 @@ font-size: 0.8em;
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">08 Dec 2024</p>
+        <p class="date">09 Dec 2024</p>
       </div>
     </div>
     
@@ -3307,7 +3307,6 @@ Note
 </div></li>
 <li><p>Do the NPN transistors: value is “2N3904”, change to the appropriate symbol if necessary, and select an SOT-23<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> footprint.</p></li>
 <li><p>Do the same for the 2N3906 PNP transistors.</p></li>
-<li><p>For the two electrolytic capacitors, <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>, we’ll select some through-hole barrel caps.</p></li>
 <li><p>The LM7805 should be in a T0220<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> package footprint.</p></li>
 <li><p>The LM339 should be in a SOIC-14<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> package footprint. Of course, a real LM339 actually has four comparators, and we only need one. In the symbol properties, make sure that “Unit A” is selected, which means the first of the four comparator units. Try changing it to “B” or “C” and note what happens to the pin numbers on the schematic before changing back to “A”.</p></li>
 </ol>
@@ -3323,12 +3322,17 @@ Note
 <li>On that part’s page, click on the link for the EDA/CAD Models. In the next page, click on “Select Download Format”. Choose “KiCAD (V6 and Later)” and Download. Create a folder in your KiCad Project (I use one named <code>lib</code>) and copy the extracted files into it.</li>
 <li>Now you can import it into your KiCAD symbol library, possibly by just double clicking on it, depending on your platform and version. There should be a file in the downloaded symbol/model that describes how to import the <code>*.kicad_sym</code> symbol using <em>Preferences → Manage Symbol Libraries → Global Libraries</em> from the main (not Schematic Editor) window then browsing (little folder icon) and opening the file to add to your library.</li>
 <li>Perform a similar procedure to import the <code>*.kicad_mod</code> model file Footprint using <em>Preferences → Manage Footprint Libraries → Global Libraries</em>. Note that Footprint libraries are added by folder, so you won’t be able to see the file—just select the folder that contains it.</li>
-<li>Now, go to your schematic and edit the polyfuse symbol, to select what you just imported. Try searching on the NANOSMDC… part number for the symbol. The footprint you just imported can be found under the folder name that you selected (in my case, it show as a new dropdown named <code>local)</code>.</li>
-<li>While you’re in the symbol table, update the datasheet for the polyfuse to an appropriate datasheet on the web and change the value to <code>NANOSMDC016F-2</code>.</li>
+<li>Now, go to your schematic and edit the polyfuse symbol, to select what you just imported. Try searching on the NANOSMDC… part number for the symbol. The footprint you just imported can be found under the folder name that you selected (in my case, it show as a new dropdown named <code>lib)</code>.</li>
+<li>While you’re in the symbol table, update the datasheet for the polyfuse to an appropriate datasheet URL on the web and change the value to <code>NANOSMDC016F-2</code>.</li>
 </ol></li>
-<li></li>
+<li><p>The two electrolytic capacitors are next. For <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>, we’ll select some through-hole barrel caps. Remember to set the value field for the symbols (syntax like “220uF” or “220u” will work).</p>
+<ol type="a">
+<li>Let’s try Mouser<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> this time. Search on “electrolytic”, and select “Aluminum Electrolytic capacitors - Radial Leaded”. This will give you a filter dialog. Select the capacitance value you need, ensure the voltage rating for the bigger cap is well above the peak voltage of its input (hint: what is the peak voltage of <span class="math inline">\(12V_{rms}\)</span>?). The smaller cap must be able to manage more than <span class="math inline">\(5V\)</span>. From the available options, choose one that is in stock and reasonably priced, with the correct value.</li>
+<li>Whatever part you have chosen, go to its datasheet. First, confirm that it does come in the value and voltage we specified—you can’t always trust the search filters. If you are satisfied, zcopy the URL of that datasheet</li>
+</ol></li>
+<li><p>Finally, we need to do something about that <span class="math inline">\(12V_{DC}\)</span> supply. Obviously, we’re not going to actually install an AC source onto our board. What is meant by that symbol is the wall-wart plug connected to our board to provide the AC power source. From the point of view of our board, that just appears as the barrel-jack connector our wall-wart will plug in to. So let’s change it.</p></li>
 </ol>
-<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup> <a href="https://www.digikey.ca/" class="uri">https://www.digikey.ca/</a></p></div><div id="fn6"><p><sup>6</sup> Of course, in the real world for a real project, you would compare this part to other parts, check the availability and price, and probably order some.</p></div></div></section>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup> <a href="https://www.digikey.ca/" class="uri">https://www.digikey.ca/</a></p></div><div id="fn6"><p><sup>6</sup> Of course, in the real world for a real project, you would compare this part to other parts, check the availability and price, and probably order some.</p></div><div id="fn7"><p><sup>7</sup> <a href="https://www.mouser.ca/" class="uri">https://www.mouser.ca/</a></p></div></div></section>
 <section id="submission" class="level3">
 <h3 class="anchored" data-anchor-id="submission">Submission</h3>
 <p>When you have completed the above and checked and reviewed your work, increment the version number (yet again), check in and push the schematic design. Ask your instructor to review your schematic with you, and make any changes they require. When you are done (after, of course, incrementing the version number, checking in and pushing) submit the schematic.</p>

@@ -7744,7 +7744,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C_Polarized"
+		(property "Value" "220uF"
 			(at 81.534 74.93 0)
 			(effects
 				(font
