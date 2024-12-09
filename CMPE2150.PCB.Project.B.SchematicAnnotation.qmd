@@ -75,11 +75,50 @@ In general, you can do both by double clicking on the symbol with the selection 
     Once you have done the first resistor, you can open the symbol table (*Tools → Edit Symbol Fields*). There, as you can see, you can change fields for groups of components and manually edit values. When doing a lot of changes to values and footprints, this tool is invaluable. Note that, as you would expect, you can copy and paste values and footprints between symbols.
     :::
 
-2.  Now do the diodes, excepting the LED. First, select one and edit ($E$) it. If the symbol isn't already $1N4005$, you can select "Change Symbol" and choose a new library identifier, then click the library button to change it. and "Change" to enact the change. All should be $1N4005G$ diodes, which you can update the "Value" field to display, with the same SMD0805 footprint. Again, if you edit them in the *Symbol Table* you can do all at once.
+2.  Now do the diodes, excepting the LED. First, select one and edit ($E$) it. If the symbol isn't already $1N4005$, you can select "Change Symbol" and choose a new library identifier, then click the library button to change it, and "Change" to enact the change. All should be $1N4005G$ diodes, which you can update the "Value" field to display, with the same SMD-0805 footprint. Again, if you edit them in the *Symbol Table* you can do all at once.
 
-3.  Do the NPN transistors:
+    ::: callout-note
+    Neatness always counts! As you change the display values of some of these symbols, take the time to move the labels on the schematic around to make it easy to read the values. In particular, avoid labels overlapping with symbols or wires. Remember you can rotate labels, too.
+    :::
+
+3.  Do the NPN transistors: value is "2N3904", change to the appropriate symbol if necessary, and select an SOT-23[^2] footprint.
+
+4.  Do the same for the 2N3906 PNP transistors.
+
+5.  For the two electrolytic capacitors, $C_1$ and $C_2$, we'll select some through-hole barrel caps.
+
+6.  The LM7805 should be in a T0220[^3] package footprint.
+
+7.  The LM339 should be in a SOIC-14[^4] package footprint. Of course, a real LM339 actually has four comparators, and we only need one. In the symbol properties, make sure that "Unit A" is selected, which means the first of the four comparator units. Try changing it to "B" or "C" and note what happens to the pin numbers on the schematic before changing back to "A".
 
 [^1]: Surface Mount Device, 0.08 inches by 0.05 inches.
+
+[^2]: Small-Outline Transistor #23
+
+[^3]: Transistor Outline #220, a standard through-hole package for transistors very common for voltage regulators, which are also three-pin.
+
+[^4]: Small Outline Integrated Circuit - 14 pins. A standard surface-mount package for DIP-style chips. Similar to the ICs that you use in your breadboard, but significantly smaller and with gull-wing leads suitable for surface mount soldering and pick-and-place machines.
+
+That should set us up with the parts that are already in the KiCAD database.
+
+### Part 2 - Import
+
+Some devices that we want to use aren't already in the KiCAD symbol library. However, device vendors are very good about supporting circuit and PCB designers, and most major suppliers go out of their way to make sure it's easy to use their parts in a new design.
+
+1.  Let's start with the fuse. I'd rather not deal with mounting a fuse holder and replacing expendable fuses. Let's go to a *polyfuse*, which will heat up and automatically kill the power above a certain current, then gradually cool down and reset on its own. First, change the fuse's symbol to the generic polyfuse symbol in the symbol editor. Unfortunately, we don't have much in the way of real polyfuses in our default KiCAD library. Let's fix that. In the below, we'll use a project specific library, to avoid modifying our global library, but if it's a part that you expect to use on more than one p
+
+    a.  Go to Digikey[^5] and search for the Littelfuse NANOSMDC016F-2, which is in a SMD-1206 form factor polyfuse[^6].
+    b.  On that part's page, click on the link for the EDA/CAD Models. In the next page, click on "Select Download Format". Choose "KiCAD (V6 and Later)" and Download. Create a folder in your KiCad Project (I use one named `lib`) and copy the extracted files into it.
+    c.  Now you can import it into your KiCAD symbol library, possibly by just double clicking on it, depending on your platform and version. There should be a file in the downloaded symbol/model that describes how to import the `*.kicad_sym` symbol using *Preferences → Manage Symbol Libraries → Global Libraries* from the main (not Schematic Editor) window then browsing (little folder icon) and opening the file to add to your library.
+    d.  Perform a similar procedure to import the `*.kicad_mod` model file Footprint using *Preferences → Manage Footprint Libraries → Global Libraries*. Note that Footprint libraries are added by folder, so you won't be able to see the file—just select the folder that contains it.
+    e.  Now, go to your schematic and edit the polyfuse symbol, to select what you just imported. Try searching on the NANOSMDC... part number for the symbol. The footprint you just imported can be found under the folder name that you selected (in my case, it show as a new dropdown named `local)`.
+    f.  While you're in the symbol table, update the datasheet for the polyfuse to an appropriate datasheet on the web and change the value to `NANOSMDC016F-2`.
+
+2.  
+
+[^5]: <https://www.digikey.ca/>
+
+[^6]: Of course, in the real world for a real project, you would compare this part to other parts, check the availability and price, and probably order some.
 
 ### Submission
 
