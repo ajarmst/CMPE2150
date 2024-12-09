@@ -129,6 +129,11 @@ Some devices that we want to use aren't already in the KiCAD symbol library, or 
 
 5.  Finally, we need to do something about that $12V_{RMS}$ supply. Obviously, we're not going to actually install an AC source onto our board. What is meant by that symbol is the wall-wart plug connected to our board to provide the AC power source. From the point of view of our board, that just appears as the barrel-jack connector our wall-wart will plug in to. So let's change it.
 
+    a.  Edit the power supply symbol and select *Change Symbol*. Choose a new library identifier to change it to a `Barrel_Jack`. Make sure the pin ($pin 1$) is connected to the net you identified as `VAC` and the sleeve is connected to `GNDPWR`.
+    b.  Now select a footprint for the barrel jack: there is a DC barrel jack footprint.
+
+6.  Open the symbol table and confirm that all of the symbols have correct values and footprints. Visually clean up the schematic and labels. Increment the version number, check in and push.
+
 [^5]: <https://www.digikey.ca/>
 
 [^6]: Of course, in the real world for a real project, you would compare this part to other parts, check the availability and price, and probably order some.
@@ -137,6 +142,19 @@ Some devices that we want to use aren't already in the KiCAD symbol library, or 
 
 [^8]: Through-Hole Technology
 
+### Part 3 - Electrical Rules Check (ERC)
+
+At last, it is time to do the ERC. The notes below discuss how to resolve the issues you are likely to encounter. If you have other errors, try to resolve them. Just typing the error message and "KiCAD" into a search engine or AI is remarkably effective because of the large KiCAD community online. Select *Inspect → Electrical Rules Checker*, and go to work.
+
+1.  If you, as instructed, placed `PWR_FLAG`s next to the `VCC` flag on the output of the Voltage regulator, move it to the input (pin 1) to get rid of the *Input Power pin not driven by any Ouput Power pins* error. Although we are using it for $V_{CC}$, pin 3 is already an output, so we do not need to use the flag to label it as getting an external output. Pin 1 is the actual input that needs the flag.
+2.  That no output for input power pin error is usually resolvable with power flags, as illustrated in the tutorial. Power flags are just a virtual output that labels a line as being an output to satisfy an input pin's need to be driven. You only need it when you have a device that has such a pin and the output to drive it is off-board.
+3.  If you get an error complaining about output power connected to an open emitter or open collector, you've likely got the wrong type of transistor—like a simulation transistor—make sure the symbol is a `2N3904` (or `-06`).
+4.  You will likely have an error that $U_2$ has unplaced units. This is expected, as we only placed one of the four comparators on the `LM339`. In effect, we have three spare comparators that we aren't hooking up but we can't leave them out because they're part of the chip carrying the one they need. So, we'll place them.
+    a.  Place three new comparators neatly in the white space below the circuit by copying the existing one and pasting them.
+        a.  Edit them and change the *Reference* to `U2` (the same as the first comparator) and the $Unit$ to `B`, `C`, etc. Note the different pin numbers.
+        b.  Place *no-connection flags* (\$Q\$) on the inputs and outputs of the three comparators.
+        c.  Remember that we didn't have the power and ground connections in the schematic because they weren't really necessary (of course a chip is powered) and left out to reduce clutter? Well, the PCB Editor *does* care how it's powered, so we will add them by placing *Unit E* of the comparator. Copy a comparator one more time and change it to `U2E`. It'll turn into our missing power pins. Now, you can actually place those over the schematic symbol, but we don't need to. The PCB Editor just wants to know what to connect them to. Just place the two pins next to the spare comparators and place power symbols `VCC` and `GND` to connect them to.
+
 ### Submission
 
-When you have completed the above and checked and reviewed your work, increment the version number (yet again), check in and push the schematic design. Ask your instructor to review your schematic with you, and make any changes they require. When you are done (after, of course, incrementing the version number, checking in and pushing) submit the schematic.
+When you have completed all the above—including having no ERC errors or warnings—and checked and reviewed your work, ask your instructor to review your schematic with you. Make any changes they require. When you are done submit the schematic.
