@@ -62,6 +62,25 @@ By the time we are finished, KiCAD will be satisfied that it knows enough to hel
 
 ### Part 1 - Adding Values and Footprints
 
+We will now visit each of the components in the schematic to correctly set:
+
+-   Its *value* (e.g. $R_1$ is $2.2k\Omega$), which you may have already selected when placing the symbol on the schematic.
+-   Its *footprint*, which is the actual, physical part description. It may depend on the manufacturer, type of part, or package.
+
+In general, you can do both by double clicking on the symbol with the selection tool or hover-selecting and hitting the $E$ (Edit) key. There, you can change the values in the appropriate fields. We will take them in turn.
+
+1.  We will first annotate each resistor (except the potentiometer). Confirm one has the correct value (for example, $R_1$ should have a value of "2.2k"). Choose an SMD 0805[^1] footprint (search terms include "R", "SMD", and "0805") for that resistor. Continue and do the same for all ten standard resistors.
+
+    ::: callout-tip
+    Once you have done the first resistor, you can open the symbol table (*Tools → Edit Symbol Fields*). There, as you can see, you can change fields for groups of components and manually edit values. When doing a lot of changes to values and footprints, this tool is invaluable. Note that, as you would expect, you can copy and paste values and footprints between symbols.
+    :::
+
+2.  Now do the diodes, excepting the LED. First, select one and edit ($E$) it. If the symbol isn't already $1N4005$, you can select "Change Symbol" and choose a new library identifier, then click the library button to change it. and "Change" to enact the change. All should be $1N4005G$ diodes, which you can update the "Value" field to display, with the same SMD0805 footprint. Again, if you edit them in the *Symbol Table* you can do all at once.
+
+3.  Do the NPN transistors:
+
+[^1]: Surface Mount Device, 0.08 inches by 0.05 inches.
+
 ### Submission
 
 When you have completed the above and checked and reviewed your work, increment the version number (yet again), check in and push the schematic design. Ask your instructor to review your schematic with you, and make any changes they require. When you are done (after, of course, incrementing the version number, checking in and pushing) submit the schematic.

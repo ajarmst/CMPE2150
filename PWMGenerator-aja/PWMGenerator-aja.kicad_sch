@@ -7,7 +7,7 @@
 	(title_block
 		(title "CMPE2150 PWM Generator - aja")
 		(date "2024-12-03")
-		(rev "0.4")
+		(rev "0.5")
 		(company "NAIT CNT")
 		(comment 1 "Author: AJ Armstrong")
 	)
@@ -1777,6 +1777,168 @@
 					(at 0 -3.81 90)
 					(length 1.27)
 					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Diode:1N4005"
+			(pin_numbers hide)
+			(pin_names hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1N4005"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+				(at 0 -4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.vishay.com/docs/88503/1n4001.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "600V 1A General Purpose Rectifier Diode, DO-41"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=K 2=A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "D*DO?41*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "1N4005_0_1"
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "1N4005_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4811,14 +4973,13 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D")
+		(lib_id "Diode:1N4005")
 		(at 46.99 76.2 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "1750ac63-d243-4852-900a-7a3c2fbf83e1")
 		(property "Reference" "D1"
 			(at 49.53 74.9299 90)
@@ -4829,7 +4990,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "1N4005G"
 			(at 49.53 77.4699 90)
 			(effects
 				(font
@@ -4838,7 +4999,16 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
+			(at 42.545 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.vishay.com/docs/88503/1n4001.pdf"
 			(at 46.99 76.2 0)
 			(effects
 				(font
@@ -4847,16 +5017,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 46.99 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
+		(property "Description" "600V 1A General Purpose Rectifier Diode, DO-41"
 			(at 46.99 76.2 0)
 			(effects
 				(font
@@ -4983,7 +5144,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "2.2k"
 			(at 71.12 107.9499 0)
 			(effects
 				(font
@@ -4992,7 +5153,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 69.596 106.934 90)
 			(effects
 				(font
@@ -5053,7 +5214,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "330"
 			(at 124.46 73.6599 0)
 			(effects
 				(font
@@ -5062,7 +5223,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 120.904 72.136 90)
 			(effects
 				(font
@@ -5189,7 +5350,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "22k"
 			(at 172.72 73.6599 0)
 			(effects
 				(font
@@ -5198,7 +5359,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 169.164 72.136 90)
 			(effects
 				(font
@@ -5359,7 +5520,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "180"
 			(at 223.52 102.8699 0)
 			(effects
 				(font
@@ -5368,7 +5529,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 221.996 101.854 90)
 			(effects
 				(font
@@ -5429,7 +5590,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "10k"
 			(at 137.16 73.6599 0)
 			(effects
 				(font
@@ -5438,7 +5599,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 133.604 72.136 90)
 			(effects
 				(font
@@ -5569,7 +5730,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "2.2k"
 			(at 185.42 73.6599 0)
 			(effects
 				(font
@@ -5578,7 +5739,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 181.864 72.136 90)
 			(effects
 				(font
@@ -5639,7 +5800,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "1N4005G"
 			(at 63.5 91.4399 90)
 			(effects
 				(font
@@ -5648,7 +5809,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
 			(at 60.96 90.17 0)
 			(effects
 				(font
@@ -5657,7 +5818,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "http://www.vishay.com/docs/88503/1n4001.pdf"
 			(at 60.96 90.17 0)
 			(effects
 				(font
@@ -6177,7 +6338,7 @@
 				)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "1M"
 			(at 90.17 93.98 90)
 			(effects
 				(font
@@ -6185,7 +6346,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 90.424 96.774 90)
 			(effects
 				(font
@@ -6411,7 +6572,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "1N4005G"
 			(at 63.5 77.4699 90)
 			(effects
 				(font
@@ -6420,7 +6581,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
 			(at 60.96 76.2 0)
 			(effects
 				(font
@@ -6429,7 +6590,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "http://www.vishay.com/docs/88503/1n4001.pdf"
 			(at 60.96 76.2 0)
 			(effects
 				(font
@@ -6499,7 +6660,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "390k"
 			(at 160.02 102.8699 0)
 			(effects
 				(font
@@ -6508,7 +6669,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 156.464 101.346 90)
 			(effects
 				(font
@@ -6707,7 +6868,7 @@
 				)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "8.2k"
 			(at 208.28 78.74 90)
 			(effects
 				(font
@@ -6715,7 +6876,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 208.026 83.566 90)
 			(effects
 				(font
@@ -6775,7 +6936,7 @@
 				)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "1N4005G"
 			(at 73.66 59.69 0)
 			(effects
 				(font
@@ -6783,7 +6944,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
 			(at 73.66 63.5 0)
 			(effects
 				(font
@@ -6792,7 +6953,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "http://www.vishay.com/docs/88503/1n4001.pdf"
 			(at 73.66 63.5 0)
 			(effects
 				(font
@@ -6916,7 +7077,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "d4612e03-0ffe-49b7-b1ce-9c7b2cd8e530")
 		(property "Reference" "D2"
 			(at 49.53 88.8999 90)
@@ -6927,7 +7087,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "1N4005G"
 			(at 49.53 91.4399 90)
 			(effects
 				(font
@@ -6936,7 +7096,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
 			(at 46.99 90.17 0)
 			(effects
 				(font
@@ -6945,7 +7105,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "http://www.vishay.com/docs/88503/1n4001.pdf"
 			(at 46.99 90.17 0)
 			(effects
 				(font
@@ -7496,7 +7656,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "220k"
 			(at 160.02 73.6599 0)
 			(effects
 				(font
@@ -7505,7 +7665,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 156.464 72.136 90)
 			(effects
 				(font
