@@ -69,25 +69,31 @@ We will now visit each of the components in the schematic to correctly set:
 
 In general, you can do both by double clicking on the symbol with the selection tool or hover-selecting and hitting the $E$ (Edit) key. There, you can change the values in the appropriate fields. We will take them in turn.
 
-1.  We will first annotate each resistor (except the potentiometer). Confirm one has the correct value (for example, $R_1$ should have a value of "2.2k"). Choose an SMD 0805[^1] footprint (search terms include "R", "SMD", and "0805") for that resistor. Continue and do the same for all ten standard resistors.
+1.  We will first annotate each resistor (except the potentiometer). Confirm one has the correct value (for example, $R_1$ should have a value of "2.2k"). Choose an SMD-0805[^1] footprint (search terms include "R", "SMD", and "0805") for that resistor. Continue and do the same for all ten standard resistors.
 
     ::: callout-tip
     Once you have done the first resistor, you can open the symbol table (*Tools → Edit Symbol Fields*). There, as you can see, you can change fields for groups of components and manually edit values. When doing a lot of changes to values and footprints, this tool is invaluable. Note that, as you would expect, you can copy and paste values and footprints between symbols.
     :::
 
-2.  Now do the diodes, excepting the LED. First, select one and edit ($E$) it. If the symbol isn't already $1N4005$, you can select "Change Symbol" and choose a new library identifier, then click the library button to change it, and "Change" to enact the change. All should be $1N4005G$ diodes, which you can update the "Value" field to display, with the same SMD-0805 footprint. Again, if you edit them in the *Symbol Table* you can do all at once.
+2.  Leave the electrolytic caps ($C_1$ and $C_2$) for later, but give $C_3$ an SMD-0805 footprint as well. Note that the 0805 footprint for caps is not the same as that for resistors—in particular, it begins with a *C* rather than an *R*. Make sure you are in the correct section of the footprint selector for surface-mount capacitors.
+
+3.  Now do the diodes, excepting the LED. First, select one and edit ($E$) it. If the symbol isn't already $1N4005$, you can select "Change Symbol" and choose a new library identifier, then click the library button to change it, and "Change" to enact the change. All should be $1N4005G$ diodes, which you can update the "Value" field to display, with the same SMD-0805 footprint. Again, if you edit them in the *Symbol Table* you can do all at once.
 
     ::: callout-note
     Neatness always counts! As you change the display values of some of these symbols, take the time to move the labels on the schematic around to make it easy to read the values. In particular, avoid labels overlapping with symbols or wires. Remember you can rotate labels, too.
     :::
 
-3.  Do the NPN transistors: value is "2N3904", change to the appropriate symbol if necessary, and select an SOT-23[^2] footprint.
+4.  Do the NPN transistors: value is "2N3904", change to the appropriate symbol if necessary, and select an SOT-23[^2] footprint.
 
-4.  Do the same for the 2N3906 PNP transistors.
+5.  Do the same for the 2N3906 PNP transistors.
 
-5.  The LM7805 should be in a T0220[^3] package footprint.
+6.  The LM7805 should be in a T0220[^3] package footprint.
 
-6.  The LM339 should be in a SOIC-14[^4] package footprint. Of course, a real LM339 actually has four comparators, and we only need one. In the symbol properties, make sure that "Unit A" is selected, which means the first of the four comparator units. Try changing it to "B" or "C" and note what happens to the pin numbers on the schematic before changing back to "A".
+7.  The LM339 should be in a SOIC-14[^4] package footprint. Of course, a real LM339 actually has four comparators, and we only need one. In the symbol properties, make sure that "Unit A" is selected, which means the first of the four comparator units. Try changing it to "B" or "C" and note what happens to the pin numbers on the schematic before changing back to "A".
+
+8.  You should have already selected a `Conn_01x03_Pin` header row for the three output pins. Now choose a footprint that has a $2.54mm$ ($0.1^"$) pitch between them.
+
+9.  That should set us up with the parts that are already in the KiCAD database.
 
 [^1]: Surface Mount Device, 0.08 inches by 0.05 inches.
 
@@ -97,13 +103,11 @@ In general, you can do both by double clicking on the symbol with the selection 
 
 [^4]: Small Outline Integrated Circuit - 14 pins. A standard surface-mount package for DIP-style chips. Similar to the ICs that you use in your breadboard, but significantly smaller and with gull-wing leads suitable for surface mount soldering and pick-and-place machines.
 
-That should set us up with the parts that are already in the KiCAD database.
+### Part 2 - Selecting Parts From a Vendor
 
-### Part 2 - Import
+Some devices that we want to use aren't already in the KiCAD symbol library, or we may not know what footprints are available. However, device vendors are very good about supporting circuit and PCB designers, and most major suppliers go out of their way to make sure it's easy to use their parts in a new design.
 
-Some devices that we want to use aren't already in the KiCAD symbol library. However, device vendors are very good about supporting circuit and PCB designers, and most major suppliers go out of their way to make sure it's easy to use their parts in a new design.
-
-1.  Let's start with the fuse. I'd rather not deal with mounting a fuse holder and replacing expendable fuses. Let's go to a *polyfuse*, which will heat up and automatically kill the power above a certain current, then gradually cool down and reset on its own. First, change the fuse's symbol to the generic polyfuse symbol in the symbol editor. Unfortunately, we don't have much in the way of real polyfuses in our default KiCAD library. Let's fix that. In the below, we'll use a project specific library, to avoid modifying our global library, but if it's a part that you expect to use on more than one p
+1.  Let's start with the fuse. I'd rather not deal with mounting a fuse holder and replacing expendable fuses. Let's go to a *polyfuse*, which will heat up and automatically kill the power above a certain current, then gradually cool down and reset on its own. First, change the fuse's symbol to the generic polyfuse symbol in the symbol editor. Unfortunately, we don't have much in the way of real polyfuses in our default KiCAD library. Let's fix that.
 
     a.  Go to Digikey[^5] and search for the Littelfuse NANOSMDC016F-2, which is in a SMD-1206 form factor polyfuse[^6].
     b.  On that part's page, click on the link for the EDA/CAD Models. In the next page, click on "Select Download Format". Choose "KiCAD (V6 and Later)" and Download. Create a folder in your KiCad Project (I use one named `lib`) and copy the extracted files into it.
@@ -114,16 +118,22 @@ Some devices that we want to use aren't already in the KiCAD symbol library. How
 
 2.  The two electrolytic capacitors are next. For $C_1$ and $C_2$, we'll select some through-hole barrel caps. Remember to set the value field for the symbols (syntax like "220uF" or "220u" will work).
 
-    a.  Let's try Mouser[^7] this time. Search on "electrolytic", and select "Aluminum Electrolytic capacitors - Radial Leaded". This will give you a filter dialog. Select the capacitance value you need, ensure the voltage rating for the bigger cap is well above the peak voltage of its input (hint: what is the peak voltage of $12V_{rms}$?). The smaller cap must be able to manage more than $5V$. From the available options, choose one that is in stock and reasonably priced, with the correct value.
-    b.  Whatever part you have chosen, go to its datasheet. First, confirm that it does come in the value and voltage we specified—you can't always trust the search filters. If you are satisfied, zcopy the URL of that datasheet
+    a.  Let's try Mouser[^7] this time. Search on "electrolytic", and select "Aluminum Electrolytic capacitors - Radial Leaded". This will give you a filter dialog. Select the capacitance value you need, ensure the voltage rating for the bigger cap is well above the peak voltage of its input (hint: what is the peak voltage of $12V_{rms}$?). Note that the filter has a greater than or equal to button so you can select above a certain voltage rather than exactly. The smaller cap must be able to manage more than $5V$. From the available options, choose one that is in stock and reasonably priced, with the correct value. Ideally, you want to get both parts from the same manufacturer (you can filter by manufacturer, too).
+    b.  Whatever part you have chosen, go to its datasheet. First, confirm that it does come in the value and voltage we specified—you can't always trust the search filters. If you are satisfied, copy the URL of that datasheet to the capacitors datasheet field. Now, from the datasheet, find the actual size of the package. *Make sure the size (in microfarads) of the cap you want is available in a particular footprint, as the datasheets will be for several different values.* In particular, we are interested in the barrel diameter and the pin pitch (distance between pins). In the footprint selector for the Cap, select *Capacitor_THT*[^8] and the the Radial Lead package that matches your selected device. Do this for both capacitors.
 
-3.  Finally, we need to do something about that $12V_{DC}$ supply. Obviously, we're not going to actually install an AC source onto our board. What is meant by that symbol is the wall-wart plug connected to our board to provide the AC power source. From the point of view of our board, that just appears as the barrel-jack connector our wall-wart will plug in to. So let's change it.
+3.  Our power switch,
+
+4.  The potentiometer,
+
+5.  Finally, we need to do something about that $12V_{RMS}$ supply. Obviously, we're not going to actually install an AC source onto our board. What is meant by that symbol is the wall-wart plug connected to our board to provide the AC power source. From the point of view of our board, that just appears as the barrel-jack connector our wall-wart will plug in to. So let's change it.
 
 [^5]: <https://www.digikey.ca/>
 
 [^6]: Of course, in the real world for a real project, you would compare this part to other parts, check the availability and price, and probably order some.
 
 [^7]: <https://www.mouser.ca/>
+
+[^8]: Through-Hole Technology
 
 ### Submission
 
