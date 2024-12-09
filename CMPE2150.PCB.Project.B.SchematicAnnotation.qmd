@@ -83,17 +83,19 @@ In general, you can do both by double clicking on the symbol with the selection 
     Neatness always counts! As you change the display values of some of these symbols, take the time to move the labels on the schematic around to make it easy to read the values. In particular, avoid labels overlapping with symbols or wires. Remember you can rotate labels, too.
     :::
 
-4.  Do the NPN transistors: value is "2N3904", change to the appropriate symbol if necessary, and select an SOT-23[^2] footprint.
+4.  We'll use a standard through-hole bulb LED for the power indicator. Choose a footprint for a through-hole $5.0mm$ LED. Once you have done so, amend the name (value) of the Footprint by appending "`_GREEN`" to the name. Also add green to the value of the symbol itself so that it appears in the schematic.
 
-5.  Do the same for the 2N3906 PNP transistors.
+5.  Do the NPN transistors: value is "2N3904", change to the appropriate symbol if necessary, and select an SOT-23[^2] footprint.
 
-6.  The LM7805 should be in a T0220[^3] package footprint.
+6.  Do the same for the 2N3906 PNP transistors.
 
-7.  The LM339 should be in a SOIC-14[^4] package footprint. Of course, a real LM339 actually has four comparators, and we only need one. In the symbol properties, make sure that "Unit A" is selected, which means the first of the four comparator units. Try changing it to "B" or "C" and note what happens to the pin numbers on the schematic before changing back to "A".
+7.  The LM7805 should be in a T0220[^3] package footprint.
 
-8.  You should have already selected a `Conn_01x03_Pin` header row for the three output pins. Now choose a footprint that has a $2.54mm$ ($0.1^"$) pitch between them.
+8.  The LM339 should be in a SOIC-14[^4] package footprint. Of course, a real LM339 actually has four comparators, and we only need one. In the symbol properties, make sure that "Unit A" is selected, which means the first of the four comparator units. Try changing it to "B" or "C" and note what happens to the pin numbers on the schematic before changing back to "A".
 
-9.  That should set us up with the parts that are already in the KiCAD database.
+9.  You should have already selected a `Conn_01x03_Pin` header row for the three output pins. Now choose a footprint that has a $2.54mm$ ($0.1^"$) pitch between them.
+
+10. That should set us up with the parts that are already in the KiCAD database.
 
 [^1]: Surface Mount Device, 0.08 inches by 0.05 inches.
 
@@ -121,9 +123,9 @@ Some devices that we want to use aren't already in the KiCAD symbol library, or 
     a.  Let's try Mouser[^7] this time. Search on "electrolytic", and select "Aluminum Electrolytic capacitors - Radial Leaded". This will give you a filter dialog. Select the capacitance value you need, ensure the voltage rating for the bigger cap is well above the peak voltage of its input (hint: what is the peak voltage of $12V_{rms}$?). Note that the filter has a greater than or equal to button so you can select above a certain voltage rather than exactly. The smaller cap must be able to manage more than $5V$. From the available options, choose one that is in stock and reasonably priced, with the correct value. Ideally, you want to get both parts from the same manufacturer (you can filter by manufacturer, too).
     b.  Whatever part you have chosen, go to its datasheet. First, confirm that it does come in the value and voltage we specified—you can't always trust the search filters. If you are satisfied, copy the URL of that datasheet to the capacitors datasheet field. Now, from the datasheet, find the actual size of the package. *Make sure the size (in microfarads) of the cap you want is available in a particular footprint, as the datasheets will be for several different values.* In particular, we are interested in the barrel diameter and the pin pitch (distance between pins). In the footprint selector for the Cap, select *Capacitor_THT*[^8] and the the Radial Lead package that matches your selected device. Do this for both capacitors.
 
-3.  Our power switch,
+3.  Our power switch will be a small slide switch. Go to one of our vendors and find a SPST through-hole slide switch—that can easily handle your 12 VAC suppy—that appeals to you. Adjust the symbol and footprint as needed. You may need to import the symbol and/or footprint from the vendor if you cannot find one in the existing library that matches. To find out, look at the data sheet for your selected switch, which will have detailed drawings. The most important values are the size and the spacing of the pins. You can look in the KiCAD library to find a matching footprint starting with `SW_DIP_SPSTx01_Slide_` for some generic footprints. You may also look at some of the standard slide switches and see if you can find it in the vendor library. If you can't match them, you can pick a slide switch whose footprint is available for download. (Hint: most footprints in the KiCAD library have links to the vendor.)
 
-4.  The potentiometer,
+4.  The potentiometer should be a through-hole vertical potentiometer. Select one from the `Potentiometer_THT` footprints that has a knob that is adjustable without tools.
 
 5.  Finally, we need to do something about that $12V_{RMS}$ supply. Obviously, we're not going to actually install an AC source onto our board. What is meant by that symbol is the wall-wart plug connected to our board to provide the AC power source. From the point of view of our board, that just appears as the barrel-jack connector our wall-wart will plug in to. So let's change it.
 
