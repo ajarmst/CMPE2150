@@ -3090,7 +3090,7 @@ font-size: 0.8em;
 }
 .math.inline .MathJax {
 font-size: 92% !important;
-color: ##6863F4 ;
+color: #6863F4 ;
 }
 .math.display .MathJax {
 font-size: 90% !important;
@@ -3245,17 +3245,15 @@ Note
 <h3 class="anchored" data-anchor-id="part-3---electrical-rules-check-erc">Part 3 - Electrical Rules Check (ERC)</h3>
 <p>At last, it is time to do the ERC. The notes below discuss how to resolve the issues you are likely to encounter. If you have other errors, try to resolve them. Just typing the error message and “KiCAD” into a search engine or AI is remarkably effective because of the large KiCAD community online. Select <em>Inspect → Electrical Rules Checker</em>, and go to work.</p>
 <ol type="1">
-<li>If you, as instructed, placed <code>PWR_FLAG</code>s next to the <code>VCC</code> flag on the output of the Voltage regulator, move it to the input (pin 1) to get rid of the <em>Input Power pin not driven by any Ouput Power pins</em> error. Although we are using it for <span class="math inline">\(V_{CC}\)</span>, pin 3 is already an output, so we do not need to use the flag to label it as getting an external output. Pin 1 is the actual input that needs the flag.</li>
+<li>If you, as instructed, placed <code>PWR_FLAG</code>s next to the <code>VCC</code> flag on the output of the Voltage regulator, move it to the input (pin 1) to get rid of the <em>Input Power pin not driven by any Otuput Power pins</em> error. Although we are using it for <span class="math inline">\(V_{CC}\)</span>, pin 3 is already an output, so we do not need to use the flag to label it as getting an external output. Pin 1 is the actual input that needs the flag.</li>
 <li>That no output for input power pin error is usually resolvable with power flags, as illustrated in the tutorial. Power flags are just a virtual output that labels a line as being an output to satisfy an input pin’s need to be driven. You only need it when you have a device that has such a pin and the output to drive it is off-board.</li>
 <li>If you get an error complaining about output power connected to an open emitter or open collector, you’ve likely got the wrong type of transistor—like a simulation transistor—make sure the symbol is a <code>2N3904</code> (or <code>-06</code>).</li>
 <li>You will likely have an error that <span class="math inline">\(U_2\)</span> has unplaced units. This is expected, as we only placed one of the four comparators on the <code>LM339</code>. In effect, we have three spare comparators that we aren’t hooking up but we can’t leave them out because they’re part of the chip carrying the one they need. So, we’ll place them.
 <ol type="a">
-<li>Place three new comparators neatly in the white space below the circuit by copying the existing one and pasting them.
-<ol type="a">
-<li>Edit them and change the <em>Reference</em> to <code>U2</code> (the same as the first comparator) and the <span class="math inline">\(Unit\)</span> to <code>B</code>, <code>C</code>, etc. Note the different pin numbers.</li>
+<li>Place three new comparators neatly in the white space below the circuit by copying the existing one and pasting them.</li>
+<li>Edit them and change the <em>Reference</em> to <code>U2</code> (the same as the first comparator) and the <em>Unit</em> to <code>B</code>, <code>C</code>, etc. Note the different pin numbers.</li>
 <li>Place <em>no-connection flags</em> (<span class="math inline">\(Q\)</span>) on the inputs and outputs of the three comparators.</li>
 <li>Remember that we didn’t have the power and ground connections in the schematic because they weren’t really necessary (of course a chip is powered) and left out to reduce clutter? Well, the PCB Editor <em>does</em> care how it’s powered, so we will add them by placing <em>Unit E</em> of the comparator. Copy a comparator one more time and change it to <code>U2E</code>. It’ll turn into our missing power pins. Now, you can actually place those over the schematic symbol, but we don’t need to. The PCB Editor just wants to know what to connect them to. Just place the two pins next to the spare comparators and place power symbols <code>VCC</code> and <code>GND</code> to connect them to.</li>
-</ol></li>
 </ol></li>
 </ol>
 </section>
