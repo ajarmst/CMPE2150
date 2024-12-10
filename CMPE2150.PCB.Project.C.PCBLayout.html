@@ -9,7 +9,7 @@
 <meta name="author" content="AJ Armstrong">
 <meta name="dcterms.date" content="2024-12-09">
 
-<title>CMPE2150 PCB Project B</title>
+<title>CMPE2150 PCB Project C</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3205,8 +3205,8 @@ font-size: 0.8em;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">CMPE2150 PCB Project B</h1>
-            <p class="subtitle lead">Schematic Annotation</p>
+      <h1 class="title">CMPE2150 PCB Project C</h1>
+            <p class="subtitle lead">PCB Layout</p>
                       </div>
   </div>
     
@@ -3243,7 +3243,7 @@ font-size: 0.8em;
   <li><a href="#part-3---electrical-rules-check-erc" id="toc-part-3---electrical-rules-check-erc" class="nav-link" data-scroll-target="#part-3---electrical-rules-check-erc">Part 3 - Electrical Rules Check (ERC)</a></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="CMPE2150.PCB.Project.B.SchematicAnnotation.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="CMPE2150.PCB.Project.C.PCBLayout.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
 <main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
 
@@ -3251,6 +3251,30 @@ font-size: 0.8em;
 
 
 
+<p>I’m going to stop reminding you to increment version numbers, check in and push at major milestones, because you already do that reflexively.</p>
+<p>PCB Layout</p>
+<p>Now that we have a fully annotated and checked schematic, we can begin the process of layout out a PCB. This process will follow the procedure in the tutorial rather closely, so most of the tasks should be reasonably familiar. This is always true, but particularly in PCB layout it is important to be neat, to check things carefully and to pay attention to constraints and instructions. Very subtle errors on a PCB design can make the boards useless after manufacture and waste hundreds of dollars and weeks of time on even a small test run. Your instructors will rarely have time to do more than a cursory check of this work, but you are encouraged to review each others’ work and offer feedback and suggestions, up to the normal limits of not sharing designs.</p>
+<p>Part 1 - Setting Up the Board</p>
+<p>Open your project’s PCB editor and:</p>
+<p>Select File → Page Settings and set the page up the same way we did for the schematic in Part A.</p>
+<p>Change the default units from mm to mils by selecting the mil button on the left toolbar. Mils are far more commonly used in North America.</p>
+<p>On the top menu bar, change the grid spacing to 20 mils.</p>
+<p>Now, go to File → Board Setup… and make or confirm the following settings:</p>
+<p>Board Stackup → Physical Stackup: Leave as 2 copper layers, as this is still a relatively simple board.</p>
+<p>Text &amp; Graphics → Defaults: Change Units to mils then round the default properties at the top up to the nearest mil.</p>
+<p>Design Rules → Design Constraints: Round constraint values up to the nearest whole ` mil</p>
+<p>Design Rules → Net Classes: Round constraint values up to the nearest whole mil.</p>
+<p>You may leave the remaining settings at default values.</p>
+<p>Part 2 - Component Placement</p>
+<p>Now we will place the comments from our schematic:</p>
+<p>Import the schematic: Tools → Update PCB from schematic…: If you get an error about the green LED, try removing the appended colour from the symbol name.</p>
+<p>Place the big bundle of symbols to one side of the entire document.</p>
+<p>Individually grab components and place them onto the PCB. Use the schematic as a reference to neatly place objects. Use the following guidelines:</p>
+<p>Components should be oriented (and parallel) with either the left or top edge.</p>
+<p>Submission</p>
+When you have completed all the above—including having no ERC errors or warnings—and checked and reviewed your work, ask your instructor to review your schematic with you. Make any changes they require. When you are done submit the schematic.— title: “CMPE2150 PCB Project B” subtitle: “Schematic Annotation” author: “AJ Armstrong” date: last-modified date-format: “DD MMM YYYY” bibliography: references.bib biblio-style: ieee csl: ieee.csl format: html: embed-resources: true smooth-scroll: true fontcolor: “#005cb9” grid: margin-width: 350px pdf: papersize: letter geometry: - top=30mm - bottom=30mm - left=15mm - right=80mm - marginparwidth=60mm - marginparsep=10mm - heightrounded include-in-header: text: |
+<p>toc: true toc-location: right toc-expand: true reference-location: margin citation-location: margin cap-location: margin fig-align: default fig-cap-location: margin footnotes-hover: true css: content.css editor: visual title-block-banner: “#002d74” fig-env: “figure” keep-tex: true</p>
+<hr>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
