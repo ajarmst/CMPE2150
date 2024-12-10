@@ -4179,7 +4179,7 @@
 	)
 	(wire
 		(pts
-			(xy 222.25 67.31) (xy 222.25 73.66)
+			(xy 222.25 67.31) (xy 222.25 85.09)
 		)
 		(stroke
 			(width 0)
@@ -4456,16 +4456,6 @@
 			(type default)
 		)
 		(uuid "6a3db37d-8dc6-4798-8808-2c55ed8bb750")
-	)
-	(wire
-		(pts
-			(xy 222.25 81.28) (xy 222.25 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6d001f85-6549-451a-b3c0-c44abe7306e5")
 	)
 	(wire
 		(pts
@@ -5388,76 +5378,6 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 222.25 77.47 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "351363e7-f656-41c1-9f87-313fd0acca23")
-		(property "Reference" "R11"
-			(at 224.79 76.1999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "0"
-			(at 224.79 78.7399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 223.266 77.724 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 222.25 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 222.25 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4110b493-cb20-45c7-8199-e477acac2303")
-		)
-		(pin "2"
-			(uuid "04a6974d-768d-43cc-a09e-aedda74c6200")
-		)
-		(instances
-			(project "PWMGenerator-aja"
-				(path "/18199a25-5472-4b5c-b90a-fcfdecd0a2ee"
-					(reference "R11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_US")
 		(at 171.45 76.2 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5527,7 +5447,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Simulation_SPICE:PNP")
+		(lib_id "Transistor_BJT:2N3904")
 		(at 219.71 90.17 0)
 		(mirror x)
 		(unit 1)
@@ -5554,25 +5474,28 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 255.27 90.17 0)
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+			(at 224.79 88.265 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF"
+			(at 219.71 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/2N3906-D.PDF"
-			(at 255.27 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+		(property "Description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, TO-92"
 			(at 219.71 90.17 0)
 			(effects
 				(font
@@ -7470,37 +7393,37 @@
 			(uuid "8107713d-72ec-418f-82ff-f69af84cf51a")
 		)
 		(pin "8"
-			(uuid "308a668a-6737-479d-8377-e6c53436794d")
+			(uuid "308a668a-6737-479d-8377-e6c53436794e")
 		)
 		(pin "3"
-			(uuid "4c18bb33-b559-40d9-a148-893e4366bf4c")
+			(uuid "4c18bb33-b559-40d9-a148-893e4366bf4d")
 		)
 		(pin "14"
-			(uuid "fcf407ef-9bf7-4b80-b4ea-466c0d42dcb5")
+			(uuid "fcf407ef-9bf7-4b80-b4ea-466c0d42dcb6")
 		)
 		(pin "7"
-			(uuid "66821e8f-10b4-4d71-92a7-c5d8950ed9fe")
+			(uuid "66821e8f-10b4-4d71-92a7-c5d8950ed9ff")
 		)
 		(pin "9"
-			(uuid "9d53b6af-fe88-44d0-a57a-bd95ab176414")
+			(uuid "9d53b6af-fe88-44d0-a57a-bd95ab176415")
 		)
 		(pin "1"
-			(uuid "aaa389a2-c2a5-45df-ba0d-3771807e2a14")
+			(uuid "aaa389a2-c2a5-45df-ba0d-3771807e2a15")
 		)
 		(pin "13"
-			(uuid "386ffb1f-dd3e-4591-9619-27d8607e015f")
+			(uuid "386ffb1f-dd3e-4591-9619-27d8607e0160")
 		)
 		(pin "12"
-			(uuid "809f9f2c-d366-4f42-9bb1-6086fd5907a8")
+			(uuid "809f9f2c-d366-4f42-9bb1-6086fd5907a9")
 		)
 		(pin "6"
-			(uuid "7760e966-008f-4029-ab65-e5f5c6095a8e")
+			(uuid "7760e966-008f-4029-ab65-e5f5c6095a8f")
 		)
 		(pin "11"
-			(uuid "d15a3789-6602-44d1-b3c5-e821d02fc598")
+			(uuid "d15a3789-6602-44d1-b3c5-e821d02fc599")
 		)
 		(pin "10"
-			(uuid "52530868-e953-432e-b046-0a59123fc0ea")
+			(uuid "52530868-e953-432e-b046-0a59123fc0eb")
 		)
 		(pin "5"
 			(uuid "5337ad80-f103-4632-9c55-f1b47c127122")
@@ -7987,37 +7910,37 @@
 			(uuid "a4103c36-e744-4de2-a813-b01f80a96eee")
 		)
 		(pin "8"
-			(uuid "308a668a-6737-479d-8377-e6c53436794d")
+			(uuid "308a668a-6737-479d-8377-e6c53436794f")
 		)
 		(pin "3"
-			(uuid "4c18bb33-b559-40d9-a148-893e4366bf4c")
+			(uuid "4c18bb33-b559-40d9-a148-893e4366bf4e")
 		)
 		(pin "14"
-			(uuid "fcf407ef-9bf7-4b80-b4ea-466c0d42dcb5")
+			(uuid "fcf407ef-9bf7-4b80-b4ea-466c0d42dcb7")
 		)
 		(pin "7"
-			(uuid "66821e8f-10b4-4d71-92a7-c5d8950ed9fe")
+			(uuid "66821e8f-10b4-4d71-92a7-c5d8950eda00")
 		)
 		(pin "9"
-			(uuid "9d53b6af-fe88-44d0-a57a-bd95ab176414")
+			(uuid "9d53b6af-fe88-44d0-a57a-bd95ab176416")
 		)
 		(pin "1"
-			(uuid "aaa389a2-c2a5-45df-ba0d-3771807e2a14")
+			(uuid "aaa389a2-c2a5-45df-ba0d-3771807e2a16")
 		)
 		(pin "13"
-			(uuid "386ffb1f-dd3e-4591-9619-27d8607e015f")
+			(uuid "386ffb1f-dd3e-4591-9619-27d8607e0161")
 		)
 		(pin "12"
-			(uuid "809f9f2c-d366-4f42-9bb1-6086fd5907a8")
+			(uuid "809f9f2c-d366-4f42-9bb1-6086fd5907aa")
 		)
 		(pin "6"
-			(uuid "7760e966-008f-4029-ab65-e5f5c6095a8e")
+			(uuid "7760e966-008f-4029-ab65-e5f5c6095a90")
 		)
 		(pin "11"
-			(uuid "d15a3789-6602-44d1-b3c5-e821d02fc598")
+			(uuid "d15a3789-6602-44d1-b3c5-e821d02fc59a")
 		)
 		(pin "10"
-			(uuid "52530868-e953-432e-b046-0a59123fc0ea")
+			(uuid "52530868-e953-432e-b046-0a59123fc0ec")
 		)
 		(pin "5"
 			(uuid "15726ff6-122f-4e21-8ac8-b1195467edd7")
@@ -8159,37 +8082,37 @@
 			(uuid "f9c35194-9836-466e-ae7d-5571d4ddedde")
 		)
 		(pin "8"
-			(uuid "308a668a-6737-479d-8377-e6c53436794d")
+			(uuid "308a668a-6737-479d-8377-e6c534367950")
 		)
 		(pin "3"
-			(uuid "4c18bb33-b559-40d9-a148-893e4366bf4c")
+			(uuid "4c18bb33-b559-40d9-a148-893e4366bf4f")
 		)
 		(pin "14"
-			(uuid "fcf407ef-9bf7-4b80-b4ea-466c0d42dcb5")
+			(uuid "fcf407ef-9bf7-4b80-b4ea-466c0d42dcb8")
 		)
 		(pin "7"
-			(uuid "66821e8f-10b4-4d71-92a7-c5d8950ed9fe")
+			(uuid "66821e8f-10b4-4d71-92a7-c5d8950eda01")
 		)
 		(pin "9"
-			(uuid "9d53b6af-fe88-44d0-a57a-bd95ab176414")
+			(uuid "9d53b6af-fe88-44d0-a57a-bd95ab176417")
 		)
 		(pin "1"
-			(uuid "aaa389a2-c2a5-45df-ba0d-3771807e2a14")
+			(uuid "aaa389a2-c2a5-45df-ba0d-3771807e2a17")
 		)
 		(pin "13"
-			(uuid "386ffb1f-dd3e-4591-9619-27d8607e015f")
+			(uuid "386ffb1f-dd3e-4591-9619-27d8607e0162")
 		)
 		(pin "12"
-			(uuid "809f9f2c-d366-4f42-9bb1-6086fd5907a8")
+			(uuid "809f9f2c-d366-4f42-9bb1-6086fd5907ab")
 		)
 		(pin "6"
-			(uuid "7760e966-008f-4029-ab65-e5f5c6095a8e")
+			(uuid "7760e966-008f-4029-ab65-e5f5c6095a91")
 		)
 		(pin "11"
-			(uuid "d15a3789-6602-44d1-b3c5-e821d02fc598")
+			(uuid "d15a3789-6602-44d1-b3c5-e821d02fc59b")
 		)
 		(pin "10"
-			(uuid "52530868-e953-432e-b046-0a59123fc0ea")
+			(uuid "52530868-e953-432e-b046-0a59123fc0ed")
 		)
 		(pin "5"
 			(uuid "5650b9db-9bee-4901-91e1-ed04989c2d26")
@@ -8262,37 +8185,37 @@
 			(uuid "cb62bc88-1076-4851-90da-1865aef9301c")
 		)
 		(pin "8"
-			(uuid "308a668a-6737-479d-8377-e6c53436794d")
+			(uuid "308a668a-6737-479d-8377-e6c534367951")
 		)
 		(pin "3"
-			(uuid "4c18bb33-b559-40d9-a148-893e4366bf4c")
+			(uuid "4c18bb33-b559-40d9-a148-893e4366bf50")
 		)
 		(pin "14"
-			(uuid "fcf407ef-9bf7-4b80-b4ea-466c0d42dcb5")
+			(uuid "fcf407ef-9bf7-4b80-b4ea-466c0d42dcb9")
 		)
 		(pin "7"
-			(uuid "66821e8f-10b4-4d71-92a7-c5d8950ed9fe")
+			(uuid "66821e8f-10b4-4d71-92a7-c5d8950eda02")
 		)
 		(pin "9"
-			(uuid "9d53b6af-fe88-44d0-a57a-bd95ab176414")
+			(uuid "9d53b6af-fe88-44d0-a57a-bd95ab176418")
 		)
 		(pin "1"
-			(uuid "aaa389a2-c2a5-45df-ba0d-3771807e2a14")
+			(uuid "aaa389a2-c2a5-45df-ba0d-3771807e2a18")
 		)
 		(pin "13"
-			(uuid "386ffb1f-dd3e-4591-9619-27d8607e015f")
+			(uuid "386ffb1f-dd3e-4591-9619-27d8607e0163")
 		)
 		(pin "12"
-			(uuid "809f9f2c-d366-4f42-9bb1-6086fd5907a8")
+			(uuid "809f9f2c-d366-4f42-9bb1-6086fd5907ac")
 		)
 		(pin "6"
-			(uuid "7760e966-008f-4029-ab65-e5f5c6095a8e")
+			(uuid "7760e966-008f-4029-ab65-e5f5c6095a92")
 		)
 		(pin "11"
-			(uuid "d15a3789-6602-44d1-b3c5-e821d02fc598")
+			(uuid "d15a3789-6602-44d1-b3c5-e821d02fc59c")
 		)
 		(pin "10"
-			(uuid "52530868-e953-432e-b046-0a59123fc0ea")
+			(uuid "52530868-e953-432e-b046-0a59123fc0ee")
 		)
 		(pin "5"
 			(uuid "507228e6-9d4e-486c-bbe6-81aed24747fc")

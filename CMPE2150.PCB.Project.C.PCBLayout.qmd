@@ -1,0 +1,160 @@
+---
+title: "CMPE2150 PCB Project B"
+subtitle: "Schematic Annotation"
+author: "AJ Armstrong"
+date: last-modified
+date-format: "DD MMM YYYY"
+bibliography: references.bib
+biblio-style: ieee
+csl: ieee.csl
+format:
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid:
+      margin-width: 350px
+  pdf:
+    papersize: letter
+    geometry:
+      - top=30mm
+      - bottom=30mm
+      - left=15mm
+      - right=80mm
+      - marginparwidth=60mm
+      - marginparsep=10mm
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \usepackage{titling}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 PCB Project B}
+        \fancyhead[R]{Schematic Annotation}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+        \setlength{\droptitle}{-2cm}
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-align: default
+fig-cap-location: margin
+footnotes-hover: true
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+fig-env: "figure"
+keep-tex: true
+---
+
+::: callout-tip
+I'm going to stop reminding you to increment version numbers, check in and push at major milestones, because you already do that reflexively.
+:::
+
+### Schematic Annotation
+
+Now that we have the basic symbols and connections input, we're going to modify this schematic, which currently represents the design of the circuit in a generalized, abstract way to a schematic that also contains (but does not always display) information about actual physical components and characteristics
+
+By the time we are finished, KiCAD will be satisfied that it knows enough to help us lay out a PCB design, and our electrical rule check (ERC) will be clean.
+
+### Part 1 - Adding Values and Footprints
+
+We will now visit each of the components in the schematic to correctly set:
+
+-   Its *value* (e.g. $R_1$ is $2.2k\Omega$), which you may have already selected when placing the symbol on the schematic.
+-   Its *footprint*, which is the actual, physical part description. It may depend on the manufacturer, type of part, or package.
+
+In general, you can do both by double clicking on the symbol with the selection tool or hover-selecting and hitting the $E$ (Edit) key. There, you can change the values in the appropriate fields. We will take them in turn.
+
+1.  We will first annotate each resistor (except the potentiometer). Confirm one has the correct value (for example, $R_1$ should have a value of "2.2k"). Choose an SMD-0805[^1] footprint (search terms include "R", "SMD", and "0805") for that resistor. Continue and do the same for all ten standard resistors.
+
+    ::: callout-tip
+    Once you have done the first resistor, you can open the symbol table (*Tools → Edit Symbol Fields*). There, as you can see, you can change fields for groups of components and manually edit values. When doing a lot of changes to values and footprints, this tool is invaluable. Note that, as you would expect, you can copy and paste values and footprints between symbols.
+    :::
+
+2.  Leave the electrolytic caps ($C_1$ and $C_2$) for later, but give $C_3$ an SMD-0805 footprint as well. Note that the 0805 footprint for caps is not the same as that for resistors—in particular, it begins with a *C* rather than an *R*. Make sure you are in the correct section of the footprint selector for surface-mount capacitors.
+
+3.  Now do the diodes, excepting the LED. First, select one and edit ($E$) it. If the symbol isn't already $1N4005$, you can select "Change Symbol" and choose a new library identifier, then click the library button to change it, and "Change" to enact the change. All should be $1N4005G$ diodes, which you can update the "Value" field to display, with the same SMD-0805 footprint. Again, if you edit them in the *Symbol Table* you can do all at once.
+
+    ::: callout-note
+    Neatness always counts! As you change the display values of some of these symbols, take the time to move the labels on the schematic around to make it easy to read the values. In particular, avoid labels overlapping with symbols or wires. Remember you can rotate labels, too.
+    :::
+
+4.  We'll use a standard through-hole bulb LED for the power indicator. Choose a footprint for a through-hole $5.0mm$ LED. Once you have done so, amend the name (value) of the Footprint by appending "`_GREEN`" to the name. Also add green to the value of the symbol itself so that it appears in the schematic.
+
+5.  Do the NPN transistors: value is "2N3904", change to the appropriate symbol if necessary, and select an SOT-23[^2] footprint.
+
+6.  Do the same for the 2N3906 PNP transistors.
+
+7.  The LM7805 should be in a T0220[^3] package footprint.
+
+8.  The LM339 should be in a SOIC-14[^4] package footprint. Of course, a real LM339 actually has four comparators, and we only need one. In the symbol properties, make sure that "Unit A" is selected, which means the first of the four comparator units. Try changing it to "B" or "C" and note what happens to the pin numbers on the schematic before changing back to "A".
+
+9.  You should have already selected a `Conn_01x03_Pin` header row for the three output pins. Now choose a footprint that has a $2.54mm$ ($0.1^"$) pitch between them.
+
+10. That should set us up with the parts that are already in the KiCAD database.
+
+[^1]: Surface Mount Device, 0.08 inches by 0.05 inches.
+
+[^2]: Small-Outline Transistor #23
+
+[^3]: Transistor Outline #220, a standard through-hole package for transistors very common for voltage regulators, which are also three-pin.
+
+[^4]: Small Outline Integrated Circuit - 14 pins. A standard surface-mount package for DIP-style chips. Similar to the ICs that you use in your breadboard, but significantly smaller and with gull-wing leads suitable for surface mount soldering and pick-and-place machines.
+
+### Part 2 - Selecting Parts From a Vendor
+
+Some devices that we want to use aren't already in the KiCAD symbol library, or we may not know what footprints are available. However, device vendors are very good about supporting circuit and PCB designers, and most major suppliers go out of their way to make sure it's easy to use their parts in a new design.
+
+1.  Let's start with the fuse. I'd rather not deal with mounting a fuse holder and replacing expendable fuses. Let's go to a *polyfuse*, which will heat up and automatically kill the power above a certain current, then gradually cool down and reset on its own. First, change the fuse's symbol to the generic polyfuse symbol in the symbol editor. Unfortunately, we don't have much in the way of real polyfuses in our default KiCAD library. Let's fix that.
+
+    a.  Go to Digikey[^5] and search for the Littelfuse NANOSMDC016F-2, which is in a SMD-1206 form factor polyfuse[^6].
+    b.  On that part's page, click on the link for the EDA/CAD Models. In the next page, click on "Select Download Format". Choose "KiCAD (V6 and Later)" and Download. Create a folder in your KiCad Project (I use one named `lib`) and copy the extracted files into it.
+    c.  Now you can import it into your KiCAD symbol library, possibly by just double clicking on it, depending on your platform and version. There should be a file in the downloaded symbol/model that describes how to import the `*.kicad_sym` symbol using *Preferences → Manage Symbol Libraries → Global Libraries* from the main (not Schematic Editor) window then browsing (little folder icon) and opening the file to add to your library.
+    d.  Perform a similar procedure to import the `*.kicad_mod` model file Footprint using *Preferences → Manage Footprint Libraries → Global Libraries*. Note that Footprint libraries are added by folder, so you won't be able to see the file—just select the folder that contains it.
+    e.  Now, go to your schematic and edit the polyfuse symbol, to select what you just imported. Try searching on the NANOSMDC... part number for the symbol. The footprint you just imported can be found under the folder name that you selected (in my case, it show as a new dropdown named `lib)`.
+    f.  While you're in the symbol table, update the datasheet for the polyfuse to an appropriate datasheet URL on the web and change the value to `NANOSMDC016F-2`.
+
+2.  The two electrolytic capacitors are next. For $C_1$ and $C_2$, we'll select some through-hole barrel caps. Remember to set the value field for the symbols (syntax like "220uF" or "220u" will work).
+
+    a.  Let's try Mouser[^7] this time. Search on "electrolytic", and select "Aluminum Electrolytic capacitors - Radial Leaded". This will give you a filter dialog. Select the capacitance value you need, ensure the voltage rating for the bigger cap is well above the peak voltage of its input (hint: what is the peak voltage of $12V_{rms}$?). Note that the filter has a greater than or equal to button so you can select above a certain voltage rather than exactly. The smaller cap must be able to manage more than $5V$. From the available options, choose one that is in stock and reasonably priced, with the correct value. Ideally, you want to get both parts from the same manufacturer (you can filter by manufacturer, too).
+    b.  Whatever part you have chosen, go to its datasheet. First, confirm that it does come in the value and voltage we specified—you can't always trust the search filters. If you are satisfied, copy the URL of that datasheet to the capacitors datasheet field. Now, from the datasheet, find the actual size of the package. *Make sure the size (in microfarads) of the cap you want is available in a particular footprint, as the datasheets will be for several different values.* In particular, we are interested in the barrel diameter and the pin pitch (distance between pins). In the footprint selector for the Cap, select *Capacitor_THT*[^8] and the the Radial Lead package that matches your selected device. Do this for both capacitors.
+
+3.  Our power switch will be a small slide switch. Go to one of our vendors and find a SPST through-hole slide switch—that can easily handle your 12 VAC suppy—that appeals to you. Adjust the symbol and footprint as needed. You may need to import the symbol and/or footprint from the vendor if you cannot find one in the existing library that matches. To find out, look at the data sheet for your selected switch, which will have detailed drawings. The most important values are the size and the spacing of the pins. You can look in the KiCAD library to find a matching footprint starting with `SW_DIP_SPSTx01_Slide_` for some generic footprints. You may also look at some of the standard slide switches and see if you can find it in the vendor library. If you can't match them, you can pick a slide switch whose footprint is available for download. (Hint: most footprints in the KiCAD library have links to the vendor.)
+
+4.  The potentiometer should be a through-hole vertical potentiometer. Select one from the `Potentiometer_THT` footprints that has a knob that is adjustable without tools.
+
+5.  Finally, we need to do something about that $12V_{RMS}$ supply. Obviously, we're not going to actually install an AC source onto our board. What is meant by that symbol is the wall-wart plug connected to our board to provide the AC power source. From the point of view of our board, that just appears as the barrel-jack connector our wall-wart will plug in to. So let's change it.
+
+    a.  Edit the power supply symbol and select *Change Symbol*. Choose a new library identifier to change it to a `Barrel_Jack`. Make sure the pin ($pin 1$) is connected to the net you identified as `VAC` and the sleeve is connected to `GNDPWR`.
+    b.  Now select a footprint for the barrel jack: there is a DC barrel jack footprint.
+
+6.  Open the symbol table and confirm that all of the symbols have correct values and footprints. Visually clean up the schematic and labels. Increment the version number, check in and push.
+
+[^5]: <https://www.digikey.ca/>
+
+[^6]: Of course, in the real world for a real project, you would compare this part to other parts, check the availability and price, and probably order some.
+
+[^7]: <https://www.mouser.ca/>
+
+[^8]: Through-Hole Technology
+
+### Part 3 - Electrical Rules Check (ERC)
+
+At last, it is time to do the ERC. The notes below discuss how to resolve the issues you are likely to encounter. If you have other errors, try to resolve them. Just typing the error message and "KiCAD" into a search engine or AI is remarkably effective because of the large KiCAD community online. Select *Inspect → Electrical Rules Checker*, and go to work.
+
+1.  If you, as instructed, placed `PWR_FLAG`s next to the `VCC` flag on the output of the Voltage regulator, move it to the input (pin 1) to get rid of the *Input Power pin not driven by any Ouput Power pins* error. Although we are using it for $V_{CC}$, pin 3 is already an output, so we do not need to use the flag to label it as getting an external output. Pin 1 is the actual input that needs the flag.
+2.  That no output for input power pin error is usually resolvable with power flags, as illustrated in the tutorial. Power flags are just a virtual output that labels a line as being an output to satisfy an input pin's need to be driven. You only need it when you have a device that has such a pin and the output to drive it is off-board.
+3.  If you get an error complaining about output power connected to an open emitter or open collector, you've likely got the wrong type of transistor—like a simulation transistor—make sure the symbol is a `2N3904` (or `-06`).
+4.  You will likely have an error that $U_2$ has unplaced units. This is expected, as we only placed one of the four comparators on the `LM339`. In effect, we have three spare comparators that we aren't hooking up but we can't leave them out because they're part of the chip carrying the one they need. So, we'll place them.
+    a.  Place three new comparators neatly in the white space below the circuit by copying the existing one and pasting them.
+        a.  Edit them and change the *Reference* to `U2` (the same as the first comparator) and the $Unit$ to `B`, `C`, etc. Note the different pin numbers.
+        b.  Place *no-connection flags* (\$Q\$) on the inputs and outputs of the three comparators.
+        c.  Remember that we didn't have the power and ground connections in the schematic because they weren't really necessary (of course a chip is powered) and left out to reduce clutter? Well, the PCB Editor *does* care how it's powered, so we will add them by placing *Unit E* of the comparator. Copy a comparator one more time and change it to `U2E`. It'll turn into our missing power pins. Now, you can actually place those over the schematic symbol, but we don't need to. The PCB Editor just wants to know what to connect them to. Just place the two pins next to the spare comparators and place power symbols `VCC` and `GND` to connect them to.
+
+### Submission
+
+When you have completed all the above—including having no ERC errors or warnings—and checked and reviewed your work, ask your instructor to review your schematic with you. Make any changes they require. When you are done submit the schematic.
