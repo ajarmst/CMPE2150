@@ -10,3 +10,12 @@
 pre code {
   font-size: 0.8em;
 }
+
+.math.inline .MathJax  {
+  font-size: 92% !important;
+  color: ##6863F4 ;
+}
+
+.math.display .MathJax  {
+  font-size: 90% !important;
+}

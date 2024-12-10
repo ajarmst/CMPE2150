@@ -152,7 +152,7 @@ At last, it is time to do the ERC. The notes below discuss how to resolve the is
 4.  You will likely have an error that $U_2$ has unplaced units. This is expected, as we only placed one of the four comparators on the `LM339`. In effect, we have three spare comparators that we aren't hooking up but we can't leave them out because they're part of the chip carrying the one they need. So, we'll place them.
     a.  Place three new comparators neatly in the white space below the circuit by copying the existing one and pasting them.
         a.  Edit them and change the *Reference* to `U2` (the same as the first comparator) and the $Unit$ to `B`, `C`, etc. Note the different pin numbers.
-        b.  Place *no-connection flags* (\$Q\$) on the inputs and outputs of the three comparators.
+        b.  Place *no-connection flags* ($Q$) on the inputs and outputs of the three comparators.
         c.  Remember that we didn't have the power and ground connections in the schematic because they weren't really necessary (of course a chip is powered) and left out to reduce clutter? Well, the PCB Editor *does* care how it's powered, so we will add them by placing *Unit E* of the comparator. Copy a comparator one more time and change it to `U2E`. It'll turn into our missing power pins. Now, you can actually place those over the schematic symbol, but we don't need to. The PCB Editor just wants to know what to connect them to. Just place the two pins next to the spare comparators and place power symbols `VCC` and `GND` to connect them to.
 
 ### Submission
