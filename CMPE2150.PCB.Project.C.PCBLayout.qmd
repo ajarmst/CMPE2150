@@ -76,7 +76,7 @@ Now, go to *File → Board Setup...* and make or confirm the following settings:
 
 -   *Text & Graphics → Defaults:* Change *Units* to `mils` then round the default properties at the top up to the nearest mil.
 
--   *Design Rules → Design Constraints:* Round constraint values up to the nearest whole \` mil
+-   *Design Rules → Design Constraints:* Round constraint values up to the nearest whole mil.
 
 -   *Design Rules → Net Classes:* Round constraint values up to the nearest whole mil.
 
@@ -84,6 +84,30 @@ Now, go to *File → Board Setup...* and make or confirm the following settings:
 
 ### Part 2 - Component Placement
 
-Submission
+Now we will place the components from our schematic:
+
+-   Import the schematic: Tools → Update PCB from schematic…: If you get an error about the green LED, try removing the appended colour from the symbol name. Place the big bundle of symbols to one side of the entire document, not on your actual PCB page.  
+
+    -   Confirm against the schematic that you have footprints for all of the parts you expect.  If not, go back to the schematic and confirm that you selected a (correct) footprint.  I actually had some trouble getting the barrel jack to show up, which I resolved by deleting the part in the schematic and replacing it, then re-update the PCB from the schematic.
+    -   Check that your footprints are all correct. In particular, that those parts that are supposed to be through-hole are through-hole and those that are surface-mount are surface mount.  If the footprint is incorrect, you can just correct it on the schematic and re-update. This happened to me, in that for some reason I had the default through-hole footprint for the PNP transistors.
+    
+    ::: {.callout-caution}
+    It is important that you confirm the presence of all of your components and that they have the correct footprints before you start placing them.  If you're halfway through your layout when you discover a missing component or incorrect footprint, and then have to update from the schematic again, it can invalidate some of your work and force you to move things around.
+    :::
+
+-   
+
+-   Begin placing components wth the power supply elements (barrel jack, VR, electolytic caps, diodes, switch and polyfuse).
+
+    -   The barrel jack will actually stick slightly out past the edge of your board when we establish where that is, so place it at the far left of your placement area.
+    -   The switch should be near the barrel jack and orinted so that sliding it toward the top of the board will be the *on* position.
+    -   The LED (power indicator) should be adjacent to the switch.
+    -   The two electrolytic caps should be adjacent to the VR.
+
+Individually grab components and place them onto the PCB. Use the schematic as a reference to neatly place objects. Use the following guidelines:
+
+Components should be oriented (and parallel) with either the left or top edge.
+
+### Submission
 
 When you have completed all the above—including having no ERC errors or warnings—and checked and reviewed your work, ask your instructor to review your schematic with you. Make any changes they require. When you are done submit the schematic.
