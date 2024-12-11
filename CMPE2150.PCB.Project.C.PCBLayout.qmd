@@ -84,29 +84,54 @@ Now, go to *File → Board Setup...* and make or confirm the following settings:
 
 ### Part 2 - Component Placement
 
+First, some general comments on technique and expectations.
+
+-   We'll place all the components first, without doing any of the traces (wires). However, as you place components note that the 'rat's nest' lines show what will need to connect to what. Paying attention to that and rotating and placing parts to avoid having the rats nest lines cross over will simplify adding the traces. Of course, you can't always avoid it in a PCB layout just as you can't in a schematic. Keeping it to a minimum is, however, very helpful.
+
+-   If you have a well-designed schematic, it can be an excellent guide to your layout. Follow similar principles (signals go left to right, power at the top, ground at the bottom) unless you have a good reason not to.
+
+-   Components should be oriented (and parallel) with either the left or top edge.
+
+-   Parts should be oriented the same and lined up where possible. Make sure labels are configured so you can read them without having to rotate the board over much.
+
+-   Do this in a couple of passes. First just place components in a general area, adjacent to what they need to be adjacent to, and as uncluttered as possible, with a neat rat's nest. In subsequent passes, neaten it up, rotate things as necessary and align.
+
+-   Do not place components inside each others' courtyard (see the F.Courtyard and R.Courtyard layers). These indicate minimum spacing for a part away from other parts.
+
+-   Silk screen labels should be neat and not overlap. You may move them and rotate them as needed, but it should always be clear which part they refer to.
+
+-   Remember that you can simplify your working field by hiding and showing layers as you work.
+
+-   If you need to move things around to make space, remember that you can select multiple components and move them as a group.
+
 Now we will place the components from our schematic:
 
--   Import the schematic: Tools → Update PCB from schematic…: If you get an error about the green LED, try removing the appended colour from the symbol name. Place the big bundle of symbols to one side of the entire document, not on your actual PCB page.  
+-   Import the schematic: Tools → Update PCB from schematic…: If you get an error about the green LED, try removing the appended colour from the symbol name. Place the big bundle of symbols to one side of the entire document, not on your actual PCB page.
 
-    -   Confirm against the schematic that you have footprints for all of the parts you expect.  If not, go back to the schematic and confirm that you selected a (correct) footprint.  I actually had some trouble getting the barrel jack to show up, which I resolved by deleting the part in the schematic and replacing it, then re-update the PCB from the schematic.
-    -   Check that your footprints are all correct. In particular, that those parts that are supposed to be through-hole are through-hole and those that are surface-mount are surface mount.  If the footprint is incorrect, you can just correct it on the schematic and re-update. This happened to me, in that for some reason I had the default through-hole footprint for the PNP transistors.
-    
-    ::: {.callout-caution}
-    It is important that you confirm the presence of all of your components and that they have the correct footprints before you start placing them.  If you're halfway through your layout when you discover a missing component or incorrect footprint, and then have to update from the schematic again, it can invalidate some of your work and force you to move things around.
+    -   Confirm against the schematic that you have footprints for all of the parts you expect. If not, go back to the schematic and confirm that you selected a (correct) footprint. I actually had some trouble getting the barrel jack to show up, which I resolved by deleting the part in the schematic and replacing it, then re-updated the PCB from the schematic.
+    -   Check that your footprints are all correct. In particular, that those parts that are supposed to be through-hole are through-hole and those that are surface-mount are surface mount. If the footprint is incorrect, you can just correct it on the schematic and re-update. This happened to me, in that for some reason I had the default through-hole footprint for the PNP transistors.
+
+    ::: callout-caution
+    It is important that you confirm the presence of all of your components and that they have the correct footprints before you start placing them. If you're halfway through your layout when you discover a missing component or incorrect footprint, and then have to update from the schematic again, it can invalidate some of your work and force you to move things around.
     :::
 
--   
-
--   Begin placing components wth the power supply elements (barrel jack, VR, electolytic caps, diodes, switch and polyfuse).
+-   Begin placing components with the power supply elements (barrel jack, VR, electrolytic caps, diodes, switch and polyfuse).
 
     -   The barrel jack will actually stick slightly out past the edge of your board when we establish where that is, so place it at the far left of your placement area.
-    -   The switch should be near the barrel jack and orinted so that sliding it toward the top of the board will be the *on* position.
-    -   The LED (power indicator) should be adjacent to the switch.
+    -   The switch should be near the barrel jack and oriented so that sliding it toward the top of the board will be the *on* position.
+    -   The LED (power indicator) should be adjacent to the switch so that when the switch is turned on, it slides toward the LED.
     -   The two electrolytic caps should be adjacent to the VR.
+    -   Do not crowd the VR. It gets hot, and might want a heat sink. Orient it so that it the back tab is toward the edge of the board.
 
-Individually grab components and place them onto the PCB. Use the schematic as a reference to neatly place objects. Use the following guidelines:
+-   Now place the resistors, except for the potentiometer. Again, don't worry about rotation and exact location as much as a neat arrangement near things that will be interconnected.
 
-Components should be oriented (and parallel) with either the left or top edge.
+-   Place the transistors near their biasing resistors, rearranging as needed to make room.
+
+-   Place $C_3$ near its transistor.
+
+-   Place the comparator ($U_{2A}$). You may find it useful to move $R_9$ to $R_{11}$ to one side of the comparator.
+
+-   Now, rotate parts—if needed—to help untangle the rats nest. If you do so, adjust the labels to be consistent with the unrotated parts. It is helpful to do this while zoomed in. It is inevitable that you will have a few crossed ratsnest lines, but you want to reduce them as much as possible.r
 
 ### Submission
 

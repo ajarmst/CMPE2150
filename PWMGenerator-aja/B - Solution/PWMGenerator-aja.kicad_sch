@@ -5474,7 +5474,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 224.79 88.265 0)
 			(effects
 				(font
@@ -5485,7 +5485,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF"
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/2N3906-D.PDF"
 			(at 219.71 90.17 0)
 			(effects
 				(font
@@ -5717,6 +5717,74 @@
 			(project "PWMGenerator-aja"
 				(path "/18199a25-5472-4b5c-b90a-fcfdecd0a2ee"
 					(reference "R10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Barrel_Jack")
+		(at 22.86 93.98 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4315047b-f66b-4113-b492-84b73806cbf7")
+		(property "Reference" "J2"
+			(at 22.86 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Barrel_Jack"
+			(at 22.86 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_BarrelJack:BarrelJack_SwitchcraftConxall_RAPC10U_Horizontal"
+			(at 24.13 94.996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 24.13 94.996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "DC Barrel Jack"
+			(at 22.86 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3bd7ede0-01bf-43a1-8dbd-561531f34aba")
+		)
+		(pin "2"
+			(uuid "0920afa8-4b91-4504-9c01-f6db803df10d")
+		)
+		(instances
+			(project ""
+				(path "/18199a25-5472-4b5c-b90a-fcfdecd0a2ee"
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -6241,7 +6309,7 @@
 				)
 			)
 		)
-		(property "Footprint" "local:RESC3115X65N"
+		(property "Footprint" "lib:RESC3115X65N"
 			(at 53.34 66.04 0)
 			(effects
 				(font
@@ -6303,7 +6371,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "LED Green"
+		(property "Value" "LED"
 			(at 127 108.2674 90)
 			(effects
 				(font
@@ -6312,7 +6380,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "LED_THT:LED_D5.0mm_Green"
+		(property "Footprint" "LED_THT:LED_D5.0mm"
 			(at 123.19 105.41 0)
 			(effects
 				(font
@@ -6421,113 +6489,6 @@
 			(project ""
 				(path "/18199a25-5472-4b5c-b90a-fcfdecd0a2ee"
 					(reference "U1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Barrel_Jack")
-		(at 22.86 93.98 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8b5eb401-e45d-4225-8e48-b88bbe3243e5")
-		(property "Reference" "#PWR01"
-			(at 22.86 96.52 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "12V RMS"
-			(at 26.67 88.646 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 24.13 94.996 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 24.13 94.996 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "DC Barrel Jack"
-			(at 22.86 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=+ 2=-"
-			(at 22.86 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Params" "dc=0 ampl=1 f=1k ac=1"
-			(at 19.05 95.1201 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" "SIN"
-			(at 22.86 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "V"
-			(at 22.86 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "22ffcf47-b192-4d26-b4c2-267ae3a1758c")
-		)
-		(pin "2"
-			(uuid "581a8524-5145-45a1-8af0-021362eb71d0")
-		)
-		(instances
-			(project ""
-				(path "/18199a25-5472-4b5c-b90a-fcfdecd0a2ee"
-					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -6697,7 +6658,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 148.59 107.315 0)
 			(effects
 				(font
@@ -6708,7 +6669,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/2N3906-D.PDF"
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3904-d.pdf"
 			(at 143.51 105.41 0)
 			(effects
 				(font
@@ -7714,7 +7675,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF"
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3904-d.pdf"
 			(at 105.41 101.6 0)
 			(effects
 				(font
@@ -8397,7 +8358,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 204.47 87.63 0)
 			(effects
 				(font
@@ -8406,7 +8367,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/2N3906-D.PDF"
 			(at 204.47 87.63 0)
 			(effects
 				(font
