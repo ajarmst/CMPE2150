@@ -2612,6 +2612,8 @@ font-size: 90% !important;
   <li><a href="#pcb-layout" id="toc-pcb-layout" class="nav-link active" data-scroll-target="#pcb-layout">PCB Layout</a></li>
   <li><a href="#part-1---setting-up-the-board" id="toc-part-1---setting-up-the-board" class="nav-link" data-scroll-target="#part-1---setting-up-the-board">Part 1 - Setting Up the Board</a></li>
   <li><a href="#part-2---component-placement" id="toc-part-2---component-placement" class="nav-link" data-scroll-target="#part-2---component-placement">Part 2 - Component Placement</a></li>
+  <li><a href="#part-3---power-plane-copper-pours" id="toc-part-3---power-plane-copper-pours" class="nav-link" data-scroll-target="#part-3---power-plane-copper-pours">Part 3 - Power Plane Copper Pours</a></li>
+  <li><a href="#part-4---routing-traces" id="toc-part-4---routing-traces" class="nav-link" data-scroll-target="#part-4---routing-traces">Part 4 - Routing Traces</a></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
 </nav>
@@ -2702,10 +2704,29 @@ Danger
 <li><p>Place <span class="math inline">\(C_3\)</span> near its transistor.</p></li>
 <li><p>Place the comparator (<span class="math inline">\(U_{2A}\)</span>). You may find it useful to move <span class="math inline">\(R_9\)</span> to <span class="math inline">\(R_{11}\)</span> to one side of the comparator.</p></li>
 <li><p>Place the potentiometer and the header pins adjacent to the edge of the design.</p></li>
-<li><p>Now, rotate parts—if needed—to help untangle the rats nest. If you do so, adjust the labels to be consistent with the unrotated parts. It is helpful to do this while zoomed in. It is inevitable that you will have a few crossed ratsnest lines, but you want to reduce them as much as possible. One trick I sometimes use after rotation is to swap the sil</p></li>
+<li><p>Now, rotate parts—if needed—to help untangle the rats nest. If you do so, adjust the labels to be consistent with the unrotated parts. It is helpful to do this while zoomed in. It is inevitable that you will have a few crossed ratsnest lines, but you want to reduce them as much as possible. One trick I sometimes use after rotation is to swap the silk screen for the component name (e.g. <span class="math inline">\(R8\)</span>) and its value ($2.2k$) by selecting the two of them (but not the rest of the part), right-clicking and selecting <code>Swap</code> to make it match the orientation of other components.</p></li>
 <li><p>Take some time to neaten and align the parts into a rectangular shape. When ordering a board, the size of the PCB is a significant component of the cost, so you want the smallest possible area. But don’t go overboard—you’ll still need some space to move things around as you work. You can always reduce the size later.</p></li>
-<li><p>Finally, place your edge cuts to neatly contain your design</p></li>
+<li><p>Finally, place your edge cuts to neatly contain your design. Ensure the barrel jack, VR, potentiometer and header row are next to edges.</p></li>
 </ul>
+</section>
+<section id="part-3---power-plane-copper-pours" class="level3">
+<h3 class="anchored" data-anchor-id="part-3---power-plane-copper-pours">Part 3 - Power Plane Copper Pours</h3>
+<p>At this point you certainly do not need me to remind you to regularly save and check-in your work, especially at important milestones in the process, so I won’t do so.</p>
+<p>Add a ground plane copper zone to the bottom (<code>B.Cu</code>) copper layer of the board, encompassing the whole board:</p>
+<ul>
+<li><p>It should attach to the <code>GND</code> net.</p></li>
+<li><p>Use a hatch pattern fill. You can accept the defaults for the remainder.</p></li>
+<li><p>Fill all zones to see the effect of this.</p></li>
+</ul>
+<p>Now, note that all the through-hole connections to the <code>GND</code> net have little spokes indicating they are connected (eg, the two electrolytic caps have connections to that net). We no longer have to route those, which is convenient. You also now have the option of pushing a via from the top top layer surface mount to get to ground on the bottom layer. When you zoom into the board, you should see that pads are labelled with the net the connect to, so you can identify the ones that would like to be connected to the <code>GND</code> net on the bottom.</p>
+<p>Because we are using surface mount parts, much of our routing will be on the top layer, but you always have the option of using a via (or the pad of a through-hole component, which exists on both sides of the board). You can even route on the bottom layer, and the copper layer will automatically be adjusted away from your traces. Be wary, though! Your traces can disconnect regions of the copper pour (creating <em>islands</em> that are disconnected from the net).</p>
+<p>Use the <em>Show only zone boundaries</em> button on the left tool bar to hide the details of the ground plane. Note that the ground pins on your components no longer show a ratsnest line, because they are now connected.</p>
+<p>All right, now do exactly the same thing on the top (<code>F.Cu</code>) layer of the board, but this time for the <code>VCC</code> net.</p>
+<p>With luck, your routing problem just got substantially easier. Remember to regularly refill the zones (<span class="math inline">\(B\)</span>) and make them visible again to make sure things haven’t gone awry.</p>
+</section>
+<section id="part-4---routing-traces" class="level3">
+<h3 class="anchored" data-anchor-id="part-4---routing-traces">Part 4 - Routing Traces</h3>
+<p>We’ll now start routing the connections between components.</p>
 </section>
 <section id="submission" class="level3">
 <h3 class="anchored" data-anchor-id="submission">Submission</h3>

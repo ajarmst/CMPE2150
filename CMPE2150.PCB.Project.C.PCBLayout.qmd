@@ -133,12 +133,52 @@ Now we will place the components from our schematic:
 
 -   Place the potentiometer and the header pins adjacent to the edge of the design.
 
--   Now, rotate parts—if needed—to help untangle the rats nest. If you do so, adjust the labels to be consistent with the unrotated parts. It is helpful to do this while zoomed in. It is inevitable that you will have a few crossed ratsnest lines, but you want to reduce them as much as possible. One trick I sometimes use after rotation is to swap the sil
+-   Now, rotate parts—if needed—to help untangle the rats nest. If you do so, adjust the labels to be consistent with the unrotated parts. It is helpful to do this while zoomed in. It is inevitable that you will have a few crossed ratsnest lines, but you want to reduce them as much as possible. One trick I sometimes use after rotation is to swap the silk screen for the component name (e.g. $R8$) and its value ($2.2k$) by selecting the two of them (but not the rest of the part), right-clicking and selecting `Swap` to make it match the orientation of other components.
 
 -   Take some time to neaten and align the parts into a rectangular shape. When ordering a board, the size of the PCB is a significant component of the cost, so you want the smallest possible area. But don't go overboard—you'll still need some space to move things around as you work. You can always reduce the size later.
 
--   Finally, place your edge cuts to neatly contain your design
+-   Finally, place your edge cuts to neatly contain your design. Ensure the barrel jack, VR, potentiometer and header row are next to edges.
+
+### Part 3 - Power Plane Copper Pours
+
+At this point you certainly do not need me to remind you to regularly save and check-in your work, especially at important milestones in the process, so I won't do so.
+
+Add a ground plane copper zone to the bottom (`B.Cu`) copper layer of the board, encompassing the whole board:
+
+-   It should attach to the `GND` net.
+
+-   Use a hatch pattern fill. You can accept the defaults for the remainder.
+
+-   Fill all zones to see the effect of this.
+
+Now, note that all the through-hole connections to the `GND` net have little spokes indicating they are connected (eg, the two electrolytic caps have connections to that net). We no longer have to route those, which is convenient. You also now have the option of pushing a via from the top top layer surface mount to get to ground on the bottom layer. When you zoom into the board, you should see that pads are labelled with the net the connect to, so you can identify the ones that would like to be connected to the `GND` net on the bottom.
+
+Because we are using surface mount parts, much of our routing will be on the top layer, but you always have the option of using a via (or the pad of a through-hole component, which exists on both sides of the board). You can even route on the bottom layer, and the copper layer will automatically be adjusted away from your traces. Be wary, though! Your traces can disconnect regions of the copper pour (creating *islands* that are disconnected from the net).
+
+Use the *Show only zone boundaries* button on the left tool bar to hide the details of the ground plane. Note that the ground pins on your components no longer show a ratsnest line, because they are now connected.
+
+All right, now do exactly the same thing on the top (`F.Cu`) layer of the board, but this time for the `VCC` net.
+
+With luck, your routing problem just got substantially easier. Remember to regularly refill the zones ($B$) and make them visible again to make sure things haven't gone awry.
+
+### Part 4 - Routing Traces
+
+We'll now start routing the connections between components. For the most part this should be fairly straightforward. Please observe the following rules and guidelines:
+
+-   Do most of the routing on the top surface, only using a via to change layers when necessary to handle crossing a trace or to avoid breaking one of your power planes into islands. I usually route everything that doesn't require changing layers first.xxx
+
+-   Do not connect traces together at mid-points. Only connect at a pad.
+
+-   Do not make right-angle turns. Always do two $45^\circ$ turns. This prevents undercutting the trace in manufacture.
+
+-   Make traces neat. Run them in parallel at consistent distances apart and avoid complex routes. The shorter and more direct the better. Prefer vertical and horizontal to angled.
+
+-   You may need to move or rotate parts, but try to avoid it if possible. Such changes often cascade into lots of other changes.
+
+-   Start with the any surface-mount `GND` pads (like on $R_1$) and use a via to quickly connect them to the ground plane on the bottom.
+
+Keep going until you have replace the whole rats nest with valid traces.
 
 ### Submission
 
-When you have completed all the above—including having no ERC errors or warnings—and checked and reviewed your work, ask your instructor to review your schematic with you. Make any changes they require. When you are done submit the schematic.
+When you have completed all the above—including having no DRC errors or warnings—and checked and reviewed your work, ask your instructor to review your design with you. Make any changes they require. When you are done submit the PCB design.
