@@ -65,7 +65,7 @@ Schematic Capture software now provides the designer with much more than a passi
 
 -   Nets may be named for easier identification (e.g. VCC, GND, Vin, Vout).  Net names must be unique—it isn't possible to have two nets with the same name in a schematic, as they will be considered a single net by the software.
 
--   Nets may be "hidden".  For example, when you place a NAND gate in a Multisim circuit, you don't have to indicate that it is connected to VCC and GND -- those assignments have been made using net names in the model of the component.
+-   Nets may be "hidden".  For example, when you place a NAND gate in a Multisim circuit, you don't have to indicate that it is connected to VCC and GND---ßthose assignments have been made using net names in the model of the component.
 
 -   Power and ground symbols can be used rather than drawing lines between all pins connected to each power source or ground.
 
