@@ -181,4 +181,4 @@ Keep going until you have replace the whole rats nest with valid traces.
 
 ### Submission
 
-When you have completed all the above—including having no DRC errors or warnings—and checked and reviewed your work, ask your instructor to review your design with you. Make any changes they require. When you are done submit the PCB design.
+When you have completed all the above—**including having no DRC errors or warnings**—and checked and reviewed your work, ask your instructor to review your design with you. Make any changes they require. When you are done submit the PCB design.

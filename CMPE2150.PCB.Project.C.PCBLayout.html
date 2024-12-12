@@ -2704,7 +2704,7 @@ Danger
 <li><p>Place <span class="math inline">\(C_3\)</span> near its transistor.</p></li>
 <li><p>Place the comparator (<span class="math inline">\(U_{2A}\)</span>). You may find it useful to move <span class="math inline">\(R_9\)</span> to <span class="math inline">\(R_{11}\)</span> to one side of the comparator.</p></li>
 <li><p>Place the potentiometer and the header pins adjacent to the edge of the design.</p></li>
-<li><p>Now, rotate parts—if needed—to help untangle the rats nest. If you do so, adjust the labels to be consistent with the unrotated parts. It is helpful to do this while zoomed in. It is inevitable that you will have a few crossed ratsnest lines, but you want to reduce them as much as possible. One trick I sometimes use after rotation is to swap the silk screen for the component name (e.g. <span class="math inline">\(R8\)</span>) and its value ($2.2k$) by selecting the two of them (but not the rest of the part), right-clicking and selecting <code>Swap</code> to make it match the orientation of other components.</p></li>
+<li><p>Now, rotate parts—if needed—to help untangle the rats nest. If you do so, adjust the labels to be consistent with the unrotated parts. It is helpful to do this while zoomed in. It is inevitable that you will have a few crossed ratsnest lines, but you want to reduce them as much as possible. One trick I sometimes use after rotation is to swap the silk screen for the component name (e.g. <span class="math inline">\(R8\)</span>) and its value (<span class="math inline">\(2.2k\)</span>) by selecting the two of them (but not the rest of the part), right-clicking and selecting <code>Swap</code> to make it match the orientation of other components.</p></li>
 <li><p>Take some time to neaten and align the parts into a rectangular shape. When ordering a board, the size of the PCB is a significant component of the cost, so you want the smallest possible area. But don’t go overboard—you’ll still need some space to move things around as you work. You can always reduce the size later.</p></li>
 <li><p>Finally, place your edge cuts to neatly contain your design. Ensure the barrel jack, VR, potentiometer and header row are next to edges.</p></li>
 </ul>
@@ -2726,11 +2726,20 @@ Danger
 </section>
 <section id="part-4---routing-traces" class="level3">
 <h3 class="anchored" data-anchor-id="part-4---routing-traces">Part 4 - Routing Traces</h3>
-<p>We’ll now start routing the connections between components.</p>
+<p>We’ll now start routing the connections between components. For the most part this should be fairly straightforward. Please observe the following rules and guidelines:</p>
+<ul>
+<li><p>Do most of the routing on the top surface, only using a via to change layers when necessary to handle crossing a trace or to avoid breaking one of your power planes into islands. I usually route everything that doesn’t require changing layers first.xxx</p></li>
+<li><p>Do not connect traces together at mid-points. Only connect at a pad.</p></li>
+<li><p>Do not make right-angle turns. Always do two <span class="math inline">\(45^\circ\)</span> turns. This prevents undercutting the trace in manufacture.</p></li>
+<li><p>Make traces neat. Run them in parallel at consistent distances apart and avoid complex routes. The shorter and more direct the better. Prefer vertical and horizontal to angled.</p></li>
+<li><p>You may need to move or rotate parts, but try to avoid it if possible. Such changes often cascade into lots of other changes.</p></li>
+<li><p>Start with the any surface-mount <code>GND</code> pads (like on <span class="math inline">\(R_1\)</span>) and use a via to quickly connect them to the ground plane on the bottom.</p></li>
+</ul>
+<p>Keep going until you have replace the whole rats nest with valid traces.</p>
 </section>
 <section id="submission" class="level3">
 <h3 class="anchored" data-anchor-id="submission">Submission</h3>
-<p>When you have completed all the above—including having no ERC errors or warnings—and checked and reviewed your work, ask your instructor to review your schematic with you. Make any changes they require. When you are done submit the schematic.</p>
+<p>When you have completed all the above—<strong>including having no DRC errors or warnings</strong>—and checked and reviewed your work, ask your instructor to review your design with you. Make any changes they require. When you are done submit the PCB design.</p>
 </section>
 
 
