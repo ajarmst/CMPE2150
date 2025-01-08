@@ -1,0 +1,170 @@
+---
+title: "CMPE2150 Syllabus"
+subtitle: "Practical Electronics"
+author: "Armstrong / Moore"
+date: last-modified
+date-format: "DD MMM YYYY"
+format: 
+  html:
+    embed-resources: true
+    smooth-scroll: true
+    fontcolor: "#005cb9"
+    grid: 
+      margin-width: 50px
+    code-fold: show
+    code-line-numbers: true
+    code-tools: true
+  pdf:
+    papersize: letter
+    geometry: 
+      - top=30mm
+      - bottom=30mm
+      - left=25mm
+      - right=25mm
+      - marginparwidth=50mm
+      - heightrounded
+    include-in-header: 
+      text: |
+        \usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 Syllabus}
+        \fancyhead[R]{Practical Electronics}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+    fontsize: 10pt
+    monofont: "Inconsolatazi4-Regular.otf"
+    monofontoptions: 
+      - Scale=0.6
+  gfm:
+      preview-mode: normal
+toc: true
+toc-location: right
+toc-expand: true
+reference-location: margin
+citation-location: margin
+cap-location: margin
+fig-cap-location: margin
+css: content.css
+editor: visual
+title-block-banner: "#002d74"
+---
+
+## Instructors
+
++-----------+----------+---------------+-------------------------------------------------------------------+--------------+
+| Semester  | Section  | Instructor    | Contact                                                           | Office Hours |
++===========+==========+===============+===================================================================+==============+
+| Fall 2025 | A01      | AJ Armstrong  | [aja\@nait.ca](mailto://aja@nait.ca "aja@nait.ca")                | TBA          |
++-----------+----------+---------------+-------------------------------------------------------------------+--------------+
+| Fall 2025 | A02, A03 | Russell Moore | [russellm\@nait.ca](mailto://russellm@nait.ca "russellm@nait.ca") | TBA          |
++-----------+----------+---------------+-------------------------------------------------------------------+--------------+
+
+: {tbl-colwidths="\[15,15,30,25,15\]"}
+
+## Instruction
+
+This is a course building on the electronics theory you learned in earlier courses with an interest in applying it to real circuits in typical applications. In particular, we will focus on using data sheets to investigate components and how to design a circuit to properly and effectively use particular techniques and components. An additional focus will be proper use of bread-boarding and bench test equipment in the design and evaluation of circuits. A later unit will explore Computer-Aided Design and Manufacture (CAD/CAM) to lay out and prepare a printed circuit board (PCB) for production.
+
+Much of your work will be self-driven. While your instructor will introduce topics and new theory, you will be expected to do reading and research, testing your understanding with self-assessment exercises. Most class time will be spent working on the practical exercise, with your instructor assisting you in practicing, developing, and assessing your skills.
+
+\newpage
+
+## Evaluation
+
+As it is a course focusing on practical skills, evaluation in CMPE2150 will be via practical exercises (Labs and Projects) which will typically have a design component followed by implementation or simulation of a design with measurement and testing of the finished product.
+
+Marks will be assigned according to the following category weightings. Unless otherwise specified, assignments in a given category will have equal weight.
+
++----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Category                         | Weight  | Notes                                                                                                                                                                                   |
++==================================+=========+=========================================================================================================================================================================================+
+| Self-Assessment Activities (SAs) | 10%     | Generally performed on the student's own time at the beginning of each topic. Typically marked automatically.                                                                           |
++----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Laboratory Exercises (Labs)      | 20%     | One per topic. Checked-off in class by your instructor.                                                                                                                                 |
++----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Electronics Projects (Projects)  | 45%     | One per major unit. Checked off in-class by your instructor on a scheduled day. **NB: You must complete all projects successfully to pass the course.**                                 |
++----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| PCB Design Project (PCB)         | 25%     | A major project with several steps designing a PCB. Submitted to your instructor for grading. **NB: All components of this project must be completed successfully to pass the course.** |
++----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+: {tbl-colwidths="[35,10,55]"}
+
+## Equipment
+
+Because of the nature of this course, we will use elements from nearly all of the kits that you have purchased for the program. In particular, you will be expected to have all of the following, which are available in the NAIT bookstore. You should already have most of them from your first year studies. Items labelled "Home" do not need to be brought to the lab, but you may do so:
+
++------------------------------------------------+--------------------------------+
+| -   ETC Component Kit                          | -   CNT Year 2 Kit             |
++------------------------------------------------+--------------------------------+
+| -   CNT Year 1 Kit                             | -   Approved Multimeter (Home) |
++------------------------------------------------+--------------------------------+
+| -   CNT Electronics Bench Equipment Kit (Home) | -   Dual Breadboard            |
++------------------------------------------------+--------------------------------+
+| -   CNT Electronics DC Power Kit (Home)        | -   CSA-Rated Safety Glasses   |
++------------------------------------------------+--------------------------------+
+| -   CNT 9S12XDP512 Micro Kit (Later in Course) | -   Approved Calculator        |
++------------------------------------------------+--------------------------------+
+
+\newpage
+
+## Schedule
+
+The following schedule is proposed. As always, this will be subject to change to fit operational realities. Changes to the schedule will be announced in class and on course channels as soon as known.
+
++-------------+-------------------------------------------+------------------------------------------+
+| Week        | Topic                                     | Assignments/Notes                        |
++=============+===========================================+==========================================+
+| 1           | Introduction                              | *Lose one day to late start.*            |
+|             |                                           |                                          |
+|             | IO Configuration                          |                                          |
++-------------+-------------------------------------------+------------------------------------------+
+| 2           | Semiconductor Biasing                     | *Year 2 Kit Review*                      |
+|             |                                           |                                          |
+|             |                                           | Lab 1: Bus Communication                 |
++-------------+-------------------------------------------+------------------------------------------+
+| 3           | Circuit Isolation                         | Lab 2: Circuit Isolation                 |
+|             |                                           |                                          |
+|             | Thermal Management                        |                                          |
++-------------+-------------------------------------------+------------------------------------------+
+| 4           | Relays and SSRs                           | **Project 1: Semiconductor Interfacing** |
++-------------+-------------------------------------------+------------------------------------------+
+| 5           | AC Power Controllers                      | Lab 3: AC Controllers                    |
++-------------+-------------------------------------------+------------------------------------------+
+| 6           | SCRs and Triacs                           |                                          |
++-------------+-------------------------------------------+------------------------------------------+
+| R           | **Reading Break**                         | *No Classes*                             |
++-------------+-------------------------------------------+------------------------------------------+
+| 7           | Demo and Analysis: TRIAC Fader            | Lab 4: SCR Circuits                      |
++-------------+-------------------------------------------+------------------------------------------+
+| 8           | Actuators                                 | **Project 2: TRIAC Fader**               |
++-------------+-------------------------------------------+------------------------------------------+
+| 9           | Permanent Magnet DC Motors                | Lab 5: Solenoids and PMDC Motors         |
++-------------+-------------------------------------------+------------------------------------------+
+| 10          | Servo Motors                              | Lab 6: Servo Control                     |
++-------------+-------------------------------------------+------------------------------------------+
+| 11          | Steppers                                  | Lab 7: Stepper Control                   |
+|             |                                           |                                          |
+|             | Feedback Motor Control                    |                                          |
++-------------+-------------------------------------------+------------------------------------------+
+| 12          | PCB Schematic Capture                     | **Project 3: Feedback Motor Control**    |
++-------------+-------------------------------------------+------------------------------------------+
+| 13          | PCB Layout Fundamentals                   | **PCB Project 1**                        |
++-------------+-------------------------------------------+------------------------------------------+
+| 14          | PCB Layout Tips and Techniques            | **PCB Project 2**                        |
+|             |                                           |                                          |
+|             |                                           | *Lose one day to Easter*                 |
++-------------+-------------------------------------------+------------------------------------------+
+| 15          | PCB Manifests and Manufacturing Files     | *Lose one day to Easter*                 |
+|             |                                           |                                          |
+|             |                                           | **PCB Project 3**                        |
++-------------+-------------------------------------------+------------------------------------------+
+
+## Policies
+
+-   Labs are no longer available for credit after the due date for the following Lab unless an extension is given by the instructor.
+
+-   Projects that are completed after the due date will receive a marks penalty of 20% per class period late unless an extension is given by the instructor.
+
+-   Safety glasses must be worn at all times in the Lab if anyone is using bench equipment.
+
+-   Promptness and preparation lead to success. Attendance will be monitored.
