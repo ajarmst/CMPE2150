@@ -51,22 +51,12 @@ keep-tex: true
 ---
 
 ::: callout-important
-You should already have completed an exercise introducing and exploring KiCAD 9.0. This exercise assumes you are already familiar with the tools and interfaces of KiCAD and that you have completed a simple introductory project. If you have not done so, please complete the KiCAD introductory tutorial before proceeding with this lab assignment. On the course LMS, you should find KiCAD manuals and other guides. This document assumes you have access to those and does not go into great detail on the specifics of basic actions and functions in the application.
+You should already have completed an exercise introducing and exploring KiCAD 9.0 and worked on the CMPE2150 PCB Project. This project is a similar but smaller version of the that one, suitable for a skills check or timed exam. It assumes your familiarity with those exercises and notes and will therefore be comparatively terse. See the original project if you need more clarity on specific tasks. The steps in this exercise are broadly the same and presented in the same order as the original project.
 :::
 
-### Schematic Capture
+## Part 1 - Schematic Capture
 
-You are already quite familiar with schematic capture and simulation using the *NI Multisim* application used in our Electronics courses. Multisim is integrated with a PCB design package called *Ultiboard*, which students in this program have used in the past. Unfortunately, Ultiboard has an old-fashioned and perhaps overly-complicated interface, and is not commonly used in the industry. If you find yourself working with PCB design in industry, it is more likely you will work with *Altium*, *Autodesk Eagle*, or *OrCAD*. It is also increasingly likely to see the open source *KiCAD*, especially in smaller organizations unable to invest in enterprise-class products. We have selected KiCAD because it is cheap, well-maintained and multi-platform.
-
-The reason that we have not similarly moved to KiCAD from Multisim for our electronics classes is that Multisim has a very powerful and intuitive simulation feature, which is very useful for students, especially in their first year or so of studies. KiCad also supports simulation using SPICE[^1], an industry-standard platform for electronic simulation, but it is not particularly novice-friendly. More information can be found at the KiCAD site[@KiCadEDA].
-
-[^1]: Simulation Program with Integrated Circuit Emphasis
-
-As you have read, CAD/CAM[^2] Schematic Capture is used to formally, and in a computer-readable and -analyzeable format, the electrical circuit that you are developing. Use of standardized symbols[^3] and connections mean that we can easily communicate about a circuit to our colleagues—and software systems—without ambiguity. That allows us to use software to check the integrity of our design. In some cases, you will be given a design that must be imported or entered into your Schematic Capture system, and annoted to prepare for laying out a PCB to realize the design. This is the scenario we will simulate.
-
-[^2]: Computer-Aided Design/Computer-Aided Manufacturer
-
-[^3]: Both NEMA (US) and the IEC (Europe) publish standards for electrical and electronic schematics. Canadians, for the most part, use the NEMA standard.
+Your first
 
 #### The Circuit Design—Programmable Pulse Generator
 
@@ -74,89 +64,57 @@ The circuit we have selected for you to realize is shown below. You should also 
 
 ![Programmable Pulse Generator](images/pwmgenschem.png)
 
-As you will recognize, this circuit is closely based on the TRIAC Dimmer cicuit you analyzed and built in an earlier exercise. As you recall, the TRIAC power was controlled with an analog PWM[^4] signal whose duty cycle was controlled with a potentiometer. We have pulled out that control circuit to create slightly simpler circuit that can be used to generate a $0$ to $5 V$ TTL PWM signal with a duty cycle anywhere between $0\%$ and $100\%$ by adjusting a potentiometer knob.
+This circuit is from the classic *The Art of Electronics* [@AoE3, p. 242]. It is a variable width single pulse generator. The potentiometer sets the duration of the pulse and the switch triggers it.
 
-[^4]: Pulse-Width Modulation
+The four-pin header represents the board's inputs and outputs:
 
-Some significant features and changes from your earlier circuit include:
+-   $V_S$ is the voltage source to power the op amps (the top rail). It will ordinarily be $+15V_{DC}$.
 
-1.  Obviously, the outer AC circuit driving the bulb, the bulb itself, and the TRIAC connecting the two parts of the circuit have been removed, leaving the inner PWM generation circuit.
+-   $V_{cc}$ is the voltage source for the 555 timer and also serves as the "on" digital voltage reference. It will be $+5V_{DC}$.
 
-2.  The power source has been changed to $12V$, as we no longer need to drive a halogen bulb, and it drops the input voltage down to a range appropriate for the simpler LM7805 regulator ($U_1$) .
+-   $Out$ is the output of the timer. This is where the pulse generated by the circuit appears.
 
-3.  A power indicator LED has been added ($LED_1$). Note that it turns on or off depending on if the switch $S_1$ is toggled in the simulation.
+-   $Gnd$ is the ground reference for the other three pins.
 
-4.  The potentiometer ($R_9$) has been changed to $5K\Omega$, to make the range of PWM values output more smooth and linear.
-
-5.  Some output pins have been added.
-
-### Part 1 - KiCAD Project Setup
+### A - KiCAD Project Setup
 
 Follow the procedure below—nearly identical to the detailed one presented in the tutorial—to create your project to realize the schematic above.
 
-::: callout-note
-It is strongly recommended that you create your KiCAD project in a Github repository to track your progress, keep a backup, and foster working in multiple locations. You should find KiCAD 8.0 installed on all CNT computers.
-:::
+1.  Open KiCAD 9.0 and select *File → New Project*. Name your project "PulseGenerator-*\<UserID\>*", replacing *\<UserID\>* with your NAIT username. You do not need to create a new folder if you already did so for the Github project. Then click *Save*
 
-1.  Create and checkout a Github repository using whatever tool you ordinarily use, like *Github Desktop*. Remember to regularly check in your work and use *Pull* and *Push* at the beginning and end of work sessions to ensure your work is tracked and backed up. Your proof-of-work is a detailed Github history.
+2.  If you haven't already done so, setup the Symbol Library to use the recommended option of copying the default global symbol library table.
 
-2.  Open KiCAD 8.0 and select *File → New Project*. Name your project "PWMGenerator-*\<UserID\>*", replacing *\<UserID\>* with your NAIT username. You do not need to create a new folder if you already did so for the Github project. Then click *Save*.
+3.  For settings not mentioned above, select the defaults or use your own judgement.
 
-3.  If you have not already done so, set up the automatic project backups to your preferences. Note that it is usually unnecessary to push backups to Github, but they are nice to have for local faults and emergency recovery.
-
-4.  If you haven't already done so, setup the Symbol Library to use the recommended option of copying the default global symbol library table.
-
-5.  For settings not mentioned above, select the defaults or use your own judgement.
-
-### Part 2 - Schematic Sheet Setup
+### B - Schematic Sheet Setup
 
 Now, open the *Schematic Editor* and perform the following procedure:
 
 1.  Select *File → Page Settings* to open the sheet setup.
 
-2.  Choose a size of *8.5 x 11in* with *Landscape* orientation. Set the revision to 0. Use today's date. You'll only need one sheet. Add a title of "CMPE2150 PWM Generator - *\<UserID\>*[^5]". Use "NAIT CNT" as your Company. Add your full name to the first comment. Save your work and confirm that the *Title Block* looks correct.[^6]
+2.  Choose a size of *8.5 x 11in* with *Landscape* orientation. Set the revision to 0. Use today's date. You'll only need one sheet. Add a title of "CMPE2150 PWM Generator - *\<UserID\>*[^1]". Use "NAIT CNT" as your Company. Add your full name to the first comment. Save your work and confirm that the *Title Block* looks correct.
 
-    ::: callout-note
-    Get in the habit of incrementing the revision number every time you do a check in of a new major feature or significant update or fix. This author uses a scheme where the major revision is incremented for such significant updates, and minor revisions are incremented each *Push* to Github. Thus, Rev. 2.3 would be the third push since the second major revision. Note that you can access the Schematic Sheet properties to update the revision number or anything else by double-clicking the title.
-    :::
+[^1]: *Mutatis mutandis*
 
-[^5]: *Mutatis mutandis*
+### C - Place Schematic Symbols
 
-[^6]: Now would be a good time to check in your work to GitHub.
-
-### Part 3 - Place Schematic Symbols
-
-It's finally time to start capturing our schematic. We will do this in several phases: first we will place the component symbols using the NEMA (US) symbols that you are used to. Then we will wire the schematic with connections between the components. This will be followed by choosing the values, features and appropriate footprints for our PCB realization. Finally, we will make some adjustments to the schematic to prepare it for use in creating our PCB design. Of course, as you become familiar with the tools and processes, you won't be quite so fastidious. It is common to select values and footprints, and even wire components together as we place them. While we won't stop you from doing so, beginners may find it helpful to go through this more structured phased approach.
+It's finally time to start capturing our schematic. We often do this in several phases: first we will place the component symbols using the NEMA (US) symbols that you are used to. Then we will wire the schematic with connections between the components. This will be followed by choosing the values, features and appropriate footprints for our PCB realization. Finally, we will make some adjustments to the schematic to prepare it for use in creating our PCB design. Of course, as you become familiar with the tools and processes, you won't be quite so fastidious. It is common to select values and footprints, and even wire components together as we place them. While we won't stop you from doing so, beginners may find it helpful to go through this more structured phased approach.
 
 Add the components from our schematic using the tools and techniques you learned from the tutorial. The notes below may be helpful.
 
-1.  Capture the schematic the same way we design and analyze them: left to right (input to output) and top to bottom (Vcc to GND).
+1.  Get used to using the hotkeys from the KiCAD cheat sheet rather than selecting buttons and menus (eg. using 'A' for adding a symbol). It's much faster and more efficient once you get used to them.
 
-2.  Get used to using the hotkeys from the KiCAD cheat sheet rather than selecting buttons and menus (eg. using $A$ for adding a symbol). It's much faster and more efficient once you get used to them.
+2.  Use the grid to align components neatly, anticipating the upcoming wired connections.
 
-3.  Use the grid to align components neatly, anticipating the upcoming wired connections.
+3.  At this point, focus on neat placement and arrangement of the symbols. Do not worry overmuch about values and footprints until later.
 
-4.  At this point, focus on neat placement and arrangement of the symbols. Do not bother with values and footprints until later.
+4.  Please use NEMA (sometimes called 'US' or 'American') symbols. The only one likely to matter is the resistors. Use the sawtooth symbol, not the rectangle (look for `_US` in the symbol name).
 
-5.  Please use NEMA (sometimes called 'US' or 'American') symbols. The only one likely to matter is the resistors. Use the sawtooth symbol, not the rectangle (look for `_US` in the symbol name).
+5.  You can use a `CONN_01x04`[^2] to get the three output pins on the left of the schematic.
 
-6.  You can use "VSIN" as a search to find the power supply[^7].
+[^2]: Four-pin header row
 
-7.  It's helpful when finding the symbols that you want to use the various keywords that you have learned in your studies. For example, try "SPST" for the switch. You should feel free to help each other in finding symbols. Do not worry—if you get an incorrect symbol, it's relatively trivial to fix.
-
-8.  It is acceptable to use the KiCAD-generated labels and references. However, in such a case, you should be careful what order you add components to keep the numbers organized (ie. resistor numbers incrementing left to right) and make it easier to find components on the schematic.
-
-9.  Note that there are two NPN and two PNP transistors in the circuit, and the orientation of the PNPs. The mirror tool ($X$ or $Y$) will be helpful
-
-10. Two of the connections (VCC and GND) on the LM339 in Multisim do not appear in KiCAD. It is normal practice to leave those connections out in a schematic unless they are connected to sources other than the circuit's VCC and GND. You can leave them out.
-
-11. You can use a `CONN_01x03`[^8] to get the three output pins on the right of the schematic.
-
-12. Make sure you do a check-in (and probably a push) to GitHub when you're done this section.
-
-[^7]: But don't get too attached to it. We'll be replacing it with a barrel-jack connector soon enough.
-
-[^8]: Three-pin header row
+The components in the schematic are listed below, along with a description of the component part number and footprint you should use.
 
 ### Part 4 - Wire the Schematic
 
