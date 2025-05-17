@@ -1,0 +1,12 @@
+\usepackage{etoolbox}
+\newcommand{\vspaceblock}{\vspace{4em}}
+
+% Map the .vspace div to insert vertical space in LaTeX
+\usepackage{markdown}
+\markdownSetup{renderers={
+  div={%
+    \ifstrequal{\markdownRendererDivClass}{vspace}
+      {\vspaceblock}
+      {}
+  }
+}}
