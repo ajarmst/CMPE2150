@@ -13,3 +13,11 @@
 .Rhistory
 
 PWMGenerator-aja/PWMGenerator-aja-backups/
+
+PCB Makeup Project/PCB Makeup Project-backups/
+
+*.lck
+
+PCB Makeup Project/_autosave-PCB Makeup Project.kicad_sch
+
+PCB Makeup Project/#auto_saved_files#

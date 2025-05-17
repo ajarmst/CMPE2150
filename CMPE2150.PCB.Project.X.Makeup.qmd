@@ -56,11 +56,9 @@ You should already have completed an exercise introducing and exploring KiCAD 9.
 
 ## Part 1 - Schematic Capture
 
-Your first
-
 #### The Circuit Design—Programmable Pulse Generator
 
-The circuit we have selected for you to realize is shown below. You should also have access to an NI Multisim file for the circuit, which will allow you to see it in detail and even simulate it to investigate its behaviour.
+The circuit we have selected for you to realize is shown below.
 
 ![Programmable Pulse Generator](images/pulsegenschem.png)
 
@@ -92,46 +90,62 @@ Now, open the *Schematic Editor* and perform the following procedure:
 
 1.  Select *File → Page Settings* to open the sheet setup.
 
-2.  Choose a size of *8.5 x 11in* with *Landscape* orientation. Set the revision to 0. Use today's date. You'll only need one sheet. Add a title of "CMPE2150 PWM Generator - *\<UserID\>*[^1]". Use "NAIT CNT" as your Company. Add your full name to the first comment. Save your work and confirm that the *Title Block* looks correct.
+2.  Choose a size of *8.5 x 11in* with *Landscape* orientation. Set the revision to 0. Use today's date. You'll only need one sheet. Add a title of "CMPE2150 Pulse Generator - *\<UserID\>*[^1]". Use "NAIT CNT" as your Company. Add your full name to the first comment. Save your work and confirm that the *Title Block* looks correct.
 
 [^1]: *Mutatis mutandis*
 
 ### C - Place Schematic Symbols
 
-It's finally time to start capturing our schematic. We often do this in several phases: first we will place the component symbols using the NEMA (US) symbols that you are used to. Then we will wire the schematic with connections between the components. This will be followed by choosing the values, features and appropriate footprints for our PCB realization. Finally, we will make some adjustments to the schematic to prepare it for use in creating our PCB design. Of course, as you become familiar with the tools and processes, you won't be quite so fastidious. It is common to select values and footprints, and even wire components together as we place them. While we won't stop you from doing so, beginners may find it helpful to go through this more structured phased approach.
+Add the components from our schematic using the tools and techniques you learned from the tutorial.
 
-Add the components from our schematic using the tools and techniques you learned from the tutorial. The notes below may be helpful.
+1.  Please use NEMA (sometimes called 'US' or 'American') symbols. The only one likely to matter is the resistors. Use the sawtooth symbol, not the rectangle (look for `_US` in the symbol name).
 
-1.  Get used to using the hotkeys from the KiCAD cheat sheet rather than selecting buttons and menus (eg. using 'A' for adding a symbol). It's much faster and more efficient once you get used to them.
+2.  You can use a `CONN_01x04`[^2] to get the four output pins on the left of the schematic.
 
-2.  Use the grid to align components neatly, anticipating the upcoming wired connections.
-
-3.  At this point, focus on neat placement and arrangement of the symbols. Do not worry overmuch about values and footprints until later.
-
-4.  Please use NEMA (sometimes called 'US' or 'American') symbols. The only one likely to matter is the resistors. Use the sawtooth symbol, not the rectangle (look for `_US` in the symbol name).
-
-5.  You can use a `CONN_01x04`[^2] to get the three output pins on the left of the schematic.
+3.  The *Power Symbols* for this project (all sourced at the connector) are `VS`, `VCC`, and `GND`. Don't forget they'll need a *Power Flag.*
 
 [^2]: Four-pin header row
 
-The components in the schematic are listed below, along with a description of the component part number and footprint you should use.
+The components in the schematic are listed below, along with a description of the component part and footprint you should use.
 
-### Part 4 - Wire the Schematic
+::: callout-note
+You are not required to have the footprints completed for the first schematic checkoff. Some are included below for the sake of those of you who like to set them as you place the symbols.
+:::
 
-Once you have all the symbols (or suitable stand-ins) in place. Use the techniques and tools that you used in the tutorial. This is pretty straightforward, but neatness counts. Ensure that symbols are properly aligned and rotated, and that the wire routes are short, simple and neat.
+| Part | Reference | Footprint | Notes |
+|---------------|---------------|---------------|-----------------------------|
+| Connection Header | `J1` | *See Below* | You'll be modifying this in a bit, so don't worry about the footprint. |
+| Resistors | `R1-R4` | SMD 0805 | Search terms include “R”, “SMD”, and “0805” |
+| Potentiometer | `RV1` | *See Below* | We'll discuss this part shortly. Initially you do not need to specify a footprint. |
+| Capacitor | `C1` | SMD 0805 | Just an ordinary capacitor. No need for electrolytic. |
+| Transistor | `Q1` | TO-92 | In a real solution, you'd likely use a surface mount part, but we want to see a through-hole part, hence the TO-92 footprint. |
+| Switch | `S1` | *See Below* | This will be a momentary push-button that you will select later. |
+| Op Amps | `U1A,U1B` | TSSOP-14 | Use an LM324 (Quad Op Amps) part to get four. Remember you'll need to deal with the two unused op amps. |
+| Timer | `U2` | SOIC-8 | This chip is a standard 555 timer. Use TLC555 as your search term for the part. |
 
-Notes:
+: Parts List with Descriptions
 
-1.  Add a `VCC` and `GND` net connection using power symbols ($P$), as described in the tutorial. Note that the AC source still *does not* connect to those nets. That's one thing we'll deal with in the final stage.
+### D - Wire the Schematic
 
-2.  Let's also add some power symbols ($P$) for the AC power side. Use `VAC` on the top of the AC source the way you used `VCC` above, and `GNDPWR` for the bottom.
+Once you have all the symbols (or suitable stand-ins) in place, complete all the connections between components, and make the adjustments to pass the *Electrical Rules Check* without any errors or warnings.
 
-3.  Add power flags (`PWR_FLG`) too all four of those for now.
+1.  Add the `VS`, `VCC`, `GND` net connections using power symbols ($P$).
 
-4.  Visually confirm that you have all the connections in the original schematic.
+2.  Add power flags (`PWR_FLG`) to those three nets.
 
-5.  Again, remember to check in and push when you're done this stage. Remember to update the revision number.
+3.  Place the extra op amps to one side and mark their pins as unconnected.
+
+4.  Pin 5 (*Control Voltage*) of the timer is unconnected, too.
+
+5.  Run the *Electrical Rules Check* and fix any errors or warnings.
 
 ### Submission
 
-When you have completed the above and checked and reviewed your work, increment the version number (yet again), check in and push the schematic design. Ask your instructor to review your schematic with you, and make any changes they require. When you are done (after, of course, incrementing the version number, checking in and pushing) submit the schematic.
+When you have completed the above, show your clean ERC result and schematic to your instructor for checkoff.
+
+::: vspace
+:::
+
+::: right
+Signature:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+:::

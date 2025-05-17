@@ -19,3 +19,12 @@ pre code {
 .math.display .MathJax  {
   font-size: 90% !important;
 }
+
+.right {
+  text-align: right;
+}
+
+.vspace {
+  height: 4em; /* Adjust height as needed */
+  display: block;
+}

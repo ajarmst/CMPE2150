@@ -3,7 +3,14 @@
 	(generator "eeschema")
 	(generator_version "9.0")
 	(uuid "a64b8690-09f4-458e-8a6e-93d81a873170")
-	(paper "A4")
+	(paper "USLetter")
+	(title_block
+		(title "CMPE2150 Pulse Generator - aja")
+		(date "2025-05-17")
+		(rev "0")
+		(company "NAIT CNT")
+		(comment 1 "AJ Armstrong")
+	)
 	(lib_symbols
 		(symbol "Amplifier_Operational:LM324"
 			(pin_names
@@ -2843,7 +2850,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "03b1cb1d-6bba-4c07-8841-dd7544fbf87f")
-		(property "Reference" "U3"
+		(property "Reference" "U1"
 			(at 53.34 177.8 0)
 			(effects
 				(font
@@ -2859,7 +2866,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
 			(at 52.07 190.5 0)
 			(effects
 				(font
@@ -2931,7 +2938,7 @@
 		(instances
 			(project ""
 				(path "/a64b8690-09f4-458e-8a6e-93d81a873170"
-					(reference "U3")
+					(reference "U1")
 					(unit 4)
 				)
 			)
@@ -3232,7 +3239,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+		(property "Footprint" "Package_TO_SOT_THT:TO-92"
 			(at 142.24 80.645 0)
 			(effects
 				(font
@@ -3445,7 +3452,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "32858131-f57d-4a87-b801-1fb01e8c667f")
-		(property "Reference" "U3"
+		(property "Reference" "U1"
 			(at 115.57 81.2799 0)
 			(effects
 				(font
@@ -3465,7 +3472,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
 			(at 115.57 80.01 0)
 			(effects
 				(font
@@ -3493,51 +3500,51 @@
 			)
 		)
 		(pin "11"
-			(uuid "a4f53f93-16f0-4c3f-9549-166ab1906440")
+			(uuid "a4f53f93-16f0-4c3f-9549-166ab1906441")
 		)
 		(pin "6"
-			(uuid "e2c67f24-76dd-42d5-a661-b1c5e8342558")
+			(uuid "e2c67f24-76dd-42d5-a661-b1c5e8342559")
 		)
 		(pin "3"
-			(uuid "5de6a3b3-50ce-4629-8470-90a361dbf60a")
+			(uuid "5de6a3b3-50ce-4629-8470-90a361dbf60b")
 		)
 		(pin "13"
-			(uuid "bc4b21da-530b-40ea-b7af-7ff74fa47bb2")
+			(uuid "bc4b21da-530b-40ea-b7af-7ff74fa47bb3")
 		)
 		(pin "10"
-			(uuid "11eda012-caf3-4746-a95e-512704556328")
+			(uuid "11eda012-caf3-4746-a95e-512704556329")
 		)
 		(pin "7"
-			(uuid "4c5ef578-1944-47b5-bb4d-3ad5e5f7c2d4")
+			(uuid "4c5ef578-1944-47b5-bb4d-3ad5e5f7c2d5")
 		)
 		(pin "4"
-			(uuid "ac667e25-1fba-432c-92f5-7eb0f6c20699")
+			(uuid "ac667e25-1fba-432c-92f5-7eb0f6c2069a")
 		)
 		(pin "5"
-			(uuid "63c4378c-767d-4154-820e-9abe4a0a2edb")
+			(uuid "63c4378c-767d-4154-820e-9abe4a0a2edc")
 		)
 		(pin "9"
-			(uuid "da22de71-bc10-42b9-ac1b-ccf1940cc158")
+			(uuid "da22de71-bc10-42b9-ac1b-ccf1940cc159")
 		)
 		(pin "1"
-			(uuid "d6d3e286-c403-4932-b886-3df1bdc101d4")
+			(uuid "d6d3e286-c403-4932-b886-3df1bdc101d5")
 		)
 		(pin "12"
-			(uuid "3492f830-8446-4ae7-b206-15385e517df5")
+			(uuid "3492f830-8446-4ae7-b206-15385e517df6")
 		)
 		(pin "8"
-			(uuid "3aabe866-abda-403e-8e7e-3acc4582f694")
+			(uuid "3aabe866-abda-403e-8e7e-3acc4582f695")
 		)
 		(pin "14"
-			(uuid "56bd4bc1-39d8-4f83-b3e1-6f2929e45409")
+			(uuid "56bd4bc1-39d8-4f83-b3e1-6f2929e4540a")
 		)
 		(pin "2"
-			(uuid "df807294-2747-4ab3-b0b7-44b792e02948")
+			(uuid "df807294-2747-4ab3-b0b7-44b792e02949")
 		)
 		(instances
 			(project ""
 				(path "/a64b8690-09f4-458e-8a6e-93d81a873170"
-					(reference "U3")
+					(reference "U1")
 					(unit 5)
 				)
 			)
@@ -3959,7 +3966,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6bd24ac7-1f3c-4bdd-bdaa-9da6e15e97f9")
-		(property "Reference" "SW1"
+		(property "Reference" "S1"
 			(at 55.88 123.19 0)
 			(effects
 				(font
@@ -4011,7 +4018,7 @@
 		(instances
 			(project ""
 				(path "/a64b8690-09f4-458e-8a6e-93d81a873170"
-					(reference "SW1")
+					(reference "S1")
 					(unit 1)
 				)
 			)
@@ -4028,7 +4035,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "82b44b03-3986-4195-93c3-ce7fd3341075")
-		(property "Reference" "U3"
+		(property "Reference" "U1"
 			(at 27.94 177.8 0)
 			(effects
 				(font
@@ -4044,7 +4051,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
 			(at 26.67 190.5 0)
 			(effects
 				(font
@@ -4072,51 +4079,51 @@
 			)
 		)
 		(pin "11"
-			(uuid "a4f53f93-16f0-4c3f-9549-166ab1906440")
+			(uuid "a4f53f93-16f0-4c3f-9549-166ab1906442")
 		)
 		(pin "6"
-			(uuid "e2c67f24-76dd-42d5-a661-b1c5e8342558")
+			(uuid "e2c67f24-76dd-42d5-a661-b1c5e834255a")
 		)
 		(pin "3"
-			(uuid "5de6a3b3-50ce-4629-8470-90a361dbf60a")
+			(uuid "5de6a3b3-50ce-4629-8470-90a361dbf60c")
 		)
 		(pin "13"
-			(uuid "bc4b21da-530b-40ea-b7af-7ff74fa47bb2")
+			(uuid "bc4b21da-530b-40ea-b7af-7ff74fa47bb4")
 		)
 		(pin "10"
-			(uuid "11eda012-caf3-4746-a95e-512704556328")
+			(uuid "11eda012-caf3-4746-a95e-51270455632a")
 		)
 		(pin "7"
-			(uuid "4c5ef578-1944-47b5-bb4d-3ad5e5f7c2d4")
+			(uuid "4c5ef578-1944-47b5-bb4d-3ad5e5f7c2d6")
 		)
 		(pin "4"
-			(uuid "ac667e25-1fba-432c-92f5-7eb0f6c20699")
+			(uuid "ac667e25-1fba-432c-92f5-7eb0f6c2069b")
 		)
 		(pin "5"
-			(uuid "63c4378c-767d-4154-820e-9abe4a0a2edb")
+			(uuid "63c4378c-767d-4154-820e-9abe4a0a2edd")
 		)
 		(pin "9"
-			(uuid "da22de71-bc10-42b9-ac1b-ccf1940cc158")
+			(uuid "da22de71-bc10-42b9-ac1b-ccf1940cc15a")
 		)
 		(pin "1"
-			(uuid "d6d3e286-c403-4932-b886-3df1bdc101d4")
+			(uuid "d6d3e286-c403-4932-b886-3df1bdc101d6")
 		)
 		(pin "12"
-			(uuid "3492f830-8446-4ae7-b206-15385e517df5")
+			(uuid "3492f830-8446-4ae7-b206-15385e517df7")
 		)
 		(pin "8"
-			(uuid "3aabe866-abda-403e-8e7e-3acc4582f694")
+			(uuid "3aabe866-abda-403e-8e7e-3acc4582f696")
 		)
 		(pin "14"
-			(uuid "56bd4bc1-39d8-4f83-b3e1-6f2929e45409")
+			(uuid "56bd4bc1-39d8-4f83-b3e1-6f2929e4540b")
 		)
 		(pin "2"
-			(uuid "df807294-2747-4ab3-b0b7-44b792e02948")
+			(uuid "df807294-2747-4ab3-b0b7-44b792e0294a")
 		)
 		(instances
 			(project ""
 				(path "/a64b8690-09f4-458e-8a6e-93d81a873170"
-					(reference "U3")
+					(reference "U1")
 					(unit 3)
 				)
 			)
@@ -4132,7 +4139,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "84375ec2-73cf-4700-8515-0b5b1f68e907")
-		(property "Reference" "U3"
+		(property "Reference" "U1"
 			(at 109.474 46.99 0)
 			(effects
 				(font
@@ -4148,7 +4155,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
 			(at 106.68 57.15 0)
 			(effects
 				(font
@@ -4176,51 +4183,51 @@
 			)
 		)
 		(pin "11"
-			(uuid "a4f53f93-16f0-4c3f-9549-166ab1906440")
+			(uuid "a4f53f93-16f0-4c3f-9549-166ab1906443")
 		)
 		(pin "6"
-			(uuid "e2c67f24-76dd-42d5-a661-b1c5e8342558")
+			(uuid "e2c67f24-76dd-42d5-a661-b1c5e834255b")
 		)
 		(pin "3"
-			(uuid "5de6a3b3-50ce-4629-8470-90a361dbf60a")
+			(uuid "5de6a3b3-50ce-4629-8470-90a361dbf60d")
 		)
 		(pin "13"
-			(uuid "bc4b21da-530b-40ea-b7af-7ff74fa47bb2")
+			(uuid "bc4b21da-530b-40ea-b7af-7ff74fa47bb5")
 		)
 		(pin "10"
-			(uuid "11eda012-caf3-4746-a95e-512704556328")
+			(uuid "11eda012-caf3-4746-a95e-51270455632b")
 		)
 		(pin "7"
-			(uuid "4c5ef578-1944-47b5-bb4d-3ad5e5f7c2d4")
+			(uuid "4c5ef578-1944-47b5-bb4d-3ad5e5f7c2d7")
 		)
 		(pin "4"
-			(uuid "ac667e25-1fba-432c-92f5-7eb0f6c20699")
+			(uuid "ac667e25-1fba-432c-92f5-7eb0f6c2069c")
 		)
 		(pin "5"
-			(uuid "63c4378c-767d-4154-820e-9abe4a0a2edb")
+			(uuid "63c4378c-767d-4154-820e-9abe4a0a2ede")
 		)
 		(pin "9"
-			(uuid "da22de71-bc10-42b9-ac1b-ccf1940cc158")
+			(uuid "da22de71-bc10-42b9-ac1b-ccf1940cc15b")
 		)
 		(pin "1"
-			(uuid "d6d3e286-c403-4932-b886-3df1bdc101d4")
+			(uuid "d6d3e286-c403-4932-b886-3df1bdc101d7")
 		)
 		(pin "12"
-			(uuid "3492f830-8446-4ae7-b206-15385e517df5")
+			(uuid "3492f830-8446-4ae7-b206-15385e517df8")
 		)
 		(pin "8"
-			(uuid "3aabe866-abda-403e-8e7e-3acc4582f694")
+			(uuid "3aabe866-abda-403e-8e7e-3acc4582f697")
 		)
 		(pin "14"
-			(uuid "56bd4bc1-39d8-4f83-b3e1-6f2929e45409")
+			(uuid "56bd4bc1-39d8-4f83-b3e1-6f2929e4540c")
 		)
 		(pin "2"
-			(uuid "df807294-2747-4ab3-b0b7-44b792e02948")
+			(uuid "df807294-2747-4ab3-b0b7-44b792e0294b")
 		)
 		(instances
 			(project ""
 				(path "/a64b8690-09f4-458e-8a6e-93d81a873170"
-					(reference "U3")
+					(reference "U1")
 					(unit 1)
 				)
 			)
@@ -4236,7 +4243,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ac8b846f-afcc-484f-a2e1-36a3caf35d94")
-		(property "Reference" "U3"
+		(property "Reference" "U1"
 			(at 118.872 75.184 0)
 			(effects
 				(font
@@ -4252,7 +4259,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
 			(at 115.57 85.09 0)
 			(effects
 				(font
@@ -4280,51 +4287,51 @@
 			)
 		)
 		(pin "11"
-			(uuid "a4f53f93-16f0-4c3f-9549-166ab1906440")
+			(uuid "a4f53f93-16f0-4c3f-9549-166ab1906444")
 		)
 		(pin "6"
-			(uuid "e2c67f24-76dd-42d5-a661-b1c5e8342558")
+			(uuid "e2c67f24-76dd-42d5-a661-b1c5e834255c")
 		)
 		(pin "3"
-			(uuid "5de6a3b3-50ce-4629-8470-90a361dbf60a")
+			(uuid "5de6a3b3-50ce-4629-8470-90a361dbf60e")
 		)
 		(pin "13"
-			(uuid "bc4b21da-530b-40ea-b7af-7ff74fa47bb2")
+			(uuid "bc4b21da-530b-40ea-b7af-7ff74fa47bb6")
 		)
 		(pin "10"
-			(uuid "11eda012-caf3-4746-a95e-512704556328")
+			(uuid "11eda012-caf3-4746-a95e-51270455632c")
 		)
 		(pin "7"
-			(uuid "4c5ef578-1944-47b5-bb4d-3ad5e5f7c2d4")
+			(uuid "4c5ef578-1944-47b5-bb4d-3ad5e5f7c2d8")
 		)
 		(pin "4"
-			(uuid "ac667e25-1fba-432c-92f5-7eb0f6c20699")
+			(uuid "ac667e25-1fba-432c-92f5-7eb0f6c2069d")
 		)
 		(pin "5"
-			(uuid "63c4378c-767d-4154-820e-9abe4a0a2edb")
+			(uuid "63c4378c-767d-4154-820e-9abe4a0a2edf")
 		)
 		(pin "9"
-			(uuid "da22de71-bc10-42b9-ac1b-ccf1940cc158")
+			(uuid "da22de71-bc10-42b9-ac1b-ccf1940cc15c")
 		)
 		(pin "1"
-			(uuid "d6d3e286-c403-4932-b886-3df1bdc101d4")
+			(uuid "d6d3e286-c403-4932-b886-3df1bdc101d8")
 		)
 		(pin "12"
-			(uuid "3492f830-8446-4ae7-b206-15385e517df5")
+			(uuid "3492f830-8446-4ae7-b206-15385e517df9")
 		)
 		(pin "8"
-			(uuid "3aabe866-abda-403e-8e7e-3acc4582f694")
+			(uuid "3aabe866-abda-403e-8e7e-3acc4582f698")
 		)
 		(pin "14"
-			(uuid "56bd4bc1-39d8-4f83-b3e1-6f2929e45409")
+			(uuid "56bd4bc1-39d8-4f83-b3e1-6f2929e4540d")
 		)
 		(pin "2"
-			(uuid "df807294-2747-4ab3-b0b7-44b792e02948")
+			(uuid "df807294-2747-4ab3-b0b7-44b792e0294c")
 		)
 		(instances
 			(project ""
 				(path "/a64b8690-09f4-458e-8a6e-93d81a873170"
-					(reference "U3")
+					(reference "U1")
 					(unit 2)
 				)
 			)
