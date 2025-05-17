@@ -1,12 +1,9 @@
-\usepackage{etoolbox}
-\newcommand{\vspaceblock}{\vspace{4em}}
-
-% Map the .vspace div to insert vertical space in LaTeX
-\usepackage{markdown}
-\markdownSetup{renderers={
-  div={%
-    \ifstrequal{\markdownRendererDivClass}{vspace}
-      {\vspaceblock}
-      {}
-  }
-}}
+\usepackage{lastpage}
+        \usepackage{fancyhdr}
+        \usepackage{titling}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 PCB Project X}
+        \fancyhead[R]{KiCAD Makeup Assignment}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+        \setlength{\droptitle}{-2cm}
+        

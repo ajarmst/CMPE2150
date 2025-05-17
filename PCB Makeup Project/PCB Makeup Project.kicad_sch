@@ -2286,12 +2286,12 @@
 		(uuid "29987bd9-fa3d-41ac-8be6-27b5fde1c74e")
 	)
 	(no_connect
-		(at 104.14 135.89)
-		(uuid "6b3602c9-d54d-47dc-80c5-b241db3b6f01")
-	)
-	(no_connect
 		(at 45.72 190.5)
 		(uuid "75b31a39-adb2-46c3-81e8-a2c505ad8438")
+	)
+	(no_connect
+		(at 104.14 135.89)
+		(uuid "910ddd33-0194-4b8b-9739-22cf678f4c4d")
 	)
 	(no_connect
 		(at 45.72 185.42)

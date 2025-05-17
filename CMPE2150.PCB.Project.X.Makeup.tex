@@ -128,13 +128,14 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \usepackage{lastpage}
-\usepackage{fancyhdr}
-\usepackage{titling}
-\pagestyle{fancy}
-\fancyhead[L]{CMPE2150 PCB Project X}
-\fancyhead[R]{KiCAD Makeup Assignment}
-\fancyfoot[C]{\thepage/\pageref*{LastPage}}
-\setlength{\droptitle}{-2cm}
+        \usepackage{fancyhdr}
+        \usepackage{titling}
+        \pagestyle{fancy}
+        \fancyhead[L]{CMPE2150 PCB Project X}
+        \fancyhead[R]{KiCAD Makeup Assignment}
+        \fancyfoot[C]{\thepage/\pageref*{LastPage}}
+        \setlength{\droptitle}{-2cm}
+        
 \KOMAoption{captions}{tablesignature}
 \makeatletter
 \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
@@ -237,7 +238,7 @@
 \tableofcontents
 }
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, arc=.35mm, opacitybacktitle=0.6, colback=white, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-important-color-frame, leftrule=.75mm, bottomtitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, colbacktitle=quarto-callout-important-color!10!white, breakable, bottomrule=.15mm, opacityback=0, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-important-color!10!white, bottomtitle=1mm, left=2mm, arc=.35mm, colframe=quarto-callout-important-color-frame, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, coltitle=black, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, rightrule=.15mm, bottomrule=.15mm, breakable, toprule=.15mm, leftrule=.75mm, opacityback=0]
 
 You should already have completed an exercise introducing and exploring
 KiCAD 9.0 and worked on the CMPE2150 PCB Project. This project is a
@@ -250,10 +251,12 @@ original project.
 
 \end{tcolorbox}
 
+\newpage{}
+
 \subsection{Part 1 - Schematic
 Capture}\label{part-1---schematic-capture}
 
-\paragraph{The Circuit Design---Programmable Pulse
+\subsubsection{The Circuit Design---Programmable Pulse
 Generator}\label{the-circuit-designprogrammable-pulse-generator}
 
 The circuit we have selected for you to realize is shown below.
@@ -295,6 +298,8 @@ The four-pin header represents the board's inputs and outputs:
 \item
   \(Gnd\) is the ground reference for the other three pins.
 \end{itemize}
+
+\newpage{}
 
 \subsubsection{A - KiCAD Project Setup}\label{a---kicad-project-setup}
 
@@ -362,7 +367,7 @@ learned from the tutorial.
 The components in the schematic are listed below, along with a
 description of the component part and footprint you should use.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, arc=.35mm, opacitybacktitle=0.6, colback=white, left=2mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, leftrule=.75mm, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, breakable, bottomrule=.15mm, opacityback=0, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, left=2mm, arc=.35mm, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, rightrule=.15mm, bottomrule=.15mm, breakable, toprule=.15mm, leftrule=.75mm, opacityback=0]
 
 You are not required to have the footprints completed for the first
 schematic checkoff. Some are included below for the sake of those of you
@@ -422,6 +427,8 @@ Timer & \texttt{U2} & SOIC-8 & This chip is a standard 555 timer. Use
 TLC555 as your search term for the part. \\
 \end{longtable}
 
+\newpage{}
+
 \subsubsection{D - Wire the Schematic}\label{d---wire-the-schematic}
 
 Once you have all the symbols (or suitable stand-ins) in place, complete
@@ -449,7 +456,14 @@ the \emph{Electrical Rules Check} without any errors or warnings.
 When you have completed the above, show your clean ERC result and
 schematic to your instructor for checkoff.
 
-Signature:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\vspace{4em}
+
+Signature:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\newpage{}
+
+\subsection*{Part 2 - Footprints}\label{part-2---footprints}
+\addcontentsline{toc}{subsection}{Part 2 - Footprints}
 
 
 
