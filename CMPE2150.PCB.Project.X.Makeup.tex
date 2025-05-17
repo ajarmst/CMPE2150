@@ -238,7 +238,7 @@
 \tableofcontents
 }
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-important-color!10!white, bottomtitle=1mm, left=2mm, arc=.35mm, colframe=quarto-callout-important-color-frame, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, coltitle=black, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, rightrule=.15mm, bottomrule=.15mm, breakable, toprule=.15mm, leftrule=.75mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, breakable, bottomrule=.15mm, leftrule=.75mm, left=2mm, toprule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-important-color!10!white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, titlerule=0mm, toptitle=1mm, colframe=quarto-callout-important-color-frame, bottomtitle=1mm, arc=.35mm, colback=white, opacitybacktitle=0.6, coltitle=black, opacityback=0]
 
 You should already have completed an exercise introducing and exploring
 KiCAD 9.0 and worked on the CMPE2150 PCB Project. This project is a
@@ -367,7 +367,7 @@ learned from the tutorial.
 The components in the schematic are listed below, along with a
 description of the component part and footprint you should use.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, left=2mm, arc=.35mm, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, rightrule=.15mm, bottomrule=.15mm, breakable, toprule=.15mm, leftrule=.75mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, breakable, bottomrule=.15mm, leftrule=.75mm, left=2mm, toprule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, titlerule=0mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, arc=.35mm, colback=white, opacitybacktitle=0.6, coltitle=black, opacityback=0]
 
 You are not required to have the footprints completed for the first
 schematic checkoff. Some are included below for the sake of those of you
@@ -375,24 +375,13 @@ who like to set them as you place the symbols.
 
 \end{tcolorbox}
 
+\begin{figure*}
+
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2027}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2027}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2027}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3919}}@{}}
-\caption{Parts List with Descriptions}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Part
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Reference
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Footprint
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Notes
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1944}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1806}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4583}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Part
@@ -426,6 +415,8 @@ amps. \\
 Timer & \texttt{U2} & SOIC-8 & This chip is a standard 555 timer. Use
 TLC555 as your search term for the part. \\
 \end{longtable}
+
+\end{figure*}%
 
 \newpage{}
 
@@ -462,8 +453,48 @@ Signature:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 \newpage{}
 
-\subsection*{Part 2 - Footprints}\label{part-2---footprints}
-\addcontentsline{toc}{subsection}{Part 2 - Footprints}
+\subsection{Part 2 - Footprints}\label{part-2---footprints}
+
+There are a few parts we will need to tweak and specify the footprints
+for before we begin laying out the PCB.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Complete the footprints specified for the parts in the table from the
+  previous section (those not marked as \emph{See Below). Note:} Recall
+  that you can use \emph{Tools-\textgreater Edit Symbol Fields} to
+  quickly access the footprints for all parts.
+\item
+  For the \emph{Connection Header}, change the device from a four-pin
+  header row to a four-pin \emph{Screw Terminal}. Use a \emph{Metz
+  Connect Type 0, 4 Pin} device footprint. It should already be
+  available in KiCad.
+\item
+  For the \emph{Potentiometer}, use a through-hole (\emph{THT}),
+  \emph{vertical}, footprint.
+\item
+  For the \emph{Switch}, select any two-terminal momentary switch (a
+  search on \texttt{SW\_Push} will likely be of value).
+\item
+  Run the \emph{Electrical Rules Check} and fix any errors or warnings.
+\end{enumerate}
+
+\subsubsection{Submission}\label{submission-1}
+
+When you have completed the above, show your clean ERC result and the
+\emph{Symbol Fields Table} for checkoff.
+
+\vspace{4em}
+
+Signature:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\newpage{}
+
+\subsection{Part 3 - PCB Layout}\label{part-3---pcb-layout}
+
+There are a few parts we will need t
 
 
 

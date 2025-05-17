@@ -110,8 +110,9 @@ The components in the schematic are listed below, along with a description of th
 You are not required to have the footprints completed for the first schematic checkoff. Some are included below for the sake of those of you who like to set them as you place the symbols.
 :::
 
+::: column-page
 | Part | Reference | Footprint | Notes |
-|---------------|---------------|---------------|-----------------------------|
+|--------------|------------|-------------|---------------------------------|
 | Connection Header | `J1` | *See Below* | You'll be modifying this in a bit, so don't worry about the footprint. |
 | Resistors | `R1-R4` | SMD 0805 | Search terms include “R”, “SMD”, and “0805” |
 | Potentiometer | `RV1` | *See Below* | We'll discuss this part shortly. Initially you do not need to specify a footprint. |
@@ -120,8 +121,7 @@ You are not required to have the footprints completed for the first schematic ch
 | Switch | `S1` | *See Below* | This will be a momentary push-button that you will select later. |
 | Op Amps | `U1A,U1B` | TSSOP-14 | Use an LM324 (Quad Op Amps) part to get four. Remember you'll need to deal with the two unused op amps. |
 | Timer | `U2` | SOIC-8 | This chip is a standard 555 timer. Use TLC555 as your search term for the part. |
-
-: Parts List with Descriptions
+:::
 
 {{< pagebreak >}}
 
@@ -153,3 +153,28 @@ Signature:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 {{< pagebreak >}}
 
 ## Part 2 - Footprints
+
+There are a few parts we will need to tweak and specify the footprints for before we begin laying out the PCB.
+
+1.  Complete the footprints specified for the parts in the table from the previous section (those not marked as *See Below). Note:* Recall that you can use *Tools-\>Edit Symbol Fields* to quickly access the footprints for all parts.
+2.  For the *Connection Header*, change the device from a four-pin header row to a four-pin *Screw Terminal*. Use a *Metz Connect Type 0, 4 Pin* device footprint. It should already be available in KiCad.
+3.  For the *Potentiometer*, use a through-hole (*THT*), *vertical*, footprint.
+4.  For the *Switch*, select any two-terminal momentary switch (a search on `SW_Push` will likely be of value).
+5.  Run the *Electrical Rules Check* and fix any errors or warnings.
+
+### Submission
+
+When you have completed the above, show your clean ERC result and the *Symbol Fields Table* for checkoff.
+
+::: vspace
+:::
+
+::: right
+Signature:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+:::
+
+{{< pagebreak >}}
+
+## Part 3 - PCB Layout
+
+There are a few parts we will need t
