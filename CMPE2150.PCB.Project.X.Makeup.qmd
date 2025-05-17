@@ -62,7 +62,7 @@ Your first
 
 The circuit we have selected for you to realize is shown below. You should also have access to an NI Multisim file for the circuit, which will allow you to see it in detail and even simulate it to investigate its behaviour.
 
-![Programmable Pulse Generator](images/pwmgenschem.png)
+![Programmable Pulse Generator](images/pulsegenschem.png)
 
 This circuit is from the classic *The Art of Electronics* [@AoE3, p. 242]. It is a variable width single pulse generator. The potentiometer sets the duration of the pulse and the switch triggers it.
 
