@@ -90,7 +90,7 @@ Now, open the *Schematic Editor* and perform the following procedure:
 
 2.  Choose a size of *8.5 x 11in* with *Landscape* orientation. Set the revision to 0. Use today's date. You'll only need one sheet. Add a title of "CMPE2150 Pulse Generator - *\<UserID\>*[^1]". Use "NAIT CNT" as your Company. Add your full name to the first comment. Save your work and confirm that the *Title Block* looks correct.
 
-[^1]: *Mutatis mutandis*
+[^1]: Mutatis mutandis
 
 ### C - Place Schematic Symbols
 
@@ -112,7 +112,7 @@ You are not required to have the footprints completed for the first schematic ch
 
 ::: column-page
 | Part | Reference | Footprint | Notes |
-|--------------|------------|-------------|---------------------------------|
+|--------------|----------|------------|--------------------------------------|
 | Connection Header | `J1` | *See Below* | You'll be modifying this in a bit, so don't worry about the footprint. |
 | Resistors | `R1-R4` | SMD 0805 | Search terms include “R”, “SMD”, and “0805” |
 | Potentiometer | `RV1` | *See Below* | We'll discuss this part shortly. Initially you do not need to specify a footprint. |
@@ -177,4 +177,49 @@ Signature:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 ## Part 3 - PCB Layout
 
-There are a few parts we will need t
+### A - Setting Up the Board
+
+Open your project's PCB editor and select *File → Page Settings* and set the page up the same way we did for the schematic in Part A. Otherwise, we will do a two-layer board with the default settings.
+
+### B - Component Placement
+
+If necessary, make sure you have reviewed the rules and guidelines for part placement and connection in the PCB Project notes you were earlier introduced to.
+
+1.  Update the PCB from your recently created schematic. Confirm you have the parts and footprints you expect to see.
+2.  Creating a compact design, place the components:
+    a.  The Screw Terminal should be on the top edge, facing out, at the left-hand side.
+    b.  The Potentiometer should be below that, near the left edge
+    c.  The Button should be below that, also positioned near the left edge.
+    d.  You may place the remaining components as you see fit.
+3.  Place your edge cuts to neatly contain your design.
+
+### C - Power Plane Copper Pours
+
+Add two crosshatched copper planes covering the entire board:
+
+1.  On the Front Cu layer, the plane should attach to the `GND` net.
+2.  On the Back Cu layer, use the `VCC` net.
+
+NB: Remember to regularly hit the $B$ key to refill your pours and keep track of how your board really looks as you route.
+
+### D - Routing Traces
+
+A bunch of your `VCC` and `GND` rats nest connections will have disappeared by being automatically connected to one of the pours. Now complete the routing:
+
+1.  Start with the `VCC` net. Because it is on the bottom, the surface mount components won't have automatically connected to it. However, you can easily connect them by adding some vias connected to the `GND` net, which you can then connect to with your surface mount ground pads. That should let you get all the `VCC` pins connected easily, leaving lots of room for other traces.
+2.  Try to do traces that connect one surface mount part to another first, so that you can keep the whole thing on the top layer and not need to use two vias to drop down to the bottom plane and then come back up. (You can do this if you have to, but it's to be avoided.)
+3.  Remember you can just hit $V$ while you're drawing a route to create a via to go to the other plane if you need to get around something. Also remember to hit $B$ afterwards to see how that affected the copper pours.
+4.  Leave connections to through-hole components until later, as they are already on both planes and thus can be routed to from either direction.
+
+Keep going until you have replaced the whole rats nest with valid traces and you pass the *Design Rules Check* without any errors or warnings.
+
+### Submission
+
+When you have completed the above, show your clean DRC result and the completed design to your instructor for checkoff.
+
+::: vspace
+:::
+
+::: right
+Signature:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+:::

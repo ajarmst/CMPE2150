@@ -238,7 +238,7 @@
 \tableofcontents
 }
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, bottomrule=.15mm, leftrule=.75mm, left=2mm, toprule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-important-color!10!white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, titlerule=0mm, toptitle=1mm, colframe=quarto-callout-important-color-frame, bottomtitle=1mm, arc=.35mm, colback=white, opacitybacktitle=0.6, coltitle=black, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colbacktitle=quarto-callout-important-color!10!white, colframe=quarto-callout-important-color-frame, bottomtitle=1mm, colback=white, opacityback=0, coltitle=black, opacitybacktitle=0.6, rightrule=.15mm, titlerule=0mm, arc=.35mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, leftrule=.75mm, breakable, toprule=.15mm, bottomrule=.15mm, left=2mm]
 
 You should already have completed an exercise introducing and exploring
 KiCAD 9.0 and worked on the CMPE2150 PCB Project. This project is a
@@ -337,7 +337,7 @@ procedure:
   Choose a size of \emph{8.5 x 11in} with \emph{Landscape} orientation.
   Set the revision to 0. Use today's date. You'll only need one sheet.
   Add a title of ``CMPE2150 Pulse Generator -
-  \emph{\textless UserID\textgreater{}}\sidenote{\footnotesize \emph{Mutatis mutandis}}''.
+  \emph{\textless UserID\textgreater{}}\sidenote{\footnotesize Mutatis mutandis}''.
   Use ``NAIT CNT'' as your Company. Add your full name to the first
   comment. Save your work and confirm that the \emph{Title Block} looks
   correct.
@@ -367,7 +367,7 @@ learned from the tutorial.
 The components in the schematic are listed below, along with a
 description of the component part and footprint you should use.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, bottomrule=.15mm, leftrule=.75mm, left=2mm, toprule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, titlerule=0mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, arc=.35mm, colback=white, opacitybacktitle=0.6, coltitle=black, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colback=white, opacityback=0, coltitle=black, opacitybacktitle=0.6, rightrule=.15mm, titlerule=0mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, leftrule=.75mm, breakable, toprule=.15mm, bottomrule=.15mm, left=2mm]
 
 You are not required to have the footprints completed for the first
 schematic checkoff. Some are included below for the sake of those of you
@@ -378,10 +378,10 @@ who like to set them as you place the symbols.
 \begin{figure*}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1944}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1806}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4583}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1892}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1351}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1622}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.5135}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Part
@@ -494,7 +494,106 @@ Signature:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 \subsection{Part 3 - PCB Layout}\label{part-3---pcb-layout}
 
-There are a few parts we will need t
+\subsubsection{A - Setting Up the Board}\label{a---setting-up-the-board}
+
+Open your project's PCB editor and select \emph{File → Page Settings}
+and set the page up the same way we did for the schematic in Part A.
+Otherwise, we will do a two-layer board with the default settings.
+
+\subsubsection{B - Component Placement}\label{b---component-placement}
+
+If necessary, make sure you have reviewed the rules and guidelines for
+part placement and connection in the PCB Project notes you were earlier
+introduced to.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Update the PCB from your recently created schematic. Confirm you have
+  the parts and footprints you expect to see.
+\item
+  Creating a compact design, place the components:
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    The Screw Terminal should be on the top edge, facing out, at the
+    left-hand side.
+  \item
+    The Potentiometer should be below that, near the left edge
+  \item
+    The Button should be below that, also positioned near the left edge.
+  \item
+    You may place the remaining components as you see fit.
+  \end{enumerate}
+\item
+  Place your edge cuts to neatly contain your design.
+\end{enumerate}
+
+\subsubsection{C - Power Plane Copper
+Pours}\label{c---power-plane-copper-pours}
+
+Add two crosshatched copper planes covering the entire board:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  On the Front Cu layer, the plane should attach to the \texttt{GND}
+  net.
+\item
+  On the Back Cu layer, use the \texttt{VCC} net.
+\end{enumerate}
+
+NB: Remember to regularly hit the \(B\) key to refill your pours and
+keep track of how your board really looks as you route.
+
+\subsubsection{D - Routing Traces}\label{d---routing-traces}
+
+A bunch of your \texttt{VCC} and \texttt{GND} rats nest connections will
+have disappeared by being automatically connected to one of the pours.
+Now complete the routing:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Start with the \texttt{VCC} net. Because it is on the bottom, the
+  surface mount components won't have automatically connected to it.
+  However, you can easily connect them by adding some vias connected to
+  the \texttt{GND} net, which you can then connect to with your surface
+  mount ground pads. That should let you get all the \texttt{VCC} pins
+  connected easily, leaving lots of room for other traces.
+\item
+  Try to do traces that connect one surface mount part to another first,
+  so that you can keep the whole thing on the top layer and not need to
+  use two vias to drop down to the bottom plane and then come back up.
+  (You can do this if you have to, but it's to be avoided.)
+\item
+  Remember you can just hit \(V\) while you're drawing a route to create
+  a via to go to the other plane if you need to get around something.
+  Also remember to hit \(B\) afterwards to see how that affected the
+  copper pours.
+\item
+  Leave connections to through-hole components until later, as they are
+  already on both planes and thus can be routed to from either
+  direction.
+\end{enumerate}
+
+Keep going until you have replaced the whole rats nest with valid traces
+and you pass the \emph{Design Rules Check} without any errors or
+warnings.
+
+\subsubsection{Submission}\label{submission-2}
+
+When you have completed the above, show your clean DRC result and the
+completed design to your instructor for checkoff.
+
+\vspace{4em}
+
+Signature:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 
 

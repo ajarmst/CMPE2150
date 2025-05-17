@@ -3284,7 +3284,14 @@ display: block;
   <ul class="collapse">
   <li><a href="#submission-1" id="toc-submission-1" class="nav-link" data-scroll-target="#submission-1">Submission</a></li>
   </ul></li>
-  <li><a href="#part-3---pcb-layout" id="toc-part-3---pcb-layout" class="nav-link" data-scroll-target="#part-3---pcb-layout">Part 3 - PCB Layout</a></li>
+  <li><a href="#part-3---pcb-layout" id="toc-part-3---pcb-layout" class="nav-link" data-scroll-target="#part-3---pcb-layout">Part 3 - PCB Layout</a>
+  <ul class="collapse">
+  <li><a href="#a---setting-up-the-board" id="toc-a---setting-up-the-board" class="nav-link" data-scroll-target="#a---setting-up-the-board">A - Setting Up the Board</a></li>
+  <li><a href="#b---component-placement" id="toc-b---component-placement" class="nav-link" data-scroll-target="#b---component-placement">B - Component Placement</a></li>
+  <li><a href="#c---power-plane-copper-pours" id="toc-c---power-plane-copper-pours" class="nav-link" data-scroll-target="#c---power-plane-copper-pours">C - Power Plane Copper Pours</a></li>
+  <li><a href="#d---routing-traces" id="toc-d---routing-traces" class="nav-link" data-scroll-target="#d---routing-traces">D - Routing Traces</a></li>
+  <li><a href="#submission-2" id="toc-submission-2" class="nav-link" data-scroll-target="#submission-2">Submission</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="CMPE2150.PCB.Project.X.Makeup.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -3347,7 +3354,7 @@ Important
 <li><p>Select <em>File → Page Settings</em> to open the sheet setup.</p></li>
 <li><p>Choose a size of <em>8.5 x 11in</em> with <em>Landscape</em> orientation. Set the revision to 0. Use today’s date. You’ll only need one sheet. Add a title of “CMPE2150 Pulse Generator - <em>&lt;UserID&gt;</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>”. Use “NAIT CNT” as your Company. Add your full name to the first comment. Save your work and confirm that the <em>Title Block</em> looks correct.</p></li>
 </ol>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup> <em>Mutatis mutandis</em></p></div></div></section>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup> Mutatis mutandis</p></div></div></section>
 <section id="c---place-schematic-symbols" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="c---place-schematic-symbols">C - Place Schematic Symbols</h3>
 <p>Add the components from our schematic using the tools and techniques you learned from the tutorial.</p>
@@ -3373,10 +3380,10 @@ Note
 <div class="column-page">
 <table class="table">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 16%">
 <col style="width: 18%">
-<col style="width: 45%">
+<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 51%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -3487,8 +3494,56 @@ Note
 </section>
 <section id="part-3---pcb-layout" class="level2">
 <h2 class="anchored" data-anchor-id="part-3---pcb-layout">Part 3 - PCB Layout</h2>
-<p>There are a few parts we will need t</p>
+<section id="a---setting-up-the-board" class="level3">
+<h3 class="anchored" data-anchor-id="a---setting-up-the-board">A - Setting Up the Board</h3>
+<p>Open your project’s PCB editor and select <em>File → Page Settings</em> and set the page up the same way we did for the schematic in Part A. Otherwise, we will do a two-layer board with the default settings.</p>
+</section>
+<section id="b---component-placement" class="level3">
+<h3 class="anchored" data-anchor-id="b---component-placement">B - Component Placement</h3>
+<p>If necessary, make sure you have reviewed the rules and guidelines for part placement and connection in the PCB Project notes you were earlier introduced to.</p>
+<ol type="1">
+<li>Update the PCB from your recently created schematic. Confirm you have the parts and footprints you expect to see.</li>
+<li>Creating a compact design, place the components:
+<ol type="a">
+<li>The Screw Terminal should be on the top edge, facing out, at the left-hand side.</li>
+<li>The Potentiometer should be below that, near the left edge</li>
+<li>The Button should be below that, also positioned near the left edge.</li>
+<li>You may place the remaining components as you see fit.</li>
+</ol></li>
+<li>Place your edge cuts to neatly contain your design.</li>
+</ol>
+</section>
+<section id="c---power-plane-copper-pours" class="level3">
+<h3 class="anchored" data-anchor-id="c---power-plane-copper-pours">C - Power Plane Copper Pours</h3>
+<p>Add two crosshatched copper planes covering the entire board:</p>
+<ol type="1">
+<li>On the Front Cu layer, the plane should attach to the <code>GND</code> net.</li>
+<li>On the Back Cu layer, use the <code>VCC</code> net.</li>
+</ol>
+<p>NB: Remember to regularly hit the <span class="math inline">\(B\)</span> key to refill your pours and keep track of how your board really looks as you route.</p>
+</section>
+<section id="d---routing-traces" class="level3">
+<h3 class="anchored" data-anchor-id="d---routing-traces">D - Routing Traces</h3>
+<p>A bunch of your <code>VCC</code> and <code>GND</code> rats nest connections will have disappeared by being automatically connected to one of the pours. Now complete the routing:</p>
+<ol type="1">
+<li>Start with the <code>VCC</code> net. Because it is on the bottom, the surface mount components won’t have automatically connected to it. However, you can easily connect them by adding some vias connected to the <code>GND</code> net, which you can then connect to with your surface mount ground pads. That should let you get all the <code>VCC</code> pins connected easily, leaving lots of room for other traces.</li>
+<li>Try to do traces that connect one surface mount part to another first, so that you can keep the whole thing on the top layer and not need to use two vias to drop down to the bottom plane and then come back up. (You can do this if you have to, but it’s to be avoided.)</li>
+<li>Remember you can just hit <span class="math inline">\(V\)</span> while you’re drawing a route to create a via to go to the other plane if you need to get around something. Also remember to hit <span class="math inline">\(B\)</span> afterwards to see how that affected the copper pours.</li>
+<li>Leave connections to through-hole components until later, as they are already on both planes and thus can be routed to from either direction.</li>
+</ol>
+<p>Keep going until you have replaced the whole rats nest with valid traces and you pass the <em>Design Rules Check</em> without any errors or warnings.</p>
+</section>
+<section id="submission-2" class="level3">
+<h3 class="anchored" data-anchor-id="submission-2">Submission</h3>
+<p>When you have completed the above, show your clean DRC result and the completed design to your instructor for checkoff.</p>
+<div class="vspace">
 
+</div>
+<div class="right">
+<p>Signature:___________________________</p>
+</div>
+
+</section>
 </section>
 
 
