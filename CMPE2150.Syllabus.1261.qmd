@@ -51,11 +51,9 @@ title-block-banner: "#002d74"
 
 ## Instructors
 
-+-----------+----------+--------------+----------------------------------------------------+----------------------------+
-| Semester  | Section  | Instructor   | Contact                                            | Office Hours               |
-+===========+==========+==============+====================================================+============================+
+| Semester | Section | Instructor | Contact | Office Hours |
+|----|----|----|----|----|
 | Fall 2025 | A01, A02 | AJ Armstrong | [aja\@nait.ca](mailto://aja@nait.ca "aja@nait.ca") | Thursday Tutorial in WC216 |
-+-----------+----------+--------------+----------------------------------------------------+----------------------------+
 
 : {tbl-colwidths="\[15,15,20,15,35\]"}
 
@@ -73,17 +71,12 @@ As it is a course focusing on practical skills, evaluation in CMPE2150 will be v
 
 Marks will be assigned according to the following category weightings. Unless otherwise specified, assignments in a given category will have equal weight.
 
-+----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Category                         | Weight  | Notes                                                                                                                                                                                   |
-+==================================+=========+=========================================================================================================================================================================================+
-| Self-Assessment Activities (SAs) | 10%     | Generally performed on the student's own time at the beginning of each topic. Typically marked automatically.                                                                           |
-+----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Laboratory Exercises (Labs)      | 20%     | One per topic. Checked-off in class by your instructor.                                                                                                                                 |
-+----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Electronics Projects (Projects)  | 45%     | One per major unit. Checked off in-class by your instructor on a scheduled day. **NB: You must complete all projects successfully to pass the course.**                                 |
-+----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| PCB Design Project (PCB)         | 25%     | A major project with several steps designing a PCB. Submitted to your instructor for grading. **NB: All components of this project must be completed successfully to pass the course.** |
-+----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Category | Weight | Notes |
+|----|----|----|
+| Self-Assessment Activities (SAs) | 10% | Generally performed on the student's own time at the beginning of each topic. Typically marked automatically. |
+| Laboratory Exercises (Labs) | 20% | One per topic. Checked-off in class by your instructor. |
+| Electronics Projects (Projects) | 45% | One per major unit. Checked off in-class by your instructor on a scheduled day. **NB: You must complete all projects successfully to pass the course.** |
+| PCB Design Project (PCB) | 25% | A major project with several steps designing a PCB. Submitted to your instructor for grading. **NB: All components of this project must be completed successfully to pass the course.** |
 
 : {tbl-colwidths="\[35,10,55\]"}
 
