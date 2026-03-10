@@ -51,9 +51,11 @@ title-block-banner: "#002d74"
 
 ## Instructors
 
-| Semester | Section | Instructor | Contact | Office Hours |
-|----|----|----|----|----|
-| Fall 2025 | A01, A02 | AJ Armstrong | [aja\@nait.ca](mailto://aja@nait.ca "aja@nait.ca") | Thursday Tutorial in WC216 |
++-------------+-------------+--------------+----------------------------------------------------+----------------------------+
+| Semester    | Section     | Instructor   | Contact                                            | Office Hours               |
++=============+=============+==============+====================================================+============================+
+| Fall 2025   | A01, A02    | AJ Armstrong | [aja\@nait.ca](mailto://aja@nait.ca "aja@nait.ca") | Thursday Tutorial in WC216 |
++-------------+-------------+--------------+----------------------------------------------------+----------------------------+
 
 : {tbl-colwidths="\[15,15,20,15,35\]"}
 
@@ -71,12 +73,17 @@ As it is a course focusing on practical skills, evaluation in CMPE2150 will be v
 
 Marks will be assigned according to the following category weightings. Unless otherwise specified, assignments in a given category will have equal weight.
 
-| Category | Weight | Notes |
-|----|----|----|
-| Self-Assessment Activities (SAs) | 10% | Generally performed on the student's own time at the beginning of each topic. Typically marked automatically. |
-| Laboratory Exercises (Labs) | 20% | One per topic. Checked-off in class by your instructor. |
-| Electronics Projects (Projects) | 45% | One per major unit. Checked off in-class by your instructor on a scheduled day. **NB: You must complete all projects successfully to pass the course.** |
-| PCB Design Project (PCB) | 25% | A major project with several steps designing a PCB. Submitted to your instructor for grading. **NB: All components of this project must be completed successfully to pass the course.** |
++----------------------------------+----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Category                         | Weight               | Notes                                                                                                                                                                                   |
++==================================+======================+=========================================================================================================================================================================================+
+| Self-Assessment Activities (SAs) | 10%                  | Generally performed on the student's own time at the beginning of each topic. Typically marked automatically.                                                                           |
++----------------------------------+----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Laboratory Exercises (Labs)      | 20%                  | One per topic. Checked-off in class by your instructor.                                                                                                                                 |
++----------------------------------+----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Electronics Projects (Projects)  | 45%                  | One per major unit. Checked off in-class by your instructor on a scheduled day. **NB: You must complete all projects successfully to pass the course.**                                 |
++----------------------------------+----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| PCB Design Project (PCB)         | 25%                  | A major project with several steps designing a PCB. Submitted to your instructor for grading. **NB: All components of this project must be completed successfully to pass the course.** |
++----------------------------------+----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 : {tbl-colwidths="\[35,10,55\]"}
 
@@ -102,53 +109,53 @@ Because of the nature of this course, we will use elements from nearly all of th
 
 The following schedule is proposed. As always, this will be subject to change to fit operational realities. Changes to the schedule will be announced in class and on course channels as soon as known.
 
-+------+---------------------------------------+------------------------------------------+
-| Week | Topic                                 | Assignments/Notes                        |
-+======+=======================================+==========================================+
-| 2    | Introduction                          | *No class due to late start in week 1.*  |
-|      |                                       |                                          |
-|      | IO Configuration                      |                                          |
-+------+---------------------------------------+------------------------------------------+
-| 3    | Semiconductor Biasing                 | *Year 2 Kit Review*                      |
-|      |                                       |                                          |
-|      |                                       | Lab 1: Bus Communication                 |
-+------+---------------------------------------+------------------------------------------+
-| 4    | Circuit Isolation                     | Lab 2: Circuit Isolation                 |
-|      |                                       |                                          |
-|      | Thermal Management                    |                                          |
-+------+---------------------------------------+------------------------------------------+
-| 5    | Relays and SSRs                       | **Project 1: Semiconductor Interfacing** |
-+------+---------------------------------------+------------------------------------------+
-| 6    | AC Power Controllers                  | Lab 3: AC Controllers                    |
-+------+---------------------------------------+------------------------------------------+
-| R    | **Reading Break**                     | *No Classes*                             |
-+------+---------------------------------------+------------------------------------------+
-| 7    | SCRs and Triacs                       |                                          |
-+------+---------------------------------------+------------------------------------------+
-| 8    | Demo and Analysis: TRIAC Fader        | Lab 4: SCR Circuits                      |
-+------+---------------------------------------+------------------------------------------+
-| 9    | Actuators                             | **Project 2: TRIAC Fader**               |
-+------+---------------------------------------+------------------------------------------+
-| 10   | Permanent Magnet DC Motors            | Lab 5: Solenoids and PMDC Motors         |
-+------+---------------------------------------+------------------------------------------+
-| 11   | Servo Motors                          | Lab 6: Servo Control                     |
-+------+---------------------------------------+------------------------------------------+
-| 12   | Steppers                              | Lab 7: Stepper Control                   |
-|      |                                       |                                          |
-|      | Feedback Motor Control                |                                          |
-+------+---------------------------------------+------------------------------------------+
-| 13   | PCB Schematic Capture                 | **Project 3: Feedback Motor Control**    |
-|      |                                       |                                          |
-|      |                                       | *Lose one day to Easter*                 |
-+------+---------------------------------------+------------------------------------------+
-| 14   | PCB Layout Fundamentals               | **PCB Project 1**                        |
-|      |                                       |                                          |
-|      |                                       | *Lose one day to Easter*                 |
-+------+---------------------------------------+------------------------------------------+
-| 15   | PCB Layout Tips and Techniques        | **PCB Project 2**                        |
-+------+---------------------------------------+------------------------------------------+
-| 16   | PCB Manifests and Manufacturing Files | **PCB Project 3**                        |
-+------+---------------------------------------+------------------------------------------+
++------------+---------------------------------------+------------------------------------------+
+| Week       | Topic                                 | Assignments/Notes                        |
++============+=======================================+==========================================+
+| 2          | Introduction                          | *No class due to late start in week 1.*  |
+|            |                                       |                                          |
+|            | IO Configuration                      |                                          |
++------------+---------------------------------------+------------------------------------------+
+| 3          | Semiconductor Biasing                 | *Year 2 Kit Review*                      |
+|            |                                       |                                          |
+|            |                                       | Lab 1: Bus Communication                 |
++------------+---------------------------------------+------------------------------------------+
+| 4          | Circuit Isolation                     | Lab 2: Circuit Isolation                 |
+|            |                                       |                                          |
+|            | Thermal Management                    |                                          |
++------------+---------------------------------------+------------------------------------------+
+| 5          | Relays and SSRs                       | **Project 1: Semiconductor Interfacing** |
++------------+---------------------------------------+------------------------------------------+
+| 6          | AC Power Controllers                  | Lab 3: AC Controllers                    |
++------------+---------------------------------------+------------------------------------------+
+| R          | **Reading Break**                     | *No Classes*                             |
++------------+---------------------------------------+------------------------------------------+
+| 7          | SCRs and Triacs                       |                                          |
++------------+---------------------------------------+------------------------------------------+
+| 8          | Demo and Analysis: TRIAC Fader        | Lab 4: SCR Circuits                      |
++------------+---------------------------------------+------------------------------------------+
+| 9          | Actuators                             | **Project 2: TRIAC Fader**               |
++------------+---------------------------------------+------------------------------------------+
+| 10         | Permanent Magnet DC Motors            | Lab 5: Solenoids and PMDC Motors         |
++------------+---------------------------------------+------------------------------------------+
+| 11         | Servo Motors                          | Lab 6: Servo Control                     |
++------------+---------------------------------------+------------------------------------------+
+| 12         | Steppers                              | Lab 7: Stepper Control                   |
+|            |                                       |                                          |
+|            | Feedback Motor Control                |                                          |
++------------+---------------------------------------+------------------------------------------+
+| 13         | PCB Schematic Capture                 | **Project 3: Feedback Motor Control**    |
+|            |                                       |                                          |
+|            |                                       | *Lose one day to Easter*                 |
++------------+---------------------------------------+------------------------------------------+
+| 14         | PCB Layout Fundamentals               | **PCB Project 1**                        |
+|            |                                       |                                          |
+|            |                                       | *Lose one day to Easter*                 |
++------------+---------------------------------------+------------------------------------------+
+| 15         | PCB Layout Tips and Techniques        | **PCB Project 2**                        |
++------------+---------------------------------------+------------------------------------------+
+| 16         | PCB Manifests and Manufacturing Files | **PCB Project 3**                        |
++------------+---------------------------------------+------------------------------------------+
 
 ## Policies
 
