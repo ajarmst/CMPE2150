@@ -30,10 +30,11 @@ title-block-banner: "#002d74"
 ## Instructors
 
 +------------+--------------+--------------------------------+----------------------------------------------------+--------------+
-| Semester   | Sections     | Instructor                     | Contact                                            | Office Hours |
+| Semester   | Sections     | Instructor                     | Contact                                            | Office       |
 +============+==============+================================+====================================================+==============+
-| Fall 2026  | A01, A02     | AJ Armstrong                   | [aja\@nait.ca](mailto://aja@nait.ca "aja@nait.ca") | TBA          |
+| Fall 2026  | A01,A02      | AJ Armstrong                   | [aja\@nait.ca](mailto://aja@nait.ca "aja@nait.ca") | WC204        |
 +------------+--------------+--------------------------------+----------------------------------------------------+--------------+
+: {tbl-colwidths="[15,15,30,20,20]"}
 
 ## Instruction
 
@@ -45,7 +46,7 @@ Much of your work will be self-driven. While your instructor will introduce topi
 
 ## Evaluation
 
-As it is a course focusing on practical skills, evaluation in CMPE2700 will be via practical exercises (Labs and Projects) which will typically have a design component followed by implementation or simulation of a design with measurement and testing of the finished product.
+As it is a course focusing on practical skills, evaluation in CMPE2700 will be via practical exercises (Labs and Projects) which are designed to let you explore the concepts that are discussed in class and develop your understanding with hands-on practice.
 
 Marks will be assigned according to the following category weightings. Unless otherwise specified, assignments in a given category will have equal weight.
 
@@ -54,10 +55,11 @@ Marks will be assigned according to the following category weightings. Unless ot
 +===============================+====================+=========================================================================================================================================================+
 | Assignments                   | 10%                | Generally performed on the student's own time at the beginning of each topic. Typically marked automatically.                                           |
 +-------------------------------+--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Laboratory Exercises (Labs)   | 40%                | One per topic. Checked-off in class by your instructor.                                                                                                 |
+| Lab Exercises                 | 40%                | One per topic. Checked-off in class by your instructor.                                                                                                 |
 +-------------------------------+--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Projects                      | 50%                | One per major unit. Checked off in-class by your instructor on a scheduled day. **NB: You must complete all projects successfully to pass the course.** |
 +-------------------------------+--------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+: {tbl-colwidths="[25,10,65]"}
 
 ## Equipment
 
@@ -126,11 +128,11 @@ The following schedule is proposed. As always, this will be subject to change to
 |        |                                                   |                                            |
 |        |                                                   | A09: Broadband Signalling, Spread Spectrum |
 +--------+---------------------------------------------------+--------------------------------------------+
-| 11     | Industrial Protocols and TCP/IP                   | *Lose one day to Fall Break*               |
+| 11     | Industrial Comms & TCP/IP                         | *Lose one day to Fall Break*               |
 |        |                                                   |                                            |
 |        |                                                   | A10: Industrial Protocols and TCP/IP       |
 +--------+---------------------------------------------------+--------------------------------------------+
-| 12     | Industrial Protocols and TCP/IP                   | **P04: Wireshark**                         |
+| 12     | Industrial Comms & TCP/IP                         | **P04: Wireshark**                         |
 +--------+---------------------------------------------------+--------------------------------------------+
 | 13     | Modbus                                            | L08: Modbus                                |
 +--------+---------------------------------------------------+--------------------------------------------+
@@ -140,6 +142,7 @@ The following schedule is proposed. As always, this will be subject to change to
 +--------+---------------------------------------------------+--------------------------------------------+
 | 16     |                                                   | *Lose one day to Term End*                 |
 +--------+---------------------------------------------------+--------------------------------------------+
+: {tbl-colwidths="[10,35,55]"}
 
 ## Policies
 
