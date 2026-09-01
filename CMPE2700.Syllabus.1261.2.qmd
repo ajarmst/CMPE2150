@@ -1,5 +1,5 @@
 ---
-title: "CMPE27000 Syllabus"
+title: "CMPE2700 Syllabus"
 subtitle: "Communications and Networking"
 author: "AJ Armstrong"
 date: last-modified
